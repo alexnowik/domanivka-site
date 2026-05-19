@@ -4,144 +4,130 @@ import { T, useLang } from '../i18n.jsx';
 import { ArrowIcon } from '../icons.jsx';
 
 const FACTS = [
-  { en: 'Administrative centre', uk: 'Адміністративний центр', val: 'Domanivka' },
-  { en: 'Region', uk: 'Область', val: 'Mykolaiv Oblast, Ukraine' },
-  { en: 'Founded', uk: 'Засновано', val: '1782' },
-  { en: 'Established as hromada', uk: 'Створена як громада', val: '2020' },
-  { en: 'Area', uk: 'Площа', val: '912 km²' },
-  { en: 'Population', uk: 'Населення', val: <>18,400 <span className="muted">(2024 est.)</span></> },
-  { en: 'Settlements', uk: 'Населених пунктів', val: <>27 <span className="muted">(1 town + 26 villages)</span></>, valUk: <>27 <span className="muted">(1 смт + 26 сіл)</span></> },
-  { en: 'Rivers', uk: 'Річки', val: 'Chichikleia, Tylihul' },
-  { en: 'Distance to Mykolaiv', uk: 'Відстань до Миколаєва', val: '112 km' },
-  { en: 'Distance to Odesa', uk: 'Відстань до Одеси', val: '148 km' },
-  { en: 'Time zone', uk: 'Часовий пояс', val: 'EET (UTC+2)' },
-  { en: 'Council head', uk: 'Голова громади', val: 'Andriy Hryhorchuk' },
+  { en: 'Administrative centre', uk: 'Адміністративний центр', val: 'smt Domanivka' },
+  { en: 'Region', uk: 'Область', val: 'Voznesensk district, Mykolaiv Oblast' },
+  { en: 'Community formed', uk: 'Громаду утворено', val: <>2018 <span className="muted">(expanded 2020)</span></>, valUk: <>2018 <span className="muted">(розширено 2020)</span></> },
+  { en: 'Settlements', uk: 'Населених пунктів', val: <>31 <span className="muted">(smt + 30 villages)</span></>, valUk: <>31 <span className="muted">(смт + 30 сіл)</span></> },
+  { en: 'Area', uk: 'Площа', val: '729.7 km²' },
+  { en: 'Population', uk: 'Населення', val: <>14,398 <span className="muted">(2024)</span></> },
+  { en: 'IDPs hosted', uk: 'Прийнято ВПО', val: '1,087' },
+  { en: 'Defenders in Armed Forces', uk: 'Захисників у ЗСУ', val: '900+' },
+  { en: 'Rivers', uk: 'Річки', val: 'Chortala, Bakshala, Chychykliia' },
+  { en: 'Coordinates', uk: 'Координати', val: '47°37′N · 30°58′E' },
+  { en: 'Head of the community', uk: 'Голова громади', val: 'Viktor Vlasiuk' },
+  { en: 'Distance to Mykolaiv', uk: 'Відстань до Миколаєва', val: '137 km' },
 ];
 
 const SETTLEMENTS = [
-  { name: 'Domanivka', pop: '5,142' },
-  { name: 'Bohdanivka', pop: '1,206' },
-  { name: 'Olexandrivka', pop: '980' },
-  { name: 'Vesele', pop: '820' },
-  { name: 'Prybuzhany', pop: '748' },
-  { name: 'Marianivka', pop: '692' },
-  { name: 'Krasnopilske', pop: '624' },
-  { name: 'Sofiivka', pop: '560' },
-  { name: 'Tarasivka', pop: '512' },
-  { name: 'Dilove', pop: '488' },
-  { name: 'Lupareve', pop: '410' },
-  { name: 'Pidhirnia', pop: '386' },
+  { name: 'smt Domanivka', tag: { en: 'centre', uk: 'центр' } },
+  { name: 'Zbroshkove' },
+  { name: 'Tsaredarivka' },
+  { name: 'Zabary' },
+  { name: 'Olexandrivka' },
+  { name: 'Novolikarske' },
+  { name: 'Viktorivka' },
+  { name: 'Zelenyi Yar' },
 ];
 
 const TIMELINE = [
-  { year: '1782', title: { en: 'Domanivka is founded', uk: 'Засновано Доманівку' },
-    desc: { en: 'A small settlement is established by farming families on the banks of the Chichikleia river.', uk: 'Селяни-переселенці засновують поселення на берегах Чичиклеї.' } },
-  { year: '1872', title: { en: 'First school opens', uk: 'Відкриття першої школи' },
-    desc: { en: 'A parish school begins teaching reading, writing, and arithmetic to roughly forty children.', uk: 'Парафіяльна школа починає навчати грамоти й арифметики близько сорока дітей.' } },
-  { year: '1932–33', title: { en: 'The Holodomor', uk: 'Голодомор' },
-    desc: { en: 'Soviet grain seizures cause mass famine. Local death toll is estimated in the hundreds; remembered annually.', uk: 'Радянські хлібозаготівлі спричиняють масовий голод. Місцеві втрати — сотні людей; ушановуємо щороку.' } },
-  { year: '1991', title: { en: 'Ukrainian independence', uk: 'Незалежність України' },
-    desc: { en: 'Local farms decollectivise over the following decade. The agricultural backbone of the community takes its modern shape.', uk: 'Протягом десятиріччя колгоспи переходять у приватне володіння. Аграрна основа громади набуває сучасного вигляду.' } },
-  { year: '2020', title: { en: 'Amalgamated hromada is formed', uk: 'Створено об’єднану громаду' },
-    desc: { en: 'Twenty-seven settlements unite into a single self-governing community under Ukraine’s decentralisation reform.', uk: 'Двадцять сім населених пунктів об’єднуються в єдину громаду в рамках реформи децентралізації.' } },
+  { year: '2018', title: { en: 'The community is formed', uk: 'Утворено громаду' },
+    desc: { en: 'Domanivska settlement territorial community is established under Ukraine’s decentralisation reform.', uk: 'Доманівська селищна територіальна громада створена в рамках реформи децентралізації.' } },
+  { year: '2020', title: { en: 'Expanded to 31 settlements', uk: 'Розширення до 31 населеного пункту' },
+    desc: { en: 'Six village councils merge into the community — smt Domanivka and 30 villages across 729.7 km².', uk: 'До громади приєднуються сільські ради — смт Доманівка та 30 сіл на площі 729,7 км².' } },
   { year: '2022', title: { en: 'Full-scale invasion', uk: 'Повномасштабне вторгнення' },
-    desc: { en: 'The community hosts thousands of internally displaced families from Mykolaiv and Kherson, and absorbs damage from missile strikes.', uk: 'Громада приймає тисячі ВПО з Миколаєва та Херсонщини; зазнає руйнувань від ракетних ударів.' } },
-  { year: { en: 'Today', uk: 'Сьогодні' }, now: true, title: { en: 'Rebuilding and planning forward', uk: 'Відбудова і планування на майбутнє' },
-    desc: { en: 'Forty-eight projects implemented since 2022, twenty-three active partners, and a five-year development strategy entering consultation.', uk: 'Сорок вісім реалізованих проєктів з 2022 року, двадцять три активних партнери; стратегія розвитку на п’ять років виходить на обговорення.' } },
+    desc: { en: 'The community shelters more than 3,000 displaced people, and 900+ residents join the Armed Forces.', uk: 'Громада прихистила понад 3 000 переселенців; 900+ мешканців стали до лав ЗСУ.' } },
+  { year: '2024', title: { en: 'Reclassified, profile published', uk: 'Зміна статусу, видано профіль' },
+    desc: { en: 'Domanivka changes status from urban-type settlement to settlement; the Community Profile is published as an addendum to the Development Strategy.', uk: 'Доманівка змінює статус із селища міського типу на селище; видано Профіль громади як додаток до Стратегії розвитку.' } },
+  { year: { en: 'Today', uk: 'Сьогодні' }, now: true, title: { en: 'Strategy through 2027', uk: 'Стратегія до 2027 року' },
+    desc: { en: 'Development Strategy through 2027 (with perspective to 2034), implemented with partners: NEFCO, GIZ, USAID DOBRE, IOM and the Danish Embassy.', uk: 'Стратегія розвитку до 2027 року (з перспективою до 2034), що реалізується з партнерами: NEFCO, GIZ, USAID DOBRE, IOM та Посольством Данії.' } },
 ];
 
-const AGE = [
-  { l: '0–17', v: 18 },
-  { l: '18–34', v: 21 },
-  { l: '35–54', v: 28 },
-  { l: '55–69', v: 19 },
-  { l: '70+', v: 14 },
+const IDP_YEARS = [
+  { l: '2021', v: 1, count: '13' },
+  { l: '2022', v: 100, count: '2,425' },
+  { l: '2023', v: 82, count: '1,992' },
+  { l: '2024', v: 45, count: '1,093' },
 ];
 
-const HOUSEHOLDS = [
-  { en: 'Total households', uk: 'Усього домогосподарств', val: '6,820' },
-  { en: 'Single-occupant', uk: 'Один мешканець', val: '1,704' },
-  { en: 'With children', uk: 'З дітьми', val: '2,180' },
-  { en: 'IDP-hosting', uk: 'Що приймають ВПО', val: '412' },
-  { en: 'Pensioner-only', uk: 'Лише пенсіонери', val: '1,196' },
+const SOCIAL = [
+  { en: 'IDPs in the community', uk: 'ВПО у громаді', val: '1,087' },
+  { en: 'People in difficult circumstances', uk: 'У складних життєвих обставинах', val: '352' },
+  { en: 'Families in difficulty', uk: 'Сімей у складних обставинах', val: '130' },
+  { en: 'Registered for primary care', uk: 'Прикріплено до первинної медицини', val: '15,978' },
 ];
 
-const OCCUPATION = [
-  { en: 'Agriculture', uk: 'Сільське господарство', val: '41%' },
-  { en: 'Public services', uk: 'Бюджетні установи', val: '16%' },
-  { en: 'Trade & services', uk: 'Торгівля та послуги', val: '14%' },
-  { en: 'Construction', uk: 'Будівництво', val: '9%' },
-  { en: 'Other / commuting', uk: 'Інше / маятникова міграція', val: '20%' },
+const RESILIENCE = [
+  { en: 'In the Armed Forces', uk: 'У лавах ЗСУ', val: '900+' },
+  { en: 'IDPs sheltered since 2022', uk: 'Прихистили ВПО з 2022', val: '3,000+' },
+  { en: 'Solar power plants', uk: 'Сонячних електростанцій', val: '9' },
+  { en: 'Farms', uk: 'Фермерських господарств', val: '110' },
 ];
 
 const SECTORS = [
   {
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M3 19c4-2 6-6 6-12M9 7c4 0 8 2 12 6M21 13c-3 4-8 6-12 6"/></svg>,
     title: { en: 'Agriculture', uk: 'Сільське господарство' },
-    desc: { en: 'Wheat, sunflower, rapeseed, dairy. 64,000 hectares of arable land. Eight active farming co-operatives.', uk: 'Пшениця, соняшник, ріпак, молочна продукція. 64 000 га ріллі. Вісім активних аграрних кооперативів.' },
+    desc: { en: '63,543 ha of black-soil farmland, 110 farms and 12 agro-enterprises. Wheat, rapeseed, sunflower and orchards.', uk: '63 543 га чорноземних угідь, 110 фермерських господарств і 12 агропідприємств. Пшениця, ріпак, соняшник, сади.' },
+  },
+  {
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>,
+    title: { en: 'Energy', uk: 'Енергетика' },
+    desc: { en: 'Nine solar power plants (8.8 MW total) and a municipal fuel-pellets plant. An energy-purpose land plot is reserved near Zelenyi Yar.', uk: 'Дев’ять сонячних електростанцій (8,8 МВт) і комунальна пелетна лінія. Зарезервовано ділянку для енергетики біля с. Зелений Яр.' },
   },
   {
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V4h8v3"/><path d="M3 13h18"/></svg>,
-    title: { en: 'Small business', uk: 'Малий бізнес' },
-    desc: { en: '218 registered businesses, mostly trade, food processing, repair, and rural tourism along the rivers.', uk: '218 зареєстрованих підприємств: торгівля, переробка продуктів, ремонт і сільський туризм уздовж річок.' },
+    title: { en: 'Business', uk: 'Бізнес' },
+    desc: { en: '335 entrepreneurs and 149 registered firms, including the dairy branch “Mykolaivmolprom”. Limestone, sand and clay reserves.', uk: '335 підприємців і 149 зареєстрованих фірм, зокрема молочна філія «Миколаївмолпром». Поклади вапняку, піску та глини.' },
+  },
+  {
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><rect x="3" y="6" width="18" height="14" rx="1"/><path d="M12 10v6M9 13h6"/></svg>,
+    title: { en: 'Healthcare', uk: 'Охорона здоров’я' },
+    desc: { en: 'A multidisciplinary hospital and a primary-care centre serving three hromadas, with 5 outpatient clinics, 12 paramedic posts and a mobile clinic.', uk: 'Багатопрофільна лікарня та центр первинної допомоги на три громади: 5 амбулаторій, 12 ФАПів і мобільна клініка.' },
   },
   {
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M3 9l9-6 9 6v11H3z"/><path d="M9 20v-7h6v7"/></svg>,
-    title: { en: 'Education & people', uk: 'Освіта та люди' },
-    desc: { en: 'Eight schools, two arts schools, a vocational training centre, and a community library. Strong young teacher cohort.', uk: 'Вісім шкіл, дві мистецькі школи, центр професійної підготовки та громадська бібліотека. Активна когорта молодих учителів.' },
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M3 18h18M5 18v-7l7-5 7 5v7"/><path d="M9 18v-4h6v4"/></svg>,
-    title: { en: 'Infrastructure', uk: 'Інфраструктура' },
-    desc: { en: '74% of roads paved. Three substations. Gas line through the centre. Drinking water under expansion.', uk: '74% доріг з твердим покриттям. Три підстанції. Газопровід через центр. Питний водогін у розширенні.' },
+    title: { en: 'Education & culture', uk: 'Освіта та культура' },
+    desc: { en: '60% of the local budget goes to education: 5 schools, 8 kindergartens, a music and sports school, plus 10 cultural centres and 12 libraries.', uk: '60% місцевого бюджету — на освіту: 5 шкіл, 8 дитсадків, музична та спортивна школи, а також 10 будинків культури і 12 бібліотек.' },
   },
   {
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12c4 4 14 4 18 0M3 12c4-4 14-4 18 0M12 3v18"/></svg>,
-    title: { en: 'Strategic location', uk: 'Стратегічне розташування' },
-    desc: { en: 'Two-hour drive from the Black Sea ports at Odesa and Mykolaiv. M-14 highway corridor passes 18 km north.', uk: 'Дві години автомобілем до чорноморських портів Одеси та Миколаєва. Автомагістраль М-14 проходить за 18 км на північ.' },
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M12 2v6M12 22v-6M2 12h6M22 12h-6M5 5l4 4M19 19l-4-4M5 19l4-4M19 5l-4 4"/></svg>,
-    title: { en: 'Green & energy potential', uk: 'Зелений та енергетичний потенціал' },
-    desc: { en: 'High solar yield in the southern Ukrainian belt. Two community-owned roof installations in pilot.', uk: 'Високий показник інсоляції південного поясу. Дві покрівельні СЕС громади — у пілоті.' },
+    title: { en: 'Location & connectivity', uk: 'Розташування та сполучення' },
+    desc: { en: 'Mykolaiv 137 km, Odesa 176 km, Kyiv 364 km. 80 km of the P-75 national highway run through the community.', uk: 'Миколаїв 137 км, Одеса 176 км, Київ 364 км. Територією громади проходить 80 км траси Р-75.' },
   },
 ];
 
 const HORIZONS = [
   {
-    period: { en: 'Short term', uk: 'Короткостроково' },
-    years: '2026 – 2027',
-    title: { en: 'Immediate recovery.', uk: 'Невідкладне відновлення.' },
+    period: { en: 'Critical infrastructure', uk: 'Критична інфраструктура' },
+    years: { en: 'Priority', uk: 'Пріоритет' },
+    title: { en: 'Water, sewage, roads.', uk: 'Вода, каналізація, дороги.' },
     items: [
-      { en: 'Repair winter-critical infrastructure', uk: 'Ремонт критичної зимової інфраструктури' },
-      { en: 'Restore three damaged schools', uk: 'Відновити три пошкоджені школи' },
-      { en: 'Expand drinking-water network', uk: 'Розширити мережу питної води' },
-      { en: 'Stabilise support for IDP families', uk: 'Стабілізувати підтримку ВПО' },
-      { en: 'Energy backup for essential services', uk: 'Резерв живлення для базових служб' },
+      { en: 'Clean drinking water for 30 villages', uk: 'Чиста питна вода для 30 сіл' },
+      { en: 'Water & sewage system modernisation', uk: 'Модернізація водогонів і каналізації' },
+      { en: 'Construction of treatment facilities', uk: 'Будівництво очисних споруд' },
+      { en: 'Municipal road repairs (292.7 km)', uk: 'Ремонт комунальних доріг (292,7 км)' },
     ],
   },
   {
-    period: { en: 'Medium term', uk: 'Середньостроково' },
-    years: '2027 – 2029',
-    title: { en: 'Local economy & dignity.', uk: 'Місцева економіка та гідність.' },
+    period: { en: 'Social & recovery', uk: 'Соціальне та відновлення' },
+    years: { en: 'In progress', uk: 'Триває' },
+    title: { en: 'People first.', uk: 'Люди понад усе.' },
     items: [
-      { en: 'Modular housing for displaced families', uk: 'Модульне житло для родин ВПО' },
-      { en: 'Modernise primary healthcare', uk: 'Модернізація первинної медицини' },
-      { en: 'Support small farms & processing', uk: 'Підтримка малих ферм і переробки' },
-      { en: 'Renovate cultural & community centres', uk: 'Реновація культурних і громадських просторів' },
-      { en: 'Digital services for residents', uk: 'Цифрові послуги для мешканців' },
+      { en: 'IDP housing (Danish Embassy funded)', uk: 'Житло для ВПО (фінансує Посольство Данії)' },
+      { en: 'School retrofits + shelter construction', uk: 'Термомодернізація шкіл і укриття' },
+      { en: 'Hospital modernisation & energy resilience', uk: 'Модернізація лікарні та енергостійкість' },
+      { en: 'Barrier-free community services', uk: 'Безбар’єрні громадські послуги' },
     ],
   },
   {
-    period: { en: 'Long term', uk: 'Довгостроково' },
-    years: '2029 – 2030+',
-    title: { en: 'A community people choose.', uk: 'Громада, яку обирають.' },
+    period: { en: 'Economy & resilience', uk: 'Економіка та стійкість' },
+    years: { en: 'Development', uk: 'Розвиток' },
+    title: { en: 'A community that earns.', uk: 'Громада, що заробляє.' },
     items: [
-      { en: 'Green-energy plan for public buildings', uk: 'Зелена енергія для громадських будівель' },
-      { en: 'Tourism along the Chichikleia river', uk: 'Туризм уздовж Чичиклеї' },
-      { en: 'Vocational programmes for youth', uk: 'Професійні програми для молоді' },
-      { en: 'Smart land-use planning', uk: 'Раціональне землекористування' },
-      { en: 'Sustainable budget independence', uk: 'Стійка бюджетна самостійність' },
+      { en: 'Municipal fuel-pellets plant & solar', uk: 'Комунальна пелетна лінія та СЕС' },
+      { en: 'Investment land plots', uk: 'Інвестиційні земельні ділянки' },
+      { en: 'Veterans’ co-op & food security', uk: 'Ветеранський кооператив і продбезпека' },
+      { en: 'Waste management & clean settlements', uk: 'Поводження з відходами, чисті села' },
     ],
   },
 ];
@@ -157,23 +143,23 @@ function MapSvg() {
       <path d="M300 40 L300 420" stroke="#C9B999" strokeWidth="1" strokeDasharray="4 4" />
       <g fontFamily="Geist, sans-serif" fontSize="11" fill="#24303A">
         <g>
-          <circle cx="300" cy="245" r="9" fill="#1E3A46" />
-          <circle cx="300" cy="245" r="14" fill="none" stroke="#1E3A46" strokeWidth="1" opacity="0.5" />
-          <text x="316" y="249" fontWeight="600" fontSize="13">Domanivka</text>
+          <circle cx="300" cy="245" r="9" fill="#0E5A75" />
+          <circle cx="300" cy="245" r="14" fill="none" stroke="#0E5A75" strokeWidth="1" opacity="0.5" />
+          <text x="316" y="249" fontWeight="600" fontSize="13">smt Domanivka</text>
           <text x="316" y="263" fill="#5B6670" fontSize="10">Administrative centre</text>
         </g>
-        <g fill="#6B7D5C">
-          <circle cx="200" cy="200" r="4" /><text x="208" y="204" fill="#24303A">Bohdanivka</text>
-          <circle cx="380" cy="180" r="4" /><text x="388" y="184" fill="#24303A">Olexandrivka</text>
-          <circle cx="450" cy="220" r="4" /><text x="458" y="224" fill="#24303A">Vesele</text>
-          <circle cx="160" cy="290" r="4" /><text x="120" y="306" fill="#24303A">Prybuzhany</text>
-          <circle cx="240" cy="340" r="4" /><text x="200" y="358" fill="#24303A">Krasnopilske</text>
-          <circle cx="380" cy="320" r="4" /><text x="388" y="324" fill="#24303A">Marianivka</text>
-          <circle cx="470" cy="340" r="4" /><text x="478" y="344" fill="#24303A">Lupareve</text>
-          <circle cx="120" cy="130" r="4" /><text x="128" y="134" fill="#24303A">Pidhirnia</text>
-          <circle cx="240" cy="120" r="4" /><text x="248" y="124" fill="#24303A">Tarasivka</text>
-          <circle cx="350" cy="115" r="4" /><text x="358" y="119" fill="#24303A">Dilove</text>
-          <circle cx="500" cy="155" r="4" /><text x="445" y="148" fill="#24303A">Sofiivka</text>
+        <g fill="#7DA62E">
+          <circle cx="200" cy="200" r="4" /><text x="208" y="204" fill="#24303A">Zbroshkove</text>
+          <circle cx="380" cy="180" r="4" /><text x="388" y="184" fill="#24303A">Tsaredarivka</text>
+          <circle cx="450" cy="220" r="4" /><text x="458" y="224" fill="#24303A">Zabary</text>
+          <circle cx="160" cy="290" r="4" /><text x="120" y="306" fill="#24303A">Olexandrivka</text>
+          <circle cx="240" cy="340" r="4" /><text x="200" y="358" fill="#24303A">Novolikarske</text>
+          <circle cx="380" cy="320" r="4" /><text x="388" y="324" fill="#24303A">Viktorivka</text>
+          <circle cx="470" cy="340" r="4" /><text x="430" y="356" fill="#24303A">Zelenyi Yar</text>
+          <circle cx="120" cy="130" r="3" />
+          <circle cx="240" cy="120" r="3" />
+          <circle cx="350" cy="115" r="3" />
+          <circle cx="500" cy="155" r="3" />
           <circle cx="220" cy="260" r="3" />
           <circle cx="350" cy="270" r="3" />
           <circle cx="420" cy="280" r="3" />
@@ -181,16 +167,14 @@ function MapSvg() {
           <circle cx="280" cy="180" r="3" />
           <circle cx="320" cy="350" r="3" />
           <circle cx="180" cy="350" r="3" />
-          <circle cx="450" cy="280" r="3" />
           <circle cx="500" cy="280" r="3" />
           <circle cx="100" cy="200" r="3" />
-          <circle cx="510" cy="280" r="3" />
         </g>
       </g>
       <g transform="translate(540, 60)" fontFamily="Geist, sans-serif" fontSize="10" fill="#5B6670">
         <circle r="14" fill="none" stroke="#A89F8B" strokeWidth="0.8" />
-        <path d="M0 -10 L3 0 L0 10 L-3 0 Z" fill="#1E3A46" />
-        <text x="-3" y="-18" fontWeight="600" fill="#1E3A46">N</text>
+        <path d="M0 -10 L3 0 L0 10 L-3 0 Z" fill="#0E5A75" />
+        <text x="-3" y="-18" fontWeight="600" fill="#0E5A75">N</text>
       </g>
       <g transform="translate(60, 420)" fontFamily="Geist, sans-serif" fontSize="10" fill="#5B6670">
         <line x1="0" y1="0" x2="80" y2="0" stroke="#5B6670" strokeWidth="1" />
@@ -213,8 +197,8 @@ export default function About() {
         crumb={{ en: 'About the community', uk: 'Про громаду' }}
         title={{ en: 'People, land, and a long memory.', uk: 'Люди, земля та довга пам’ять.' }}
         lede={{
-          en: 'Domanivka was first settled in 1782 along the Chichikleia river, on the broad steppe that runs from Mykolaiv toward Odesa. Today it is an amalgamated hromada of twenty-seven settlements, with farming at its heart and a community council in the centre.',
-          uk: 'Доманівка вперше згадується 1782 року — поселення на річці Чичиклея, у широкому степу між Миколаєвом і Одесою. Сьогодні це об’єднана територіальна громада з двадцяти семи населених пунктів, де у центрі — сільське господарство та громадська рада.',
+          en: 'Domanivska settlement territorial community was formed in 2018 and expanded in 2020 by merging six village councils. Today it covers 31 settlements — smt Domanivka and 30 villages — across 729.7 km² of chornozem steppe in the Voznesensk district of Mykolaiv region, along the Chortala, Bakshala and Chychykliia rivers.',
+          uk: 'Доманівська селищна територіальна громада утворена 2018 року, у 2020-му розширилася об’єднанням сільрад. Сьогодні це 31 населений пункт — смт Доманівка та 30 сіл — на 729,7 км² чорноземного степу у Вознесенському районі Миколаївщини, уздовж річок Чортала, Бакшала та Чичиклія.',
         }}
       />
 
@@ -228,7 +212,7 @@ export default function About() {
                 </svg>
               </div>
               <div className="photo-label">
-                <T as="span" className="tag" en="Steppe landscape near Tylihul" uk="Степ біля Тилігулу" />
+                <T as="span" className="tag" en="Steppe along the Chortala river" uk="Степ уздовж річки Чортала" />
               </div>
             </div>
             <div className="glance-text">
@@ -251,13 +235,13 @@ export default function About() {
           <div className="section-head">
             <div className="left">
               <T as="div" className="eyebrow" en="Geography" uk="Географія" />
-              <T as="h2" en="Twenty-seven settlements, one community." uk="Двадцять сім населених пунктів — одна громада." />
+              <T as="h2" en="Thirty-one settlements, one community." uk="Тридцять один населений пункт — одна громада." />
             </div>
             <T
               as="div"
               className="right"
-              en="Domanivka hromada stretches across the steppe between Mykolaiv and Odesa oblasts. The administrative centre, Domanivka itself, sits along the Chichikleia river. The map shows the council seat, all settlements, and the main project sites."
-              uk="Громада розташована у степу між Миколаївською та Одеською областями. Адміністративний центр — Доманівка — лежить на річці Чичиклея. На карті — центр громади, всі населені пункти та основні майданчики проєктів."
+              en="The community stretches across the steppe of the Voznesensk district, along the Chortala, Bakshala and Chychykliia rivers. Its centre, smt Domanivka, sits on the Chortala. The map shows the council seat and the settlements named in current projects."
+              uk="Громада розкинулася в степу Вознесенського району вздовж річок Чортала, Бакшала та Чичиклія. Її центр — смт Доманівка — лежить на Чорталі. На карті — центр громади та населені пункти з поточних проєктів."
             />
           </div>
 
@@ -277,14 +261,14 @@ export default function About() {
                 <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--ink-mute)' }}>
                   <T en="Settlements (selection)" uk="Населені пункти (вибірка)" />
                 </h3>
-                <span className="meta">27</span>
+                <span className="meta">31</span>
               </div>
               <ul className="s-list">
                 {SETTLEMENTS.map((s) => (
-                  <li key={s.name}><span>{s.name}</span><span className="muted s-pop">{s.pop}</span></li>
+                  <li key={s.name}><span>{s.name}</span><span className="muted s-pop">{s.tag ? tr(s.tag) : ''}</span></li>
                 ))}
                 <li className="more">
-                  <T en="…and 15 more villages" uk="…і ще 15 сіл" />
+                  <T en="…and 23 more villages" uk="…і ще 23 села" />
                   <span />
                 </li>
               </ul>
@@ -298,12 +282,12 @@ export default function About() {
           <div className="history-grid">
             <div className="history-side">
               <T as="div" className="eyebrow" en="History" uk="Історія" />
-              <T as="h2" en="Two centuries of farming and resilience." uk="Два століття землеробства і стійкості." />
+              <T as="h2" en="A young community with deep steppe roots." uk="Молода громада з глибоким степовим корінням." />
               <T
                 as="p"
                 className="muted"
-                en="The community has survived steppe drought, two world wars, the Holodomor, Soviet collectivisation, the 1990s transition, and the full-scale invasion that began in 2022. It is still here."
-                uk="Громада пережила степові посухи, дві світові війни, Голодомор, колективізацію, перехід 1990-х і повномасштабне вторгнення з 2022 року. Вона досі тут."
+                en="Domanivka is a young amalgamated community shaped by Ukraine’s decentralisation, the full-scale war, and the people who chose to stay, rebuild and serve."
+                uk="Доманівка — молода об’єднана громада, сформована реформою децентралізації, повномасштабною війною та людьми, які обрали лишитися, відбудовувати й служити."
               />
             </div>
             <ol className="timeline">
@@ -325,42 +309,42 @@ export default function About() {
         <div className="wrap">
           <div className="section-head">
             <div className="left">
-              <T as="div" className="eyebrow" en="People & culture" uk="Люди та культура" />
-              <T as="h2" en="Who lives here, and how the community spends its year." uk="Хто тут живе і чим живе громада упродовж року." />
+              <T as="div" className="eyebrow" en="People & resilience" uk="Люди та стійкість" />
+              <T as="h2" en="Who lives here, and how the community holds." uk="Хто тут живе і як громада тримається." />
             </div>
             <T
               as="div"
               className="right"
-              en="Domanivka is mostly a working-age community of farming families, teachers, council staff, and small business owners. Since 2022, it has also become home for displaced families from neighbouring oblasts."
-              uk="Доманівка — переважно громада людей працездатного віку: фермерські родини, вчителі, працівники ради, малий бізнес. Із 2022 року тут також знайшли дім родини ВПО з сусідніх областей."
+              en="A working-age farming community that, since 2022, became a home for thousands of displaced people while sending 900+ of its own to the front. These figures come from the Community Profile, 2024."
+              uk="Громада працездатних аграріїв, яка з 2022 року стала домом для тисяч переселенців, водночас відправивши 900+ своїх до лав ЗСУ. Дані — з Профілю громади, 2024."
             />
           </div>
 
           <div className="people-grid">
             <div className="demo-card">
-              <T as="div" className="demo-title" en="Age distribution" uk="Розподіл за віком" />
+              <T as="div" className="demo-title" en="Displaced people hosted" uk="Прийнято ВПО" />
               <div className="demo-bars">
-                {AGE.map((a) => (
+                {IDP_YEARS.map((a) => (
                   <div key={a.l} className="demo-row">
                     <span className="d-l">{a.l}</span>
                     <div className="d-bar"><span style={{ width: `${a.v}%` }} /></div>
-                    <span className="d-v">{a.v}%</span>
+                    <span className="d-v">{a.count}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div className="demo-card">
-              <T as="div" className="demo-title" en="Households" uk="Домогосподарства" />
+              <T as="div" className="demo-title" en="Social support · 2024" uk="Соціальна підтримка · 2024" />
               <ul className="demo-list">
-                {HOUSEHOLDS.map((h, i) => (
+                {SOCIAL.map((h, i) => (
                   <li key={i}><span>{tr(h)}</span><strong>{h.val}</strong></li>
                 ))}
               </ul>
             </div>
             <div className="demo-card">
-              <T as="div" className="demo-title" en="What people do" uk="Чим зайняті люди" />
+              <T as="div" className="demo-title" en="Community & resilience" uk="Громада та стійкість" />
               <ul className="demo-list">
-                {OCCUPATION.map((o, i) => (
+                {RESILIENCE.map((o, i) => (
                   <li key={i}><span>{tr(o)}</span><strong>{o.val}</strong></li>
                 ))}
               </ul>
@@ -375,17 +359,17 @@ export default function About() {
                 </svg>
               </div>
               <div className="photo-label">
-                <T as="span" className="tag" en="Harvest festival, central square" uk="Свято врожаю, центральна площа" />
+                <T as="span" className="tag" en="Veterans’ co-operative “Oberih-Agro”" uk="Ветеранський кооператив «Оберіг-Агро»" />
               </div>
             </div>
             <div className="culture-text">
-              <T as="h3" en="Local identity is steppe, song, and stubbornness." uk="Місцева ідентичність — це степ, пісня та впертість." />
+              <T as="h3" en="Steppe, service, and stubborn self-reliance." uk="Степ, служба і вперта самозарадність." />
               <T as="p"
-                 en="The community keeps an annual cycle of public events: Maslyana in February, an Easter market, Independence Day on the central square, harvest festival in September, and a memorial day for the Holodomor in November. The local folk choir “Chichikleia” sings at most of them."
-                 uk="Громада зберігає річний цикл подій: Масляна у лютому, Великодній ярмарок, День Незалежності на центральній площі, Свято врожаю у вересні, день пам’яті Голодомору в листопаді. На більшості подій співає народний хор «Чичиклея»." />
+                 en="Beyond farming, the community runs a network of 10 cultural centres, 12 libraries, a museum, and a music and sports school. Volunteers weave camouflage nets, make trench candles and raise funds for drones and vehicles for the front."
+                 uk="Окрім аграрного життя, громада має 10 будинків культури, 12 бібліотек, музей, музичну та спортивну школи. Волонтери плетуть маскувальні сітки, виготовляють окопні свічки та збирають кошти на дрони й авто для фронту." />
               <T as="p"
-                 en="Two local museums document the steppe, the wars, and family stories collected from villages across the hromada."
-                 uk="Два краєзнавчі музеї зберігають історію степу, воєн і родинні історії з сіл громади." />
+                 en="The veterans’ organic co-operative “Oberih-Agro” — with 19 greenhouses and 30 kW of solar — is a small but real example of post-service economic life. The disused swimming pool in Domanivka awaits reconstruction."
+                 uk="Ветеранський органічний кооператив «Оберіг-Агро» — з 19 теплицями та СЕС на 30 кВт — невеликий, але реальний приклад економіки після служби. Недіючий басейн у Доманівці очікує на реконструкцію." />
             </div>
           </div>
         </div>
@@ -401,8 +385,8 @@ export default function About() {
             <T
               as="div"
               className="right"
-              en="Domanivka has black-earth soil, two rivers, low-cost land, and a quiet logistic corridor to two major Ukrainian ports. We are open to long-term investors and to partnerships that strengthen the local economy."
-              uk="У Доманівці — родючі чорноземи, дві річки, доступна земля та тиха логістична вісь до двох українських портів. Ми відкриті до довгострокових інвесторів і партнерств, які зміцнюють місцеву економіку."
+              en="Black-earth soil, growing solar capacity, free investment plots and a logistic corridor to the Black Sea ports. We are open to long-term investors and to partnerships that strengthen the local economy."
+              uk="Родючі чорноземи, зростаюча сонячна генерація, вільні інвестиційні ділянки та логістична вісь до чорноморських портів. Ми відкриті до довгострокових інвесторів і партнерств, що зміцнюють місцеву економіку."
             />
           </div>
 
@@ -422,14 +406,14 @@ export default function About() {
         <div className="wrap">
           <div className="section-head">
             <div className="left">
-              <T as="div" className="eyebrow" en="Development strategy 2026–2030" uk="Стратегія розвитку 2026–2030" />
-              <T as="h2" en="A clear plan, in three horizons." uk="Чіткий план у трьох горизонтах." />
+              <T as="div" className="eyebrow" en="Development Strategy through 2027" uk="Стратегія розвитку до 2027 року" />
+              <T as="h2" en="Priority directions, in three blocks." uk="Пріоритетні напрями у трьох блоках." />
             </div>
             <T
               as="div"
               className="right"
-              en="The development strategy is built on community consultations, council priorities, and partner advice. It is published openly and reviewed each year."
-              uk="Стратегія розвитку ґрунтується на громадських консультаціях, пріоритетах ради та порадах партнерів. Документ публікуємо відкрито і переглядаємо щороку."
+              en="The Development Strategy through 2027 (with perspective to 2034) is built on the Community Profile and partner advice. Below are the priority project areas open to support."
+              uk="Стратегія розвитку до 2027 року (з перспективою до 2034) ґрунтується на Профілі громади та порадах партнерів. Нижче — пріоритетні напрями, відкриті для підтримки."
             />
           </div>
 
@@ -438,7 +422,7 @@ export default function About() {
               <div key={i} className="horizon">
                 <div className="h-head">
                   <span className="h-period">{tr(h.period)}</span>
-                  <span className="h-years">{h.years}</span>
+                  <span className="h-years">{tr(h.years)}</span>
                 </div>
                 <h3>{tr(h.title)}</h3>
                 <ul>
@@ -449,10 +433,10 @@ export default function About() {
           </div>
 
           <div className="row" style={{ marginTop: 48 }}>
-            <a href="#" className="btn btn-secondary">
-              <T en="Read the full strategy document" uk="Повний текст стратегії" />
+            <Link to="/projects" className="btn btn-secondary">
+              <T en="See all current projects" uk="Усі поточні проєкти" />
               <ArrowIcon />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -465,8 +449,8 @@ export default function About() {
                en="The fastest way to understand Domanivka is to come and walk through it."
                uk="Найкращий спосіб зрозуміти Доманівку — приїхати та пройтися нею." />
             <T as="p" className="cta-sub"
-               en="We host partner delegations regularly. A typical site visit covers two days, the council, three settlements, and at least one active project."
-               uk="Регулярно приймаємо партнерські делегації. Типовий візит — два дні, рада, три населені пункти та щонайменше один активний проєкт." />
+               en="We host partner delegations regularly. A typical site visit covers the council, several settlements, and at least one active project."
+               uk="Регулярно приймаємо партнерські делегації. Типовий візит охоплює раду, кілька населених пунктів і щонайменше один активний проєкт." />
             <div className="row" style={{ gap: 12, marginTop: 24 }}>
               <Link to="/contacts" className="btn btn-primary on-dark">
                 <T en="Request a site visit" uk="Запросити візит" />
