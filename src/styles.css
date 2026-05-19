@@ -18,12 +18,12 @@
   --ink-soft:    #8A929B;
 
   /* Accents */
-  --navy:        #174A5C;
-  --navy-deep:   #0E3B4B;
-  --olive:       #6F8A45;
-  --olive-deep:  #556B33;
-  --terracotta:  #C8593A;
-  --muted-blue:  #5C8AA0;
+  --navy:        #0E5A75;
+  --navy-deep:   #084659;
+  --olive:       #7DA62E;
+  --olive-deep:  #5F8421;
+  --terracotta:  #DC5A30;
+  --muted-blue:  #4A8AAA;
 
   /* Theme accent (drives status colors, buttons) */
   --accent:      var(--olive);
@@ -522,13 +522,13 @@ p { margin: 0; text-wrap: pretty; }
 .photo .ph-center svg { width: 36px; height: 36px; opacity: 0.5; }
 
 /* photo variants — subtle tint differences so they don't all look identical */
-.photo.tint-1 { background: linear-gradient(135deg, #E6DFD3 0%, #D8CFC0 100%); }
-.photo.tint-2 { background: linear-gradient(135deg, #D9DEE1 0%, #C7CFD3 100%); }
-.photo.tint-3 { background: linear-gradient(135deg, #E2DCC9 0%, #D0C9B0 100%); }
-.photo.tint-4 { background: linear-gradient(135deg, #C5CCC2 0%, #ADB6A6 100%); }
-.photo.tint-5 { background: linear-gradient(135deg, #E7D4C8 0%, #D2B7A5 100%); }
-.photo.tint-6 { background: linear-gradient(135deg, #B8C2C8 0%, #98A5AC 100%); }
-.photo.tint-dark { background: linear-gradient(135deg, #2C3D45 0%, #1A2A33 100%); }
+.photo.tint-1 { background: linear-gradient(135deg, #EFDDB5 0%, #D9BF82 100%); }
+.photo.tint-2 { background: linear-gradient(135deg, #C9DAE3 0%, #95B6C7 100%); }
+.photo.tint-3 { background: linear-gradient(135deg, #E8D9A8 0%, #C9B26C 100%); }
+.photo.tint-4 { background: linear-gradient(135deg, #BFD095 0%, #8DA85D 100%); }
+.photo.tint-5 { background: linear-gradient(135deg, #ECC4A7 0%, #D2926C 100%); }
+.photo.tint-6 { background: linear-gradient(135deg, #A8C0CC 0%, #708E9F 100%); }
+.photo.tint-dark { background: linear-gradient(135deg, #1F5A6E 0%, #0E3F50 100%); }
 .photo.tint-dark .photo-label .tag { background: rgba(247, 244, 239, 0.18); color: rgba(247, 244, 239, 0.85); }
 .photo.tint-dark .photo-label .icn { background: rgba(247, 244, 239, 0.18); color: rgba(247, 244, 239, 0.85); }
 .photo.tint-dark .ph-center { color: rgba(247, 244, 239, 0.4); }
@@ -609,10 +609,10 @@ p { margin: 0; text-wrap: pretty; }
   opacity: 0.85;
 }
 
-.badge.completed   { background: #DDEACD; color: #3F5C26; }
-.badge.in-progress { background: #DCE7F0; color: #2F4E60; }
-.badge.planned     { background: #F2E5C9; color: #7A5A2D; }
-.badge.urgent      { background: #F8D6C2; color: #9C3D1F; }
+.badge.completed   { background: #DCEEC0; color: #3F6618; }
+.badge.in-progress { background: #D2E4F0; color: #1F506A; }
+.badge.planned     { background: #F6E1B0; color: #7A5118; }
+.badge.urgent      { background: #F8CDB2; color: #9C2F0E; }
 
 /* ==========================================================
    Progress
@@ -867,7 +867,7 @@ p { margin: 0; text-wrap: pretty; }
   font-style: italic;
   font-family: var(--font-display);
   font-weight: 300;
-  color: var(--olive-deep);
+  color: var(--terracotta);
 }
 .hero-lede { max-width: 540px; }
 .hero-ctas { gap: 10px; margin-top: 4px; }

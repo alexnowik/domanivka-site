@@ -5,60 +5,60 @@ import { ArrowIcon, DropIcon, HouseIcon, SchoolIcon } from '../icons.jsx';
 const PROJECTS = [
   {
     tint: 'tint-2',
-    Icon: SchoolIcon,
-    tag: { en: 'School No. 2 · Domanivka', uk: 'Школа №2 · Доманівка' },
+    Icon: DropIcon,
+    tag: { en: 'Exploratory well · Tsaredarivka', uk: 'Розвідувальна свердловина · Царедарівка' },
     status: 'in-progress',
-    statusLabel: { en: 'In progress', uk: 'Триває' },
-    meta: { en: 'Education', uk: 'Освіта' },
+    statusLabel: { en: 'Design ready', uk: 'Проєкт готовий' },
+    meta: { en: 'Water supply', uk: 'Водопостачання' },
     title: {
-      en: 'Restoring School No. 2 — windows, roof, heating',
-      uk: 'Відновлення школи №2 — вікна, дах, опалення',
+      en: 'Exploratory production well in Tsaredarivka and village network repairs',
+      uk: 'Розвідувально-експлуатаційна свердловина у Царедарівці та ремонт сільських мереж',
     },
     desc: {
-      en: 'Replacing damaged windows, repairing the roof, and installing energy-efficient heating so 412 children can return to in-person classes this autumn.',
-      uk: 'Заміна пошкоджених вікон, ремонт даху та встановлення енергоефективного опалення, щоб 412 дітей повернулися до очного навчання восени.',
+      en: 'Permit documents are drawn up for drilling a new well in Tsaredarivka and overhauling water-supply networks across villages where 13 active boreholes already struggle to meet summer demand.',
+      uk: 'Підготовлено документацію на буріння нової свердловини в с. Царедарівка та капітальний ремонт мереж водопостачання в селах, де 13 діючих свердловин літом вже не витримують навантаження.',
     },
-    progress: 64,
-    progressLabel: { en: 'funded', uk: 'профінансовано' },
-    amount: '€184k / €286k',
+    progress: 15,
+    progressStrong: { en: 'Permits stage', uk: 'Стадія дозволів' },
+    progressRight: { en: '13 boreholes in use', uk: '13 діючих свердловин' },
   },
   {
     tint: 'tint-4',
     Icon: DropIcon,
-    tag: { en: 'Water network · 3 villages', uk: 'Водогін · 3 села' },
+    tag: { en: 'Water main · Zbroshkove → Domanivka', uk: 'Водогін · Зброшкове → Доманівка' },
     status: 'in-progress',
-    statusLabel: { en: 'In progress', uk: 'Триває' },
+    statusLabel: { en: 'Design ready', uk: 'Проєкт готовий' },
     meta: { en: 'Infrastructure', uk: 'Інфраструктура' },
     title: {
-      en: 'Drinking-water network: Bohdanivka, Olexandrivka, Vesele',
-      uk: 'Питний водогін: Богданівка, Олександрівка, Веселе',
+      en: 'Reconstruction of the water main from Zbroshkove to smt Domanivka',
+      uk: 'Реконструкція водогону від свердловини в с. Зброшкове до смт Доманівка',
     },
     desc: {
-      en: 'Replacing a 1970s pump station and laying 14 km of new pipe so 3,180 residents have safe drinking water at home, not from tankers.',
-      uk: 'Заміна насосної станції 1970-х та прокладання 14 км нових труб, щоб 3 180 мешканців мали безпечну питну воду вдома, а не з цистерн.',
+      en: '6,709 m of new pipe from an existing well in Zbroshkove to the settlement of Domanivka — securing quality drinking water and supporting local business growth. Project documentation complete; awaiting construction funding.',
+      uk: '6 709 м нового водогону від діючої свердловини в с. Зброшкове до смт Доманівка — якісна питна вода для жителів і бізнесу. Проєктна документація готова, чекаємо фінансування робіт.',
     },
-    progress: 38,
-    progressLabel: { en: 'funded', uk: 'профінансовано' },
-    amount: '€212k / €560k',
+    progress: 18,
+    progressStrong: { en: 'Stage 1 of 3', uk: 'Етап 1 з 3' },
+    progressRight: { en: '6,709 m · pipeline', uk: '6 709 м · водогін' },
   },
   {
     tint: 'tint-5',
     Icon: HouseIcon,
-    tag: { en: 'Modular housing · IDP families', uk: 'Модульне житло · родини ВПО' },
+    tag: { en: 'Sewage rebuild · Domanivka', uk: 'Реконструкція каналізації · Доманівка' },
     status: 'planned',
-    statusLabel: { en: 'Planned · 2026', uk: 'Заплановано · 2026' },
-    meta: { en: 'Housing', uk: 'Житло' },
+    statusLabel: { en: 'Open for partner', uk: 'Відкритий для партнера' },
+    meta: { en: 'Infrastructure', uk: 'Інфраструктура' },
     title: {
-      en: 'Twelve modular homes for displaced families',
-      uk: 'Дванадцять модульних будинків для родин ВПО',
+      en: 'Sewage on O. Lyvadara St and stormwater on Horodnia St',
+      uk: 'Господарсько-побутова каналізація на вул. О. Ливадара та зливова на вул. Городня',
     },
     desc: {
-      en: 'A pilot residential block on community-owned land, designed for families who have lived in temporary shelter for more than two winters.',
-      uk: 'Пілотний житловий квартал на землі громади для родин, які вже більше двох зим живуть у тимчасовому житлі.',
+      en: 'Design documentation is ready for reconstruction of the household-sewage network on O. Lyvadara Street and the stormwater drains on Horodnia Street — part of cutting accident rates on the only centralised sewage system in the community (10.1 km).',
+      uk: 'Розроблено проєктну документацію на реконструкцію господарсько-побутової каналізації на вул. О. Ливадара та зливової каналізації на вул. Городня — щоб знизити рівень аварійності єдиної в громаді централізованої системи каналізації (10,1 км).',
     },
-    progress: 12,
-    progressLabel: { en: 'committed', uk: 'зобов’язано' },
-    amount: '€96k / €820k',
+    progress: 8,
+    progressStrong: { en: 'Documents ready', uk: 'Документація готова' },
+    progressRight: { en: 'Awaiting partner', uk: 'Потрібен партнер' },
   },
 ];
 
@@ -101,10 +101,8 @@ export default function FeaturedProjects() {
                 <p className="desc">{tr(p.desc)}</p>
                 <div className="progress"><span style={{ width: `${p.progress}%` }} /></div>
                 <div className="progress-row">
-                  <span>
-                    <strong>{p.progress}%</strong> {tr(p.progressLabel)}
-                  </span>
-                  <span>{p.amount}</span>
+                  <span><strong>{tr(p.progressStrong)}</strong></span>
+                  <span>{tr(p.progressRight)}</span>
                 </div>
               </Link>
             );
@@ -113,7 +111,7 @@ export default function FeaturedProjects() {
 
         <div className="row" style={{ marginTop: 48, justifyContent: 'flex-end' }}>
           <Link to="/projects" className="btn btn-secondary">
-            <T en="See all 48 projects" uk="Усі 48 проєктів" />
+            <T en="See all current projects" uk="Усі поточні проєкти" />
             <ArrowIcon />
           </Link>
         </div>

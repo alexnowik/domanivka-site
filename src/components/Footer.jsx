@@ -53,8 +53,8 @@ export default function Footer() {
             <T en="All rights reserved" uk="Усі права захищено" />
           </span>
           <T
-            en="Built openly · v 1.0 · Updated October 2025"
-            uk="Створено відкрито · v 1.0 · Оновлено жовтень 2025"
+            en="Built openly · Source: Community Profile, Domanivka, 2024"
+            uk="Створено відкрито · Джерело: Профіль громади, Доманівка, 2024"
           />
         </div>
       </div>

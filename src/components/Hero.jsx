@@ -22,8 +22,8 @@ export default function Hero() {
           <T
             as="p"
             className="lede hero-lede"
-            en="Domanivka hromada is home to thirty-one settlements in southern Ukraine. We are working with partners to repair what war damaged, support displaced families, and build long-term capacity for the people who stayed."
-            uk="Доманівська громада об’єднує тридцять один населений пункт на півдні України. Разом із партнерами ми відновлюємо пошкоджене війною, допомагаємо переселенцям і розбудовуємо громаду для людей, які лишилися."
+            en="Domanivska settlement territorial community was formed in 2018 and expanded in 2020 by merging six village councils. Today it covers 31 settlements — smt Domanivka and 30 villages — across 729.7 km² of the Voznesensk district, Mykolaiv region. Together with our donor partners we are modernising water systems, supporting displaced families and building long-term capacity for the people who stayed."
+            uk="Доманівська селищна територіальна громада утворена 2018 року, у 2020-му до неї приєдналися ще чотири сільради. Сьогодні це 31 населений пункт — смт Доманівка та 30 сіл — на 729,7 км² у Вознесенському районі Миколаївщини. Разом із партнерами ми модернізуємо водогони, підтримуємо родини ВПО та розбудовуємо спроможності для людей, які лишилися."
           />
           <div className="row hero-ctas">
             <Link to="/projects" className="btn btn-primary">
@@ -49,8 +49,8 @@ export default function Hero() {
               <T
                 as="span"
                 className="tag"
-                en="Photo · Domanivka centre, summer 2025"
-                uk="Фото · Центр Доманівки, літо 2025"
+                en="Photo · smt Domanivka on the Chortala river"
+                uk="Фото · смт Доманівка на р. Чортала"
               />
               <span className="icn">
                 <CameraIcon />
@@ -61,8 +61,8 @@ export default function Hero() {
             <T as="div" className="hero-aside-tag" en="Quick read" uk="Коротко" />
             <T
               as="p"
-              en="An amalgamated hromada in Voznesensk district, Mykolaiv region. 31 settlements, 14,398 residents, 729 km² of black-earth steppe; 80 km of the P-75 national highway."
-              uk="Об’єднана громада у Вознесенському районі Миколаївщини. 31 населений пункт, 14 398 мешканців, 729 км² чорноземного степу; 80 км траси Р-75."
+              en="A settlement territorial community in Voznesensk district, Mykolaiv region. 31 settlements, 14,398 residents, 729.7 km² of chornozem steppe along the Chortala, Bakshala and Chychykliia rivers. 47°37′N · 30°58′E."
+              uk="Селищна територіальна громада у Вознесенському районі Миколаївщини. 31 населений пункт, 14 398 мешканців, 729,7 км² чорноземного степу вздовж річок Чортала, Бакшала та Чичиклія. 47°37′N · 30°58′E."
             />
             <Link className="aside-link" to="/about">
               <T en="Read about the community →" uk="Більше про громаду →" />

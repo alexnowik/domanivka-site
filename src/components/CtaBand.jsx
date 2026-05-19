@@ -22,8 +22,8 @@ export default function CtaBand() {
               <ArrowIcon />
             </Link>
             <a href="#" className="btn btn-secondary on-dark">
-              <T en="Download community brief (PDF, 4.2MB)"
-                 uk="Завантажити брошуру (PDF, 4,2МБ)" />
+              <T en="Download community profile (PDF)"
+                 uk="Завантажити профіль громади (PDF)" />
             </a>
           </div>
         </div>

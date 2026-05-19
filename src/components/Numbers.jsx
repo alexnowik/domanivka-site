@@ -7,29 +7,29 @@ const STATS = [
     uk: 'Мешканців у 31 населеному пункті',
   },
   {
-    value: '1,087',
-    en: 'Internally displaced people supported',
-    uk: 'ВПО зараз приймаємо, 3 000+ з 2022 року',
+    value: '31',
+    en: 'Settlements — smt Domanivka and 30 villages',
+    uk: 'Населених пунктів — смт Доманівка та 30 сіл',
   },
   {
-    value: <>729<span className="num-unit">km²</span></>,
-    en: 'Community territory, Voznesensk district, Mykolaiv region',
-    uk: 'Площа громади на півдні Миколаївщини',
+    value: <>729.7<span className="num-unit">km²</span></>,
+    en: 'Total area · 3rd largest in Voznesensk district',
+    uk: 'Загальна площа · 3-тє місце у Вознесенському районі',
   },
   {
-    value: '48',
-    en: 'Projects implemented since 2022',
-    uk: 'Реалізованих проєктів з 2022 року',
+    value: <>65,143<span className="num-unit">ha</span></>,
+    en: 'Agricultural land · 89% of the community (53,954 ha arable)',
+    uk: 'С/г угіддя · 89% території громади (53 954 га ріллі)',
   },
   {
-    value: '23',
-    en: 'Active partners and donors',
-    uk: 'Активних партнерів та донорів',
+    value: <>60<span className="num-unit">%</span></>,
+    en: 'Of the local budget allocated to education',
+    uk: 'Місцевого бюджету спрямовано на освіту',
   },
   {
-    value: <><span className="num-unit">€</span>4.8M</>,
-    en: 'Total project value, completed and active',
-    uk: 'Загальна вартість завершених і активних проєктів',
+    value: <>7,437<span className="num-unit">UAH</span></>,
+    en: 'Budget expenditure per resident · 2023',
+    uk: 'Видатки бюджету на одного мешканця · 2023',
   },
 ];
 
@@ -43,8 +43,8 @@ export default function Numbers() {
              en="The community in numbers"
              uk="Громада у цифрах" />
           <T as="p" className="muted small"
-             en="Updated October 2025 · Source: community council records"
-             uk="Оновлено: жовтень 2025 · Джерело: реєстр громади" />
+             en="Source: Community Profile, addendum to the Development Strategy through 2027 · Domanivka, 2024"
+             uk="Джерело: Профіль громади, додаток до Стратегії розвитку до 2027 року · Доманівка, 2024" />
         </div>
 
         <div className="stat-grid grid-3">

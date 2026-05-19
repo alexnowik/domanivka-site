@@ -24,8 +24,8 @@ const PRIORITIES = [
       uk: 'Термомодернізація шкіл і будівництво укриттів',
     },
     desc: {
-      en: '5 schools, 8 kindergartens. 60% of the local budget already goes to education.',
-      uk: '5 шкіл, 8 дитсадків. 60% місцевого бюджету йде на освіту.',
+      en: '5 general secondary schools, 9 preschools, 1 vocational education facility. 60% of the local budget is allocated to education.',
+      uk: '5 закладів загальної середньої освіти, 9 ДНЗ, 1 заклад профосвіти. 60% місцевого бюджету — на освіту.',
     },
     amount: { en: 'Multi-year', uk: 'Багаторічний' },
     badge: 'urgent',
@@ -52,8 +52,8 @@ const PRIORITIES = [
       uk: 'Ремонт комунальних доріг',
     },
     desc: {
-      en: "80 km of national highway P-75 runs through the hromada; rural connector roads need work.",
-      uk: "Через громаду проходить 80 км траси Р-75; сільські з'єднувальні дороги потребують ремонту.",
+      en: 'Rural connector roads link 31 settlements across 729.7 km²; many need surface and drainage work after years of heavy use.',
+      uk: 'Сільські з’єднувальні дороги поєднують 31 населений пункт на 729,7 км²; багатьом з них потрібний ремонт покриття та водовідведення.',
     },
     amount: { en: 'Co-funding open', uk: 'Спільне фінансування' },
     badge: 'planned',
