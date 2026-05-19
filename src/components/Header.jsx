@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useLang } from '../i18n.jsx';
 import { MenuIcon } from '../icons.jsx';
 
@@ -27,6 +27,26 @@ export function Brand() {
 export default function Header() {
   const { lang, setLang } = useLang();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  // Close on route change
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
+
+  // Lock body scroll while menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = ''; };
+    }
+  }, [menuOpen]);
+
+  // Close on Escape
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e) => { if (e.key === 'Escape') setMenuOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [menuOpen]);
 
   return (
     <header className="site-header">
@@ -63,14 +83,39 @@ export default function Header() {
           </div>
           <button
             type="button"
-            className="menu-toggle"
+            className={`menu-toggle${menuOpen ? ' is-open' : ''}`}
             aria-label="Menu"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
           >
-            <MenuIcon />
+            {menuOpen ? (
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M2 2l10 10M12 2L2 12" />
+              </svg>
+            ) : (
+              <MenuIcon />
+            )}
           </button>
         </div>
+      </div>
+
+      <div
+        className={`mobile-menu${menuOpen ? ' open' : ''}`}
+        aria-hidden={!menuOpen}
+      >
+        <nav className="mobile-nav" aria-label="Mobile">
+          {NAV_ITEMS.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.end}
+              className={({ isActive }) => (isActive ? 'active' : undefined)}
+              onClick={() => setMenuOpen(false)}
+            >
+              {lang === 'uk' ? item.uk : item.en}
+            </NavLink>
+          ))}
+        </nav>
       </div>
     </header>
   );
