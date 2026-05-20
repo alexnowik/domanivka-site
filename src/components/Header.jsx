@@ -50,6 +50,7 @@ export default function Header() {
   }, [menuOpen]);
 
   return (
+    <>
     <header className="site-header">
       <div className="inner">
         <Brand />
@@ -99,6 +100,7 @@ export default function Header() {
           </button>
         </div>
       </div>
+    </header>
 
       <div
         className={`mobile-menu${menuOpen ? ' open' : ''}`}
@@ -118,6 +120,6 @@ export default function Header() {
           ))}
         </nav>
       </div>
-    </header>
+    </>
   );
 }
