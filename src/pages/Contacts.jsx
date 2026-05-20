@@ -4,29 +4,40 @@ import { T, useLang } from '../i18n.jsx';
 import { ArrowIcon } from '../icons.jsx';
 
 const TOPICS = [
-  { value: 'partnership', en: 'Partnership', uk: 'Партнерство' },
+  { value: 'partnership', en: 'Partnership', uk: 'Співпраця' },
   { value: 'project', en: 'Project support', uk: 'Підтримка проєкту' },
+  { value: 'services', en: 'Council services', uk: 'Послуги ради' },
   { value: 'media', en: 'Media', uk: 'Медіа' },
-  { value: 'visit', en: 'Site visit', uk: 'Візит' },
   { value: 'other', en: 'Other', uk: 'Інше' },
 ];
 
-const TEAM = [
-  { name: 'Andriy Hryhorchuk', role: { en: 'Head of the community council', uk: 'Голова громади' }, mail: 'holova@domanivka.gov.ua', tint: 'tint-2' },
-  { name: 'Iryna Boyko', role: { en: 'Partnership office, lead', uk: 'Керівниця відділу співпраці' }, mail: 'partners@domanivka.gov.ua', tint: 'tint-4' },
-  { name: 'Olha Voronova', role: { en: 'Social & humanitarian programmes', uk: 'Соціальні та гуманітарні програми' }, mail: 'social@domanivka.gov.ua', tint: 'tint-6' },
-  { name: 'Mykola Tkachenko', role: { en: 'Infrastructure & utilities', uk: 'Інфраструктура та комунальне' }, mail: 'infra@domanivka.gov.ua', tint: 'tint-1' },
-  { name: 'Dr. Volodymyr Lytvyn', role: { en: 'Healthcare coordinator', uk: 'Координатор охорони здоров’я' }, mail: 'health@domanivka.gov.ua', tint: 'tint-3' },
+const DEPARTMENTS = [
+  {
+    name: { en: 'Council reception', uk: 'Приймальня ради' },
+    role: { en: 'General questions, where to send what', uk: 'Загальні питання, куди з чим звертатися' },
+    contact: '05152-9-19-49',
+  },
+  {
+    name: { en: 'Partnerships & projects', uk: 'Партнерства та проєкти' },
+    role: { en: 'Donors, NGOs, international partners', uk: 'Донори, ГО, міжнародні партнери' },
+    contact: 'sr@domanivska-gromada.gov.ua',
+  },
+  {
+    name: { en: 'Social protection', uk: 'Соціальний захист' },
+    role: { en: 'IDPs, families in difficulty, support programmes', uk: 'ВПО, сім’ї у складних обставинах, програми' },
+    contact: { en: 'via the reception', uk: 'через приймальню' },
+  },
+  {
+    name: { en: 'Land & infrastructure', uk: 'Земля та інфраструктура' },
+    role: { en: 'Water, roads, utilities, investment plots', uk: 'Вода, дороги, комунальне, інвестділянки' },
+    contact: { en: 'via the reception', uk: 'через приймальню' },
+  },
+  {
+    name: { en: 'Administrative services (TsNAP)', uk: 'Адмінпослуги (ЦНАП)' },
+    role: { en: 'Certificates, registrations, documents', uk: 'Довідки, реєстрації, документи' },
+    contact: { en: 'via the reception', uk: 'через приймальню' },
+  },
 ];
-
-function PersonIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-      <circle cx="12" cy="9" r="4" />
-      <path d="M4 21c0-4 4-7 8-7s8 3 8 7" />
-    </svg>
-  );
-}
 
 function VisitMap() {
   return (
@@ -40,14 +51,14 @@ function VisitMap() {
         <circle cx="240" cy="130" r="3" fill="#5B6670" /><text x="248" y="134">Kyiv</text>
         <circle cx="260" cy="260" r="3" fill="#5B6670" /><text x="268" y="264">Mykolaiv</text>
         <circle cx="200" cy="280" r="3" fill="#5B6670" /><text x="148" y="296">Odesa</text>
-        <circle cx="230" cy="275" r="7" fill="#B56A4A" />
-        <circle cx="230" cy="275" r="14" fill="none" stroke="#B56A4A" strokeWidth="1" opacity="0.5" />
+        <circle cx="230" cy="275" r="7" fill="#DC5A30" />
+        <circle cx="230" cy="275" r="14" fill="none" stroke="#DC5A30" strokeWidth="1" opacity="0.5" />
         <text x="190" y="252" fontWeight="700" fontSize="13" fill="#1F2933">Domanivka</text>
       </g>
       <g transform="translate(420, 50)" fontFamily="Geist, sans-serif" fontSize="10" fill="#5B6670">
         <circle r="14" fill="none" stroke="#A89F8B" strokeWidth="0.8" />
-        <path d="M0 -10 L3 0 L0 10 L-3 0 Z" fill="#1E3A46" />
-        <text x="-3" y="-18" fontWeight="600" fill="#1E3A46">N</text>
+        <path d="M0 -10 L3 0 L0 10 L-3 0 Z" fill="#0E5A75" />
+        <text x="-3" y="-18" fontWeight="600" fill="#0E5A75">N</text>
       </g>
     </svg>
   );
@@ -71,10 +82,10 @@ export default function Contacts() {
     <>
       <PageIntro
         crumb={{ en: 'Contacts', uk: 'Контакти' }}
-        title={{ en: 'Real people, who answer.', uk: 'Реальні люди — які відповідають.' }}
+        title={{ en: 'Get in touch.', uk: 'Зв’язатися.' }}
         lede={{
-          en: 'The partnership office responds within two working days. The council reception within five. If something is urgent, mark it urgent in the form — we read those first.',
-          uk: 'Відділ співпраці відповідає протягом двох робочих днів. Приймальня ради — протягом п’яти. Якщо терміново — позначте у формі: такі читаємо першими.',
+          en: 'The council office is open Monday to Friday. Write with a question, a partnership idea, or paperwork — we read everything and reply as soon as we can.',
+          uk: 'Апарат ради працює з понеділка по п’ятницю. Напишіть із питанням, ідеєю співпраці чи у справі — ми все читаємо і відповідаємо, щойно можемо.',
         }}
       />
 
@@ -84,12 +95,12 @@ export default function Contacts() {
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="cf-head">
                 <T as="div" className="eyebrow" en="Send us a message" uk="Надіслати повідомлення" />
-                <T as="h2" en="Start a conversation." uk="Почати розмову." />
+                <T as="h2" en="Write to the council." uk="Напишіть до ради." />
                 <T
                   as="p"
                   className="muted"
-                  en="Tell us briefly who you are and what brings you here. We’ll reply from partners@domanivka.gov.ua."
-                  uk="Коротко напишіть, хто ви та що вас цікавить. Відповімо з partners@domanivka.gov.ua."
+                  en="Tell us briefly who you are and what you need. We’ll reply by email."
+                  uk="Коротко напишіть, хто ви і що потрібно. Відповімо електронною поштою."
                 />
               </div>
 
@@ -115,11 +126,11 @@ export default function Contacts() {
                 <div className="cf-row">
                   <div className="field">
                     <T as="label" en="Your name" uk="Ваше ім’я" />
-                    <input type="text" placeholder="Jane Bergmann" />
+                    <input type="text" placeholder="Olena Petrenko" />
                   </div>
                   <div className="field">
-                    <T as="label" en="Organisation" uk="Організація" />
-                    <input type="text" placeholder="Foundation for…" />
+                    <T as="label" en="Organisation (optional)" uk="Організація (необов’язково)" />
+                    <input type="text" placeholder="—" />
                   </div>
                 </div>
 
@@ -129,19 +140,19 @@ export default function Contacts() {
                     <input type="email" placeholder="you@example.org" required />
                   </div>
                   <div className="field">
-                    <T as="label" en="Country" uk="Країна" />
-                    <input type="text" placeholder="Germany" />
+                    <T as="label" en="Phone (optional)" uk="Телефон (необов’язково)" />
+                    <input type="text" placeholder="+380…" />
                   </div>
                 </div>
 
                 <div className="field">
                   <T as="label" en="Message" uk="Повідомлення" />
-                  <textarea rows="5" placeholder="A few sentences about your organisation and what you'd like to discuss." />
+                  <textarea rows="5" placeholder="A few sentences about what you'd like to discuss." />
                 </div>
 
                 <label className="cf-urgent">
                   <input type="checkbox" checked={urgent} onChange={(e) => setUrgent(e.target.checked)} />
-                  <T en="Mark as urgent — read first" uk="Позначити терміновим — читати першочергово" />
+                  <T en="This is time-sensitive" uk="Це термінове звернення" />
                 </label>
 
                 <div className={`cf-submit${sent ? ' sent' : ''}`}>
@@ -155,7 +166,7 @@ export default function Contacts() {
                   </button>
                   <span className="muted small">
                     {lang === 'uk' ? 'Або напишіть на ' : 'Or write directly to '}
-                    <a href="mailto:partners@domanivka.gov.ua">partners@domanivka.gov.ua</a>
+                    <a href="mailto:sr@domanivska-gromada.gov.ua">sr@domanivska-gromada.gov.ua</a>
                   </span>
                 </div>
               </div>
@@ -163,44 +174,35 @@ export default function Contacts() {
 
             <aside className="contact-side">
               <div className="cs-block">
-                <T as="div" className="cs-eyebrow" en="Council reception" uk="Приймальня ради" />
+                <T as="div" className="cs-eyebrow" en="Council office" uk="Апарат ради" />
                 <address>
-                  vul. Tsentralna, 19<br />
-                  <T en="smt Domanivka" uk="смт Доманівка" /><br />
-                  <T en="Mykolaiv Oblast, 56400" uk="Миколаївська область, 56400" /><br />
-                  <T en="Ukraine" uk="Україна" />
+                  vul. Tsentralna, 48<br />
+                  <T en="smt Domanivka, 56401" uk="смт Доманівка, 56401" /><br />
+                  <T en="Voznesensk district, Mykolaiv Oblast" uk="Вознесенський район, Миколаївщина" />
                 </address>
-                <div className="cs-line"><span>+380 (5152) 9-12-44</span></div>
-                <div className="cs-line"><a href="mailto:rada@domanivka.gov.ua">rada@domanivka.gov.ua</a></div>
+                <div className="cs-line"><span>05152-9-19-49</span></div>
+                <div className="cs-line"><a href="mailto:sr@domanivska-gromada.gov.ua">sr@domanivska-gromada.gov.ua</a></div>
                 <div className="cs-line muted">
-                  <T en="Mon–Fri · 09:00 – 17:00 EET" uk="Пн–Пт · 09:00 – 17:00 EET" />
+                  <T en="Mon–Fri · 08:00–17:00" uk="Пн–Пт · 08:00–17:00" />
                 </div>
               </div>
 
               <div className="cs-block">
-                <T as="div" className="cs-eyebrow" en="Partnership office" uk="Відділ співпраці" />
-                <T as="p"
-                   en="The dedicated team for donors, NGOs, and international partners. Replies within 48 hours."
-                   uk="Команда для донорів, ГО та міжнародних партнерів. Відповідаємо за 48 годин." />
-                <div className="cs-line"><a href="mailto:partners@domanivka.gov.ua">partners@domanivka.gov.ua</a></div>
-                <div className="cs-line"><span>+380 (50) 384-22-19</span></div>
+                <T as="div" className="cs-eyebrow" en="Head of the community" uk="Голова громади" />
+                <address>Viktor Vlasiuk</address>
+                <T as="div" className="cs-line muted"
+                   en="Reachable through the council office"
+                   uk="Звертатися через апарат ради" />
               </div>
 
               <div className="cs-block">
-                <T as="div" className="cs-eyebrow" en="Press & media" uk="Преса та медіа" />
-                <div className="cs-line"><a href="mailto:press@domanivka.gov.ua">press@domanivka.gov.ua</a></div>
-                <div className="cs-line muted">
-                  <T en="Photo and b-roll requests welcome" uk="Просьби про фото та відео — вітаємо" />
-                </div>
-              </div>
-
-              <div className="cs-block">
-                <T as="div" className="cs-eyebrow" en="Find us online" uk="Ми онлайн" />
+                <T as="div" className="cs-eyebrow" en="Online" uk="Онлайн" />
+                <div className="cs-line"><a href="https://domanivska-gromada.gov.ua" target="_blank" rel="noopener noreferrer">domanivska-gromada.gov.ua</a></div>
                 <ul className="cs-social">
-                  <li><a href="#">Facebook</a></li>
-                  <li><a href="#">Telegram</a></li>
-                  <li><a href="#">YouTube</a></li>
-                  <li><a href="#">LinkedIn</a></li>
+                  <li><a href="https://www.facebook.com/otgdomanivka" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                  <li><a href="https://www.instagram.com/domanivkaotg" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                  <li><a href="https://www.youtube.com/channel/UCbsy1VAGLQrlWzcDC9kPtMQ" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+                  <li><a href="https://t.me/gromadaorgua_bot?start=select_gromada_5962" target="_blank" rel="noopener noreferrer">Telegram</a></li>
                 </ul>
               </div>
             </aside>
@@ -212,26 +214,25 @@ export default function Contacts() {
         <div className="wrap">
           <div className="section-head">
             <div className="left">
-              <T as="div" className="eyebrow" en="The team you will work with" uk="Команда, з якою ви будете працювати" />
-              <T as="h2" en="Five people, all reachable directly." uk="П’ятеро людей — кожен доступний прямо." />
+              <T as="div" className="eyebrow" en="Departments" uk="Відділи" />
+              <T as="h2" en="Where to send what." uk="Куди з чим звертатися." />
             </div>
             <T
               as="div"
               className="right"
-              en="A council and a community office of fifty staff in total. For partnership work, these are the people you will meet — directly, not through a layer of communications."
-              uk="Громадська рада та апарат у п’ятдесят співробітників. У роботі з партнерами ви бачите цих людей напряму — без шарів комунікацій."
+              en="A small council office handles the whole community. If you’re not sure who to write to, send it to the reception and it will be passed on."
+              uk="Невеликий апарат ради обслуговує всю громаду. Якщо не впевнені, кому писати — надішліть у приймальню, і звернення передадуть далі."
             />
           </div>
 
           <div className="team-grid">
-            {TEAM.map((p, i) => (
-              <div key={i} className="team-card">
-                <div className={`team-photo photo ${p.tint}`}>
-                  <div className="ph-center"><PersonIcon /></div>
-                </div>
-                <div className="team-name">{p.name}</div>
-                <div className="team-role">{tr(p.role)}</div>
-                <a className="team-mail" href={`mailto:${p.mail}`}>{p.mail}</a>
+            {DEPARTMENTS.map((d, i) => (
+              <div key={i} className="team-card dept-card">
+                <div className="team-name">{tr(d.name)}</div>
+                <div className="team-role">{tr(d.role)}</div>
+                {typeof d.contact === 'string' && d.contact.includes('@')
+                  ? <a className="team-mail" href={`mailto:${d.contact}`}>{d.contact}</a>
+                  : <div className="team-mail">{tr(d.contact)}</div>}
               </div>
             ))}
           </div>
@@ -242,30 +243,30 @@ export default function Contacts() {
         <div className="wrap">
           <div className="visit-grid">
             <div className="visit-text">
-              <T as="div" className="eyebrow" en="Visit Domanivka" uk="Відвідати Доманівку" />
+              <T as="div" className="eyebrow" en="Getting here" uk="Як дістатися" />
               <T as="h2"
-                 en="The fastest way to understand the community is to walk through it."
-                 uk="Найшвидший спосіб зрозуміти громаду — пройти нею." />
+                 en="Where Domanivka is."
+                 uk="Де розташована Доманівка." />
               <T as="p"
-                 en="We host partner delegations regularly. A typical site visit covers two days, the council, three settlements, and at least one active project. We arrange transport from Mykolaiv or Odesa."
-                 uk="Регулярно приймаємо партнерські делегації. Типовий візит — два дні: рада, три населені пункти і щонайменше один активний проєкт. Організуємо транспорт з Миколаєва або Одеси." />
+                 en="Domanivka sits in the Voznesensk district of Mykolaiv region, on the P-75 highway. If you plan to come, write ahead so someone can meet you and show you around."
+                 uk="Доманівка — у Вознесенському районі Миколаївщини, на трасі Р-75. Якщо плануєте приїхати, напишіть заздалегідь, щоб вас зустріли та провели." />
               <ul className="visit-list">
                 <li>
                   <T as="strong" en="From Mykolaiv" uk="З Миколаєва" />
-                  <T as="span" en="112 km · 1h 45m by car" uk="112 км · 1 год 45 хв авто" />
+                  <span>137 km</span>
                 </li>
                 <li>
                   <T as="strong" en="From Odesa" uk="З Одеси" />
-                  <T as="span" en="148 km · 2h 10m by car" uk="148 км · 2 год 10 хв авто" />
+                  <span>176 km</span>
                 </li>
                 <li>
                   <T as="strong" en="From Kyiv" uk="З Києва" />
-                  <T as="span" en="552 km · train to Mykolaiv + 1h 45m by car" uk="552 км · потяг до Миколаєва + 1 год 45 хв авто" />
+                  <span>364 km</span>
                 </li>
               </ul>
               <div style={{ marginTop: 16 }}>
-                <a href="#" className="btn btn-primary">
-                  <T en="Request a site visit" uk="Запросити візит" />
+                <a href="mailto:sr@domanivska-gromada.gov.ua" className="btn btn-primary">
+                  <T en="Write before you visit" uk="Напишіть перед візитом" />
                   <ArrowIcon />
                 </a>
               </div>
@@ -273,7 +274,7 @@ export default function Contacts() {
 
             <div className="visit-map">
               <VisitMap />
-              <div className="vm-coords"><span>47°37′N</span><span>30°59′E</span></div>
+              <div className="vm-coords"><span>47°37′N</span><span>30°58′E</span></div>
             </div>
           </div>
         </div>

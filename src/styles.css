@@ -2043,6 +2043,9 @@ p { margin: 0; text-wrap: pretty; }
 .team-role { font-size: 12px; color: var(--ink-mute); line-height: 1.45; }
 .team-mail { font-size: 12px; color: var(--navy); word-break: break-all; }
 .team-mail:hover { color: var(--navy-deep); text-decoration: underline; }
+.dept-card { padding: 28px 24px; gap: 10px; }
+.dept-card .team-name { font-size: 20px; }
+.dept-card .team-role { min-height: 34px; }
 @media (max-width: 1000px) { .team-grid { grid-template-columns: 1fr 1fr 1fr; } }
 @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr 1fr; } }
 
