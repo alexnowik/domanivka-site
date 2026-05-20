@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useLang } from '../i18n.jsx';
 import { MenuIcon } from '../icons.jsx';
+import { asset } from '../lib/asset.js';
 
 const NAV_ITEMS = [
   { to: '/', en: 'Home', uk: 'Головна', end: true },
@@ -15,7 +16,7 @@ const NAV_ITEMS = [
 export function Brand() {
   return (
     <Link to="/" className="brand">
-      <span className="brand-mark">D</span>
+      <img className="brand-logo" src={asset('images/logo.png')} alt="Domanivka" />
       <span>
         Domanivka
         <small>Hromada · Voznesensk District</small>

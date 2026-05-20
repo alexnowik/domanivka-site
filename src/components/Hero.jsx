@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { T } from '../i18n.jsx';
 import { ArrowIcon, CameraIcon, HillsIcon } from '../icons.jsx';
+import { asset } from '../lib/asset.js';
 
 export default function Hero() {
   return (
@@ -45,6 +46,13 @@ export default function Hero() {
             <div className="ph-center">
               <HillsIcon />
             </div>
+            <img
+              className="photo-img"
+              src={asset('images/domanivka_ponorama.png')}
+              alt="Domanivka"
+              loading="lazy"
+              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+            />
             <div className="photo-label">
               <T
                 as="span"
