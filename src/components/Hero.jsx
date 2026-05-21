@@ -23,7 +23,7 @@ export default function Hero() {
           <T
             as="p"
             className="lede hero-lede"
-            en="Domanivska settlement territorial community was formed in 2018 and expanded in 2020 by merging six village councils. Today it covers 31 settlements — smt Domanivka and 30 villages — across 729.7 km² of the Voznesensk district, Mykolaiv region. Together with our donor partners we are modernising water systems, supporting displaced families and building long-term capacity for the people who stayed."
+            en="Domanivska settlement territorial community was formed in 2018 by uniting Petropavlivka and Tsaredarivka councils, then expanded in 2020 when four more village councils joined. Today it covers 31 settlements — Domanivka and 30 villages — across 729.7 km² of the Voznesensk district, Mykolaiv region. The Community Profile names water, roads, utilities, jobs and investment conditions as practical priorities for the next stage."
             uk="Доманівська селищна територіальна громада утворена 2018 року, у 2020-му до неї приєдналися ще чотири сільради. Сьогодні це 31 населений пункт — смт Доманівка та 30 сіл — на 729,7 км² у Вознесенському районі Миколаївщини. Разом із партнерами ми модернізуємо водогони, підтримуємо родини ВПО та розбудовуємо спроможності для людей, які лишилися."
           />
           <div className="row hero-ctas">
@@ -69,8 +69,8 @@ export default function Hero() {
             <T as="div" className="hero-aside-tag" en="Quick read" uk="Коротко" />
             <T
               as="p"
-              en="A settlement territorial community in Voznesensk district, Mykolaiv region. 31 settlements, 14,398 residents, 729.7 km² of chornozem steppe along the Chortala, Bakshala and Chychykliia rivers. 47°37′N · 30°58′E."
-              uk="Селищна територіальна громада у Вознесенському районі Миколаївщини. 31 населений пункт, 14 398 мешканців, 729,7 км² чорноземного степу вздовж річок Чортала, Бакшала та Чичиклія. 47°37′N · 30°58′E."
+              en="A settlement territorial community in Voznesensk district, Mykolaiv region. 31 settlements, 14,401 residents, 729.7 km² of chornozem steppe along the Chortala, Bakshala and Chychykliia rivers. 47°37′N · 30°58′E."
+              uk="Селищна територіальна громада у Вознесенському районі Миколаївщини. 31 населений пункт, 14 401 мешканець, 729,7 км² чорноземного степу вздовж річок Чортала, Бакшала та Чичиклія. 47°37′N · 30°58′E."
             />
             <Link className="aside-link" to="/about">
               <T en="Read about the community →" uk="Більше про громаду →" />

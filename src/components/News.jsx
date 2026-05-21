@@ -53,7 +53,12 @@ export default function News() {
             <T as="h2" en="Recent news, briefly." uk="Свіжі новини — коротко." />
           </div>
           <div className="right">
-            <a href="#" className="btn btn-ghost">
+            <a
+              href="https://domanivska-gromada.gov.ua"
+              className="btn btn-ghost"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <T en="All news and updates" uk="Усі новини" />
               <ArrowIcon />
             </a>

@@ -9,9 +9,9 @@ const FACTS = [
   { en: 'Community formed', uk: 'Громаду утворено', val: <>2018 <span className="muted">(expanded 2020)</span></>, valUk: <>2018 <span className="muted">(розширено 2020)</span></> },
   { en: 'Settlements', uk: 'Населених пунктів', val: <>31 <span className="muted">(smt + 30 villages)</span></>, valUk: <>31 <span className="muted">(смт + 30 сіл)</span></> },
   { en: 'Area', uk: 'Площа', val: '729.7 km²' },
-  { en: 'Population', uk: 'Населення', val: <>14,398 <span className="muted">(2024)</span></> },
+  { en: 'Population', uk: 'Населення', val: <>14,401 <span className="muted">(01.01.2024)</span></> },
   { en: 'IDPs hosted', uk: 'Прийнято ВПО', val: '1,087' },
-  { en: 'Defenders in Armed Forces', uk: 'Захисників у ЗСУ', val: '900+' },
+  { en: 'Combatants defending Ukraine', uk: 'Учасників бойових дій при захисті України', val: '89' },
   { en: 'Rivers', uk: 'Річки', val: 'Chortala, Bakshala, Chychykliia' },
   { en: 'Coordinates', uk: 'Координати', val: '47°37′N · 30°58′E' },
   { en: 'Head of the community', uk: 'Голова громади', val: 'Viktor Vlasiuk' },
@@ -33,13 +33,13 @@ const TIMELINE = [
   { year: '2018', title: { en: 'The community is formed', uk: 'Утворено громаду' },
     desc: { en: 'Domanivska settlement territorial community is established under Ukraine’s decentralisation reform.', uk: 'Доманівська селищна територіальна громада створена в рамках реформи децентралізації.' } },
   { year: '2020', title: { en: 'Expanded to 31 settlements', uk: 'Розширення до 31 населеного пункту' },
-    desc: { en: 'Six village councils merge into the community — smt Domanivka and 30 villages across 729.7 km².', uk: 'До громади приєднуються сільські ради — смт Доманівка та 30 сіл на площі 729,7 км².' } },
+    desc: { en: 'Four additional village councils join the community. The result is Domanivka and 30 villages across 729.7 km².', uk: 'До громади приєднуються ще чотири сільські ради. У результаті — Доманівка та 30 сіл на площі 729,7 км².' } },
   { year: '2022', title: { en: 'Full-scale invasion', uk: 'Повномасштабне вторгнення' },
-    desc: { en: 'The community shelters more than 3,000 displaced people, and 900+ residents join the Armed Forces.', uk: 'Громада прихистила понад 3 000 переселенців; 900+ мешканців стали до лав ЗСУ.' } },
+    desc: { en: 'The number of registered IDPs rises sharply: 13 at the start of 2022, 2,425 at the start of 2023, and 1,238 at the start of 2024.', uk: 'Кількість зареєстрованих ВПО різко зростає: 13 на початку 2022 року, 2 425 на початку 2023 року та 1 238 на початку 2024 року.' } },
   { year: '2024', title: { en: 'Reclassified, profile published', uk: 'Зміна статусу, видано профіль' },
     desc: { en: 'Domanivka changes status from urban-type settlement to settlement; the Community Profile is published as an addendum to the Development Strategy.', uk: 'Доманівка змінює статус із селища міського типу на селище; видано Профіль громади як додаток до Стратегії розвитку.' } },
   { year: { en: 'Today', uk: 'Сьогодні' }, now: true, title: { en: 'Strategy through 2027', uk: 'Стратегія до 2027 року' },
-    desc: { en: 'Development Strategy through 2027 (with perspective to 2034), implemented with partners: NEFCO, GIZ, USAID DOBRE, IOM and the Danish Embassy.', uk: 'Стратегія розвитку до 2027 року (з перспективою до 2034), що реалізується з партнерами: NEFCO, GIZ, USAID DOBRE, IOM та Посольством Данії.' } },
+    desc: { en: 'The Community Profile is used as an addendum to the Development Strategy through 2027, with a perspective through 2034.', uk: 'Профіль громади використовується як додаток до Стратегії розвитку до 2027 року з перспективою дії до 2034 року.' } },
 ];
 
 const IDP_YEARS = [
@@ -57,8 +57,8 @@ const SOCIAL = [
 ];
 
 const RESILIENCE = [
-  { en: 'In the Armed Forces', uk: 'У лавах ЗСУ', val: '900+' },
-  { en: 'IDPs sheltered since 2022', uk: 'Прихистили ВПО з 2022', val: '3,000+' },
+  { en: 'Combatants defending Ukraine', uk: 'Учасників бойових дій при захисті України', val: '89' },
+  { en: 'Registered IDPs in 2025', uk: 'ВПО у 2025 році', val: '1,087' },
   { en: 'Solar power plants', uk: 'Сонячних електростанцій', val: '9' },
   { en: 'Farms', uk: 'Фермерських господарств', val: '110' },
 ];
@@ -113,7 +113,7 @@ const HORIZONS = [
     years: { en: 'In progress', uk: 'Триває' },
     title: { en: 'People first.', uk: 'Люди понад усе.' },
     items: [
-      { en: 'IDP housing (Danish Embassy funded)', uk: 'Житло для ВПО (фінансує Посольство Данії)' },
+      { en: 'IDP housing programme 2022-2026', uk: 'Програма забезпечення житлом ВПО на 2022-2026 роки' },
       { en: 'School retrofits + shelter construction', uk: 'Термомодернізація шкіл і укриття' },
       { en: 'Hospital modernisation & energy resilience', uk: 'Модернізація лікарні та енергостійкість' },
       { en: 'Barrier-free community services', uk: 'Безбар’єрні громадські послуги' },
@@ -197,7 +197,7 @@ export default function About() {
         crumb={{ en: 'About the community', uk: 'Про громаду' }}
         title={{ en: 'People, land, and a long memory.', uk: 'Люди, земля та довга пам’ять.' }}
         lede={{
-          en: 'Domanivska settlement territorial community was formed in 2018 and expanded in 2020 by merging six village councils. Today it covers 31 settlements — smt Domanivka and 30 villages — across 729.7 km² of chornozem steppe in the Voznesensk district of Mykolaiv region, along the Chortala, Bakshala and Chychykliia rivers.',
+          en: 'Domanivska settlement territorial community was formed in 2018 by uniting Petropavlivka and Tsaredarivka councils. In 2020, Volodymyrivka, Zelenyi Yar, Marynivka and Shchaslyvka councils joined. Today the community covers Domanivka and 30 villages across 729.7 km² in Voznesensk district, along the Chortala, Bakshala and Chychykliia rivers.',
           uk: 'Доманівська селищна територіальна громада утворена 2018 року, у 2020-му розширилася об’єднанням сільрад. Сьогодні це 31 населений пункт — смт Доманівка та 30 сіл — на 729,7 км² чорноземного степу у Вознесенському районі Миколаївщини, уздовж річок Чортала, Бакшала та Чичиклія.',
         }}
       />
@@ -315,8 +315,8 @@ export default function About() {
             <T
               as="div"
               className="right"
-              en="A working-age farming community that, since 2022, became a home for thousands of displaced people while sending 900+ of its own to the front. These figures come from the Community Profile, 2024."
-              uk="Громада працездатних аграріїв, яка з 2022 року стала домом для тисяч переселенців, водночас відправивши 900+ своїх до лав ЗСУ. Дані — з Профілю громади, 2024."
+              en="A farming community with 8,514 working-age residents, 4,156 residents aged 60+, and a significant IDP presence since 2022. These figures come from the Community Profile, 2024."
+              uk="Аграрна громада з 8 514 мешканцями працездатного віку, 4 156 людьми віком 60+ та значною присутністю ВПО з 2022 року. Дані — з Профілю громади, 2024."
             />
           </div>
 

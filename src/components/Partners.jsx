@@ -3,12 +3,12 @@ import { T, useLang } from '../i18n.jsx';
 import { ArrowIcon } from '../icons.jsx';
 
 const PARTNERS = [
-  { name: 'NEFCO', en: 'Denmark · Infrastructure & clean water', uk: 'Данія · Інфраструктура та чиста вода' },
   { name: 'USAID DOBRE', en: 'Decentralisation & strategy', uk: 'Децентралізація і стратегія' },
-  { name: 'GIZ', en: 'Germany · Community development', uk: 'Німеччина · Розвиток громади' },
-  { name: 'IOM', en: 'IDP support & humanitarian', uk: 'Підтримка ВПО та гуманітарна допомога' },
-  { name: 'UNOPS', en: 'Infrastructure & procurement', uk: 'Інфраструктура та закупівлі' },
-  { name: 'Danish Embassy', en: 'IDP housing programme', uk: 'Програма житла для ВПО' },
+  { name: 'FRMD', en: 'Foundation for Local Democracy Development', uk: 'Фонд розвитку місцевої демократії' },
+  { name: 'EU + BMZ + GIZ', en: 'Strong Regions programme', uk: 'Програма «Міцні регіони»' },
+  { name: 'Ministry of Foreign Affairs of Denmark', en: 'Energy independence and efficiency', uk: 'Енергонезалежність та енергоефективність' },
+  { name: 'Rural Women’s Business Network', en: 'Greenhouses and food security', uk: 'Теплиці та продовольча безпека' },
+  { name: 'TIU-Zelenyi Hai', en: 'Solar power plants', uk: 'Сонячні електростанції' },
 ];
 
 export default function Partners() {
@@ -26,8 +26,8 @@ export default function Partners() {
           <T
             as="div"
             className="right"
-            en="Multilateral donors, bilateral agencies, and humanitarian organisations — every partner is named, and every contribution is documented in our public reports."
-            uk="Міжнародні донори, двосторонні агенції та гуманітарні організації — кожного партнера називаємо, кожен внесок документуємо у публічних звітах."
+            en="Partners named in the Community Profile: strategy support, hospital renovation and solar, greenhouse development, energy independence and local renewable-energy projects."
+            uk="Партнери, названі у Профілі громади: стратегічна підтримка, ремонт і СЕС для лікарні, тепличний розвиток, енергонезалежність та місцеві проєкти відновлюваної енергетики."
           />
         </div>
 

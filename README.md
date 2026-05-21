@@ -44,7 +44,7 @@ import { asset } from '../lib/asset.js';
 
 Do **not** hardcode `/images/hero.jpg` (leading slash) — it breaks on the `user.github.io/repo/` subpath. Always go through `asset()`.
 
-The hero already looks for `public/images/hero.jpg`: drop that file and it appears; if it's absent, the placeholder gradient stays (handled via `onError`). The same pattern (an `<img className="photo-img" …>` inside any `.photo` block) works for project cards, story photos, etc.
+The hero currently looks for `public/images/domanivka_ponorama.png`; if it's absent, the placeholder gradient stays (handled via `onError`). The same pattern (an `<img className="photo-img" …>` inside any `.photo` block) works for project cards, story photos, etc.
 
 ## Stack
 

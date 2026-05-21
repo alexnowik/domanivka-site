@@ -74,7 +74,24 @@ export default function Contacts() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const selectedTopic = TOPICS.find((item) => item.value === topic);
+    const subject = `${lang === 'uk' ? 'Звернення до Доманівської громади' : 'Message to Domanivka community'}: ${tr(selectedTopic)}`;
+    const body = [
+      `${lang === 'uk' ? 'Тема' : 'Topic'}: ${tr(selectedTopic)}`,
+      `${lang === 'uk' ? 'Терміново' : 'Time-sensitive'}: ${urgent ? (lang === 'uk' ? 'так' : 'yes') : (lang === 'uk' ? 'ні' : 'no')}`,
+      '',
+      `${lang === 'uk' ? 'Ім’я' : 'Name'}: ${data.get('name') || ''}`,
+      `${lang === 'uk' ? 'Організація' : 'Organisation'}: ${data.get('organisation') || ''}`,
+      `${lang === 'uk' ? 'Email' : 'Email'}: ${data.get('email') || ''}`,
+      `${lang === 'uk' ? 'Телефон' : 'Phone'}: ${data.get('phone') || ''}`,
+      '',
+      `${lang === 'uk' ? 'Повідомлення' : 'Message'}:`,
+      data.get('message') || '',
+    ].join('\n');
+
     setSent(true);
+    window.location.href = `mailto:sr@domanivska-gromada.gov.ua?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setTimeout(() => setSent(false), 2400);
   };
 
@@ -126,28 +143,33 @@ export default function Contacts() {
                 <div className="cf-row">
                   <div className="field">
                     <T as="label" en="Your name" uk="Ваше ім’я" />
-                    <input type="text" placeholder="Olena Petrenko" />
+                    <input type="text" name="name" placeholder={lang === 'uk' ? 'Ваше ім’я' : 'Your name'} autoComplete="name" />
                   </div>
                   <div className="field">
                     <T as="label" en="Organisation (optional)" uk="Організація (необов’язково)" />
-                    <input type="text" placeholder="—" />
+                    <input type="text" name="organisation" placeholder="—" autoComplete="organization" />
                   </div>
                 </div>
 
                 <div className="cf-row">
                   <div className="field">
                     <T as="label" en="Email" uk="Email" />
-                    <input type="email" placeholder="you@example.org" required />
+                    <input type="email" name="email" placeholder="you@example.org" autoComplete="email" required />
                   </div>
                   <div className="field">
                     <T as="label" en="Phone (optional)" uk="Телефон (необов’язково)" />
-                    <input type="text" placeholder="+380…" />
+                    <input type="text" name="phone" placeholder="+380…" autoComplete="tel" />
                   </div>
                 </div>
 
                 <div className="field">
                   <T as="label" en="Message" uk="Повідомлення" />
-                  <textarea rows="5" placeholder="A few sentences about what you'd like to discuss." />
+                  <textarea
+                    rows="5"
+                    name="message"
+                    placeholder={lang === 'uk' ? 'Кілька речень про те, що хочете обговорити.' : "A few sentences about what you'd like to discuss."}
+                    required
+                  />
                 </div>
 
                 <label className="cf-urgent">
@@ -159,7 +181,7 @@ export default function Contacts() {
                   <button className="btn btn-primary" type="submit">
                     <span>
                       {sent
-                        ? (lang === 'uk' ? 'Надіслано ✓' : 'Message sent ✓')
+                        ? (lang === 'uk' ? 'Відкриваємо пошту...' : 'Opening email...')
                         : (lang === 'uk' ? 'Надіслати' : 'Send message')}
                     </span>
                     <ArrowIcon />

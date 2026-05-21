@@ -29,9 +29,9 @@ export default function Footer() {
             <T as="h5" en="Work with us" uk="Співпраця" />
             <ul>
               <li><Link to="/projects"><T en="Projects" uk="Проєкти" /></Link></li>
-              <li><Link to="/needs"><T en="Open needs" uk="Відкриті потреби" /></Link></li>
+              <li><Link to="/needs"><T en="Profile priorities" uk="Пріоритети профілю" /></Link></li>
               <li><Link to="/partners"><T en="Partners" uk="Партнери" /></Link></li>
-              <li><a href="#"><T en="Documents" uk="Документи" /></a></li>
+              <li><Link to="/partners#documents"><T en="Documents" uk="Документи" /></Link></li>
             </ul>
           </div>
           <div>

@@ -77,8 +77,8 @@ export default function FeaturedProjects() {
           <T
             as="div"
             className="right"
-            en="A short look at projects in progress — from rebuilding a damaged school to expanding the drinking-water network across three villages. Every project is documented and reported, partner by partner."
-            uk="Кілька проєктів, які зараз у роботі — від відбудови школи до розширення питного водогону в трьох селах. Кожен проєкт документуємо і звітуємо, партнер за партнером."
+            en="A short look at project directions named in the Community Profile: drinking-water networks, sewage renewal and documented works that need partner coordination."
+            uk="Кілька напрямів із Профілю громади: питні водогони, оновлення каналізації та задокументовані роботи, де потрібна координація з партнерами."
           />
         </div>
 

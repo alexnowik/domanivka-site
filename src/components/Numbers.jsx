@@ -2,7 +2,7 @@ import { T, useLang } from '../i18n.jsx';
 
 const STATS = [
   {
-    value: <>14,398<sup>+</sup></>,
+    value: '14,401',
     en: 'Residents across 31 settlements',
     uk: 'Мешканців у 31 населеному пункті',
   },
@@ -22,9 +22,9 @@ const STATS = [
     uk: 'С/г угіддя · 89% території громади (53 954 га ріллі)',
   },
   {
-    value: <>60<span className="num-unit">%</span></>,
-    en: 'Of the local budget allocated to education',
-    uk: 'Місцевого бюджету спрямовано на освіту',
+    value: <>57.38<span className="num-unit">%</span></>,
+    en: 'Planned 2025 budget share allocated to education',
+    uk: 'Запланованого бюджету 2025 року спрямовано на освіту',
   },
   {
     value: <>7,437<span className="num-unit">UAH</span></>,

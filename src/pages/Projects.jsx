@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PageIntro from '../components/PageIntro.jsx';
 import { T, useLang } from '../i18n.jsx';
 import { ArrowIcon, DropIcon, HouseIcon, SchoolIcon } from '../icons.jsx';
@@ -7,22 +8,24 @@ const TOTALS = [
   { num: '10', en: 'Project directions', uk: 'Напрямів проєктів' },
   { num: '3', en: 'With design documents ready', uk: 'З готовою проєктною документацією' },
   { num: '4', en: 'Active programmes', uk: 'Чинних програм' },
-  { num: '14,398', en: 'Residents directly served', uk: 'Мешканців у фокусі' },
+  { num: '14,401', en: 'Residents directly served', uk: 'Мешканців у фокусі' },
   { num: '729.7 km²', en: 'Community territory', uk: 'Площа громади', highlight: true },
 ];
 
 const FILTERS = [
-  { key: 'all', en: 'All directions', uk: 'Усі напрями', count: 10 },
-  { key: 'in_progress', en: 'Documents ready / in progress', uk: 'Документи готові / триває', count: 3 },
-  { key: 'planned', en: 'Programme active', uk: 'Програма діє', count: 4 },
-  { key: 'needs_funding', en: 'Open for partner', uk: 'Відкритий для партнера', count: 3 },
+  { key: 'all', en: 'All directions', uk: 'Усі напрями' },
+  { key: 'in_progress', en: 'Documents ready / in progress', uk: 'Документи готові / триває' },
+  { key: 'planned', en: 'Planned / programme active', uk: 'Заплановано / програма діє' },
+  { key: 'needs_funding', en: 'Funding needed', uk: 'Потрібне фінансування' },
 ];
 
 const SORT_OPTIONS = [
-  { en: 'By priority', uk: 'За пріоритетом' },
-  { en: 'By category', uk: 'За категорією' },
-  { en: 'By status', uk: 'За статусом' },
+  { key: 'priority', en: 'By priority', uk: 'За пріоритетом' },
+  { key: 'category', en: 'By category', uk: 'За категорією' },
+  { key: 'status', en: 'By status', uk: 'За статусом' },
 ];
+
+const STATUS_ORDER = ['in_progress', 'needs_funding', 'planned'];
 
 const WaterIcon = DropIcon;
 const HospitalIcon = () => (
@@ -161,7 +164,7 @@ const PROJECTS = [
     facts: [
       [{ en: 'IDPs (2024)', uk: 'ВПО (2024)' }, '1,093'],
       [{ en: 'Families in difficulty', uk: 'Сім’ї у складних обставинах' }, '130'],
-      [{ en: 'Support needed', uk: 'Потрібна допомога' }, { en: 'Modular housing · repairs · furniture · services', uk: 'Модульне житло · ремонти · меблі · послуги' }],
+      [{ en: 'Support needed', uk: 'Потрібна допомога' }, { en: 'Housing programme · repairs · furniture · services', uk: 'Житлова програма · ремонти · меблі · послуги' }],
       [{ en: 'Status', uk: 'Статус' }, { en: 'Programme through 2026', uk: 'Програма до 2026' }],
     ],
     cta: { en: 'Take this on →', uk: 'Підтримати →' },
@@ -315,6 +318,7 @@ const PROJECTS = [
 export default function Projects() {
   const { lang } = useLang();
   const [filter, setFilter] = useState('all');
+  const [sort, setSort] = useState('priority');
   const tr = (val) => {
     if (val == null) return val;
     if (typeof val === 'string' || typeof val === 'number') return val;
@@ -322,7 +326,22 @@ export default function Projects() {
     return val;
   };
 
-  const visible = PROJECTS.filter((p) => filter === 'all' || p.status === filter);
+  const countFor = (key) => (
+    key === 'all' ? PROJECTS.length : PROJECTS.filter((p) => p.status === key).length
+  );
+
+  const visible = PROJECTS
+    .map((project, priority) => ({ ...project, priority }))
+    .filter((p) => filter === 'all' || p.status === filter)
+    .sort((a, b) => {
+      if (sort === 'category') {
+        return String(tr(a.cat)).localeCompare(String(tr(b.cat)), lang === 'uk' ? 'uk' : 'en');
+      }
+      if (sort === 'status') {
+        return STATUS_ORDER.indexOf(a.status) - STATUS_ORDER.indexOf(b.status) || a.priority - b.priority;
+      }
+      return a.priority - b.priority;
+    });
 
   return (
     <>
@@ -360,15 +379,19 @@ export default function Projects() {
                   onClick={() => setFilter(f.key)}
                 >
                   <span>{tr(f)}</span>
-                  <span className="count">{f.count}</span>
+                  <span className="count">{countFor(f.key)}</span>
                 </button>
               ))}
             </div>
             <div className="filters-sort">
               <label><T en="Sort" uk="Сортувати" /></label>
-              <select className="sort-select">
+              <select
+                className="sort-select"
+                value={sort}
+                onChange={(event) => setSort(event.target.value)}
+              >
                 {SORT_OPTIONS.map((s, i) => (
-                  <option key={i}>{tr(s)}</option>
+                  <option key={i} value={s.key}>{tr(s)}</option>
                 ))}
               </select>
             </div>
@@ -404,7 +427,7 @@ export default function Projects() {
                       </div>
                     ))}
                   </dl>
-                  <a className="proj-link" href="#">{tr(p.cta)}</a>
+                  <Link className="proj-link" to="/contacts">{tr(p.cta)}</Link>
                 </article>
               );
             })}

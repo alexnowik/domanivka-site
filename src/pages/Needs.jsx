@@ -4,195 +4,188 @@ import { T, useLang } from '../i18n.jsx';
 import { ArrowIcon } from '../icons.jsx';
 
 const SUMMARY = [
-  { num: '14', en: 'Open needs, documented', uk: 'Відкритих потреб задокументовано' },
-  { num: '€ 1.86M', en: 'Total funding gap', uk: 'Загальний дефіцит фінансування' },
-  { num: '9,840', en: 'Residents directly impacted', uk: 'Мешканців отримують прямий вплив' },
-  { num: '4', en: 'Marked urgent for winter 2025/26', uk: 'Терміново на зиму 2025/26' },
+  { num: '100', en: 'Residents surveyed', uk: 'Опитаних мешканців' },
+  { num: '11', en: 'Businesses surveyed', uk: 'Опитаних представників бізнесу' },
+  { num: '23', en: 'Local programmes listed', uk: 'Діючі програми громади' },
+  { num: '14', en: 'Programmes without funding yet', uk: 'Програм ще без фінансування' },
 ];
 
-const NEEDS = [
+const PRIORITIES = [
   {
-    cat: 'urgent',
-    catName: { en: 'Urgent — winter 2025/26', uk: 'Терміново — зима 2025/26' },
+    cat: 'critical',
+    catName: { en: 'Critical infrastructure', uk: 'Критична інфраструктура' },
     catColor: 'var(--terracotta)',
-    catShadow: 'rgba(181,106,74,0.18)',
+    catShadow: 'rgba(220,90,48,0.18)',
     items: [
       {
-        id: 'N-01', badge: 'urgent', badgeLabel: { en: 'Urgent', uk: 'Терміново' },
-        title: { en: 'Heating and insulation for two kindergartens', uk: 'Опалення та утеплення двох дитсадків' },
-        desc: { en: 'The kindergartens in Vesele and Bohdanivka are heated by old solid-fuel boilers and have un-insulated walls. Inside temperatures dropped to 14°C last January. Replacing heating systems and adding façade insulation would solve it for a decade.',
-                uk: 'Дитсадки у Веселому та Богданівці опалюються старими твердопаливними котлами, стіни не утеплені. Минулого січня температура всередині падала до 14°C. Заміна котлів і утеплення фасадів вирішують проблему на десятиріччя.' },
+        id: 'P-01',
+        badge: 'urgent',
+        badgeLabel: { en: 'Documented project', uk: 'Є документація' },
+        title: { en: 'Water supply and sewage renewal', uk: 'Водопостачання та оновлення каналізації' },
+        desc: {
+          en: 'The profile records a water shortage in villages, low water quality, scheduled supply in some places, and trucked water for Zabary and Olexandrivka. Documentation is ready for a 6,709 m water main from Zbroshkove to Domanivka, a new well in Tsaredarivka, and sewage/stormwater reconstruction in Domanivka.',
+          uk: 'Профіль фіксує дефіцит води в селах, низьку якість води, подачу за графіком і підвіз води для Забарів та Олександрівки. Є документація на водогін 6 709 м із Зброшкового до Доманівки, свердловину в Царедарівці та реконструкцію каналізації й зливової мережі в Доманівці.',
+        },
         facts: [
-          [{ en: 'Who is affected', uk: 'Кого стосується' }, <>320 <T en="children, 28 staff" uk="дітей, 28 працівників" /></>],
-          [{ en: 'Estimated budget', uk: 'Орієнтовний бюджет' }, '€ 168,000'],
-          [{ en: 'Support needed', uk: 'Тип підтримки' }, { en: 'Funding · equipment', uk: 'Фінансування · обладнання' }],
-          [{ en: 'Deadline', uk: 'Дедлайн' }, { en: 'Operational by Nov 2025', uk: 'Готовність — листопад 2025' }],
-          [{ en: 'Status', uk: 'Статус' }, <>€ 14k <T en="committed" uk="зобов’язано" /></>],
-          [{ en: 'Contact', uk: 'Контакт' }, 'Iryna Boyko'],
+          [{ en: 'Water network', uk: 'Мережа водопостачання' }, '116.1 km'],
+          [{ en: 'Sewerage', uk: 'Водовідведення' }, '10.1 km'],
+          [{ en: 'Active boreholes', uk: 'Задіяні свердловини' }, '13'],
+          [{ en: 'Domanivske utility subscribers', uk: 'Абонентів КП «Доманівське»' }, '3,330'],
         ],
       },
       {
-        id: 'N-02', badge: 'urgent', badgeLabel: { en: 'Urgent', uk: 'Терміново' },
-        title: { en: 'Ambulance + mobile clinic for remote villages', uk: 'Швидка та мобільна клініка для віддалених сіл' },
-        desc: { en: 'Seven villages in the south of the hromada have no permanent clinic. The current ambulance is twelve years old and frequently out of service. A new ambulance and a basic mobile-clinic kit would close the gap.',
-                uk: 'Сім сіл на півдні громади не мають постійної амбулаторії. Поточна швидка має 12 років і часто не в роботі. Нова швидка та базовий комплект мобільної клініки закривають питання.' },
+        id: 'P-02',
+        badge: 'urgent',
+        badgeLabel: { en: 'Top resident priority', uk: 'Топ-пріоритет мешканців' },
+        title: { en: 'Road recovery and transport access', uk: 'Відновлення доріг і транспортна доступність' },
+        desc: {
+          en: 'Municipal roads connect all 31 settlements, but the profile estimates 100% of them as emergency condition. Residents named road repair as the most important development need, and businesses named road condition as their main barrier.',
+          uk: 'Комунальні дороги з’єднують 31 населений пункт, але профіль оцінює 100% їх протяжності як аварійні. Мешканці назвали ремонт доріг найважливішим для розвитку, а бізнес — головною перешкодою для роботи.',
+        },
         facts: [
-          [{ en: 'Who is affected', uk: 'Кого стосується' }, <>4,260 <T en="residents" uk="мешканців" /></>],
-          [{ en: 'Estimated budget', uk: 'Орієнтовний бюджет' }, '€ 92,000'],
-          [{ en: 'Support needed', uk: 'Тип підтримки' }, { en: 'Equipment · vehicle', uk: 'Обладнання · авто' }],
-          [{ en: 'Deadline', uk: 'Дедлайн' }, 'Q1 2026'],
-          [{ en: 'Status', uk: 'Статус' }, { en: 'Open', uk: 'Відкрита' }],
-          [{ en: 'Contact', uk: 'Контакт' }, 'Dr. Volodymyr Lytvyn'],
+          [{ en: 'Municipal roads', uk: 'Комунальні дороги' }, '292.7 km'],
+          [{ en: 'Bridges', uk: 'Мости' }, '17'],
+          [{ en: 'Regional road R-75', uk: 'Регіональна дорога Р-75' }, '42 km · 2/5'],
+          [{ en: 'Roads named by residents', uk: 'Мешканці за ремонт доріг' }, '73%'],
         ],
       },
       {
-        id: 'N-03', badge: 'urgent', badgeLabel: { en: 'Urgent', uk: 'Терміново' },
-        title: { en: 'Solar + battery backup for the council building', uk: 'Сонячна станція з акумуляторами для будівлі ради' },
-        desc: { en: 'When the grid goes down — and it does — the council building loses connectivity, lighting, and the ability to coordinate emergency response. A 40 kW solar array with battery backup makes the council resilient.',
-                uk: 'Коли зникає мережа — а це буває — будівля ради втрачає зв’язок, освітлення і здатність координувати реагування. Сонячна станція 40 кВт із акумуляторами зробить раду стійкою.' },
+        id: 'P-03',
+        badge: 'in-progress',
+        badgeLabel: { en: 'Programme 2023-2025', uk: 'Програма 2023-2025' },
+        title: { en: 'Waste management and clean settlements', uk: 'Поводження з відходами та чисті населені пункти' },
+        desc: {
+          en: 'The waste programme is aimed at reducing accumulation, reusing resources and building a comprehensive solid-waste management system with more recovery of secondary raw materials.',
+          uk: 'Програма поводження з відходами спрямована на зменшення накопичення сміття, повторне використання ресурсів і створення комплексної системи управління ТПВ з вилученням вторинної сировини.',
+        },
         facts: [
-          [{ en: 'Who is affected', uk: 'Кого стосується' }, { en: 'Whole hromada', uk: 'Уся громада' }],
-          [{ en: 'Estimated budget', uk: 'Орієнтовний бюджет' }, '€ 54,000'],
-          [{ en: 'Support needed', uk: 'Тип підтримки' }, { en: 'Equipment · expertise', uk: 'Обладнання · експертиза' }],
-          [{ en: 'Deadline', uk: 'Дедлайн' }, 'Q3 2026'],
-          [{ en: 'Status', uk: 'Статус' }, <>€ 13.5k <T en="committed" uk="зобов’язано" /></>],
-          [{ en: 'Contact', uk: 'Контакт' }, 'Mykola Tkachenko'],
-        ],
-      },
-      {
-        id: 'N-04', badge: 'urgent', badgeLabel: { en: 'Urgent', uk: 'Терміново' },
-        title: { en: 'Firewood reserve for 280 vulnerable households', uk: 'Запас дров для 280 вразливих домогосподарств' },
-        desc: { en: 'Pensioners living alone, single-parent households, and families hosting displaced people — all confirmed via social workers — heat with wood and cannot afford the price spike this season.',
-                uk: 'Самотні пенсіонери, неповні родини та родини, що прийняли ВПО — усі підтверджені соцпрацівниками — опалюються дровами і не можуть подолати цьогорічне зростання цін.' },
-        facts: [
-          [{ en: 'Who is affected', uk: 'Кого стосується' }, <>280 <T en="households" uk="домогосподарств" /></>],
-          [{ en: 'Estimated budget', uk: 'Орієнтовний бюджет' }, '€ 42,000'],
-          [{ en: 'Support needed', uk: 'Тип підтримки' }, { en: 'Funding · in-kind', uk: 'Фінансування · допомога' }],
-          [{ en: 'Deadline', uk: 'Дедлайн' }, { en: 'Before Dec 1', uk: 'До 1 грудня' }],
-          [{ en: 'Status', uk: 'Статус' }, <>€ 6k <T en="committed" uk="зобов’язано" /></>],
-          [{ en: 'Contact', uk: 'Контакт' }, 'Olha Voronova'],
+          [{ en: 'Private housing waste', uk: 'Відходи приватної забудови' }, '57%'],
+          [{ en: 'Apartment blocks', uk: 'Багатоповерхова забудова' }, '32%'],
+          [{ en: 'Business and other sources', uk: 'Бізнес та інші джерела' }, '11%'],
+          [{ en: 'Residents who prioritise waste', uk: 'Мешканці за покращення ТПВ' }, '45%'],
         ],
       },
     ],
   },
   {
-    cat: 'infra',
-    catName: { en: 'Infrastructure', uk: 'Інфраструктура' },
-    catColor: 'var(--olive)',
-    catShadow: 'rgba(107,125,92,0.18)',
-    items: [
-      {
-        id: 'N-05', badge: 'in-progress', badgeLabel: { en: 'Co-funding open', uk: 'Спільне фінансування' },
-        title: { en: 'Road repair, Domanivka — Bratske, 11 km', uk: 'Ремонт дороги Доманівка — Братське, 11 км' },
-        desc: { en: 'The primary route for school buses, ambulance, and seasonal grain transport. Surface failure on roughly 7 km of the 11 km stretch. Co-funding from Ukravtodor is approved subject to a partner contribution.',
-                uk: 'Головна дорога для шкільних автобусів, швидкої та аграрних перевезень. Зруйноване покриття на ~7 км з 11. Співфінансування Укравтодору схвалено за умови внеску партнера.' },
-        facts: [
-          [{ en: 'Who is affected', uk: 'Кого стосується' }, '6,400'],
-          [{ en: 'Estimated budget', uk: 'Орієнтовний бюджет' }, '€ 410,000'],
-          [{ en: 'Support needed', uk: 'Тип підтримки' }, { en: 'Funding · co-financing', uk: 'Фінансування · співфінансування' }],
-          [{ en: 'Deadline', uk: 'Дедлайн' }, '2026 — 2027'],
-          [{ en: 'Status', uk: 'Статус' }, <>8% <T en="committed" uk="зобов’язано" /></>],
-          [{ en: 'Contact', uk: 'Контакт' }, 'Andriy Hryhorchuk'],
-        ],
-      },
-      {
-        id: 'N-06', badge: 'planned', badgeLabel: { en: 'Open', uk: 'Відкрита' },
-        title: { en: 'Water tower replacement, Olexandrivka', uk: 'Заміна водонапірної башти, Олександрівка' },
-        desc: { en: 'The 1968 water tower fails 4-6 times a year, each failure cutting water to 980 residents for 8–24 hours. Replacing the tower and reservoir is a one-time fix.',
-                uk: 'Башта 1968 року виходить з ладу 4–6 разів на рік; кожна аварія залишає 980 мешканців без води на 8–24 години. Заміна башти й резервуару — це разове рішення.' },
-        facts: [
-          [{ en: 'Who is affected', uk: 'Кого стосується' }, '980'],
-          [{ en: 'Estimated budget', uk: 'Орієнтовний бюджет' }, '€ 188,000'],
-          [{ en: 'Support needed', uk: 'Тип підтримки' }, { en: 'Funding · contractor', uk: 'Фінансування · підрядник' }],
-          [{ en: 'Deadline', uk: 'Дедлайн' }, '2026'],
-          [{ en: 'Status', uk: 'Статус' }, { en: 'Open', uk: 'Відкрита' }],
-          [{ en: 'Contact', uk: 'Контакт' }, 'Mykola Tkachenko'],
-        ],
-      },
-      {
-        id: 'N-07', badge: 'planned', badgeLabel: { en: 'Open', uk: 'Відкрита' },
-        title: { en: 'Digital infrastructure for the council', uk: 'Цифрова інфраструктура для громади' },
-        desc: { en: 'A modern document workflow, accounting system, and 25 secure workstations across the council and four village offices. Cuts the time a resident waits for a certificate from 12 days to 1.',
-                uk: 'Сучасний документообіг, бухгалтерська система та 25 захищених робочих місць у раді й чотирьох старостинських округах. Скорочує час видачі довідки з 12 днів до 1.' },
-        facts: [
-          [{ en: 'Who is affected', uk: 'Кого стосується' }, '18,400'],
-          [{ en: 'Estimated budget', uk: 'Орієнтовний бюджет' }, '€ 76,000'],
-          [{ en: 'Support needed', uk: 'Тип підтримки' }, { en: 'Equipment · expertise', uk: 'Обладнання · експертиза' }],
-          [{ en: 'Deadline', uk: 'Дедлайн' }, '2026'],
-          [{ en: 'Status', uk: 'Статус' }, { en: 'Open', uk: 'Відкрита' }],
-          [{ en: 'Contact', uk: 'Контакт' }, 'Iryna Boyko'],
-        ],
-      },
-    ],
-  },
-  {
-    cat: 'social',
-    catName: { en: 'Social & housing', uk: 'Соціальне та житло' },
+    cat: 'services',
+    catName: { en: 'Public services', uk: 'Публічні послуги' },
     catColor: 'var(--muted-blue)',
-    catShadow: 'rgba(108,132,148,0.18)',
+    catShadow: 'rgba(74,138,170,0.18)',
     items: [
       {
-        id: 'N-08', badge: 'planned', badgeLabel: { en: 'Open', uk: 'Відкрита' },
-        title: { en: 'Twelve modular homes for displaced families', uk: 'Дванадцять модульних будинків для родин ВПО' },
-        desc: { en: 'A pilot residential block on community-owned land, for families that have lived in temporary shelter for more than two winters. Land, utilities, and roads are ready. Construction needs a partner.',
-                uk: 'Пілотний житловий квартал на землі громади для родин, які вже понад дві зими у тимчасовому житлі. Земля, комунікації та дороги — готові. Будівництво потребує партнера.' },
+        id: 'P-04',
+        badge: 'planned',
+        badgeLabel: { en: 'Education network', uk: 'Освітня мережа' },
+        title: { en: 'Education, inclusion and youth services', uk: 'Освіта, інклюзія та послуги для дітей' },
+        desc: {
+          en: 'The school network remains stable, but the number of children has declined. The 2025 planned budget gives education the largest share, while inclusion already operates in preschool and school classes.',
+          uk: 'Освітня мережа залишається стабільною, але кількість дітей зменшується. У бюджеті 2025 року освіта має найбільшу частку, а інклюзивне навчання вже організоване у дошкіллі та школах.',
+        },
         facts: [
-          [{ en: 'Who is affected', uk: 'Кого стосується' }, <>48 <T en="people" uk="осіб" /></>],
-          [{ en: 'Estimated budget', uk: 'Орієнтовний бюджет' }, '€ 820,000'],
-          [{ en: 'Support needed', uk: 'Тип підтримки' }, { en: 'Funding · construction', uk: 'Фінансування · будівництво' }],
-          [{ en: 'Deadline', uk: 'Дедлайн' }, '2026 — 2027'],
-          [{ en: 'Status', uk: 'Статус' }, <>12% <T en="committed" uk="зобов’язано" /></>],
-          [{ en: 'Contact', uk: 'Контакт' }, 'Andriy Hryhorchuk'],
+          [{ en: 'Schools', uk: 'Закладів ЗЗСО' }, '5'],
+          [{ en: 'Kindergartens', uk: 'Закладів дошкілля' }, '8 + 1'],
+          [{ en: 'Pupils in 2024-2025', uk: 'Учнів у 2024-2025 н.р.' }, '1,345'],
+          [{ en: 'Education budget share 2025', uk: 'Частка освіти у бюджеті 2025' }, '57.38%'],
         ],
       },
       {
-        id: 'N-09', badge: 'planned', badgeLabel: { en: 'Open', uk: 'Відкрита' },
-        title: { en: 'Vocational training centre for displaced adults', uk: 'Центр професійної підготовки для дорослих ВПО' },
-        desc: { en: 'Skills retraining for adults who lost their work when they relocated — agro-technology, basic accounting, welding, digital skills. The space exists; equipment and curriculum partners are needed.',
-                uk: 'Перенавчання дорослих, які втратили роботу через переселення — агро-технології, базова бухгалтерія, зварювання, цифрові навички. Приміщення є; потрібне обладнання та партнери з програмами.' },
+        id: 'P-05',
+        badge: 'in-progress',
+        badgeLabel: { en: 'Health and social care', uk: 'Медицина і соцзахист' },
+        title: { en: 'Healthcare, IDP support and social services', uk: 'Медицина, підтримка ВПО та соціальні послуги' },
+        desc: {
+          en: 'Domanivka hospital and primary care serve the community and patients from nearby areas. The profile also names social institutions working with vulnerable groups, children with disabilities, IDPs and elderly people.',
+          uk: 'Доманівська лікарня та первинна медицина обслуговують громаду й пацієнтів з інших територій. Профіль також називає соціальні установи для вразливих груп, дітей з інвалідністю, ВПО та людей похилого віку.',
+        },
         facts: [
-          [{ en: 'Who is affected', uk: 'Кого стосується' }, '~180/year'],
-          [{ en: 'Estimated budget', uk: 'Орієнтовний бюджет' }, '€ 132,000'],
-          [{ en: 'Support needed', uk: 'Тип підтримки' }, { en: 'Equipment · curriculum', uk: 'Обладнання · програма' }],
-          [{ en: 'Deadline', uk: 'Дедлайн' }, '2026'],
-          [{ en: 'Status', uk: 'Статус' }, { en: 'Open', uk: 'Відкрита' }],
-          [{ en: 'Contact', uk: 'Контакт' }, 'Olha Voronova'],
+          [{ en: 'People attached to primary care', uk: 'Прикріплено до первинної медицини' }, '15,978'],
+          [{ en: 'Registered IDPs in 2024', uk: 'Зареєстровано ВПО у 2024' }, '1,238'],
+          [{ en: 'IDPs staying in the community', uk: 'ВПО перебувають у громаді' }, '1,093'],
+          [{ en: 'Social-service workers', uk: 'Працівників соцпослуг' }, '48'],
         ],
       },
       {
-        id: 'N-10', badge: 'planned', badgeLabel: { en: 'Open', uk: 'Відкрита' },
-        title: { en: 'Renovation of the youth and culture house, Bohdanivka', uk: 'Ремонт будинку молоді та культури, Богданівка' },
-        desc: { en: 'The only public indoor space in a 4-village area. Heating, lighting, accessibility and a small auditorium upgrade — used weekly by 200+ youth and the village choir.',
-                uk: 'Єдиний громадський простір у зоні чотирьох сіл. Опалення, освітлення, доступність і невелика модернізація зали — користуються щотижня 200+ молодих людей і сільський хор.' },
+        id: 'P-06',
+        badge: 'planned',
+        badgeLabel: { en: 'Repair needs', uk: 'Потреби в ремонтах' },
+        title: { en: 'Culture, libraries and sport facilities', uk: 'Культура, бібліотеки та спортивні простори' },
+        desc: {
+          en: 'Culture and sport remain active during wartime, but libraries and the music school need basic repairs. The profile records cosmetic repairs, windows, floors, ceilings and facade restoration as current facility needs.',
+          uk: 'Культура і спорт працюють навіть під час війни, але бібліотеки та музична школа потребують базових ремонтів. У профілі зафіксовані косметичні ремонти, вікна, підлоги, стелі та відновлення фасаду.',
+        },
         facts: [
-          [{ en: 'Who is affected', uk: 'Кого стосується' }, '1,440'],
-          [{ en: 'Estimated budget', uk: 'Орієнтовний бюджет' }, '€ 96,000'],
-          [{ en: 'Support needed', uk: 'Тип підтримки' }, { en: 'Funding · materials', uk: 'Фінансування · матеріали' }],
-          [{ en: 'Deadline', uk: 'Дедлайн' }, '2026 — 2027'],
-          [{ en: 'Status', uk: 'Статус' }, { en: 'Open', uk: 'Відкрита' }],
-          [{ en: 'Contact', uk: 'Контакт' }, 'Iryna Boyko'],
+          [{ en: 'Culture house branches', uk: 'Філій будинку культури' }, '12'],
+          [{ en: 'Library branches', uk: 'Філій бібліотеки' }, '10'],
+          [{ en: 'Children in sports school', uk: 'Дітей у ДЮСШ' }, '226'],
+          [{ en: 'Sports grounds', uk: 'Спортивних майданчиків' }, '24'],
+        ],
+      },
+    ],
+  },
+  {
+    cat: 'economy',
+    catName: { en: 'Economy and investment', uk: 'Економіка та інвестиції' },
+    catColor: 'var(--olive)',
+    catShadow: 'rgba(125,166,46,0.18)',
+    items: [
+      {
+        id: 'P-07',
+        badge: 'planned',
+        badgeLabel: { en: 'Agrarian base', uk: 'Аграрна база' },
+        title: { en: 'Agriculture, processing and local jobs', uk: 'Аграрне виробництво, переробка та робочі місця' },
+        desc: {
+          en: 'The economy is based on grain and oilseed crops, with weak processing capacity. The profile names processing, services, energy crops, berries, medicinal herbs, rosehip and walnuts as possible growth directions.',
+          uk: 'Економіка базується на зернових та олійних культурах, а переробка розвинена слабко. Профіль називає перспективами переробку, послуги, енергетичні культури, ягоди, лікарські трави, шипшину та горіхи.',
+        },
+        facts: [
+          [{ en: 'Agricultural land', uk: 'С/г землі' }, '65,143 ha'],
+          [{ en: 'Arable land', uk: 'Рілля' }, '53,954 ha'],
+          [{ en: 'Active FOPs in 2025', uk: 'Діючих ФОП у 2025' }, '335'],
+          [{ en: 'Farms', uk: 'Фермерських господарств' }, '110'],
+        ],
+      },
+      {
+        id: 'P-08',
+        badge: 'in-progress',
+        badgeLabel: { en: 'Partner projects', uk: 'Партнерські проєкти' },
+        title: { en: 'Energy resilience and investment sites', uk: 'Енергостійкість та інвестиційні ділянки' },
+        desc: {
+          en: 'The profile records 19 greenhouses, a 30 kW solar installation at the greenhouse project, nine solar plants with 8.8 MW total capacity, a GIZ-supported hospital solar system and a municipal pellet company.',
+          uk: 'У профілі зафіксовано 19 теплиць, СЕС 30 кВт у тепличному проєкті, дев’ять сонячних станцій сумарною потужністю 8,8 МВт, лікарняну СЕС за підтримки GIZ та комунальне підприємство з виробництва палетів.',
+        },
+        facts: [
+          [{ en: 'Greenhouses', uk: 'Теплиць' }, '19'],
+          [{ en: 'Solar plants', uk: 'Сонячних електростанцій' }, '9 · 8.8 MW'],
+          [{ en: 'Hospital renovation by GIZ', uk: 'Ремонт лікарні за підтримки GIZ' }, '6.5 млн грн'],
+          [{ en: 'Free municipal investment sites', uk: 'Вільні інвестділянки громади' }, '4'],
         ],
       },
     ],
   },
 ];
 
-const HELP = [
-  { num: '01', title: { en: 'Fund a project end-to-end', uk: 'Профінансувати проєкт повністю' },
-    desc: { en: 'Take a single need from documentation to delivery — with co-branding, reporting, and a transparent budget.',
-            uk: 'Узяти потребу від документів до реалізації — з ко-брендингом, звітністю і прозорим бюджетом.' } },
-  { num: '02', title: { en: 'Co-fund a larger project', uk: 'Співфінансувати проєкт' },
-    desc: { en: 'Partial funding on infrastructure projects unlocks matching state co-financing. Often the highest leverage.',
-            uk: 'Частковий внесок у інфраструктурні проєкти розблоковує державне співфінансування. Часто найвищий важіль.' } },
-  { num: '03', title: { en: 'Donate equipment in-kind', uk: 'Передати обладнання' },
-    desc: { en: 'Vehicles, generators, IT equipment, medical kits — all welcome, all logged, all visible in our public asset register.',
-            uk: 'Авто, генератори, ІТ-техніка, медичні комплекти — приймаємо, обліковуємо й відображаємо у публічному реєстрі.' } },
-  { num: '04', title: { en: 'Share expertise', uk: 'Поділитися експертизою' },
-    desc: { en: 'Energy audits, mental-health methodology, agri-tech, digital governance — a few days of expert time can change a project.',
-            uk: 'Енергоаудит, методики ментального здоров’я, агро-тех, цифрове врядування — кілька днів експерта здатні змінити проєкт.' } },
-  { num: '05', title: { en: 'Become a sister community', uk: 'Стати містом-побратимом' },
-    desc: { en: 'A long-term partnership with a European municipality. We currently have one and welcome two more by 2027.',
-            uk: 'Довгострокове партнерство з європейською громадою. Маємо одну, відкриті ще до двох — до 2027 року.' } },
+const SURVEY = [
+  {
+    num: '73%',
+    title: { en: 'Residents: road repair is the key development need', uk: 'Мешканці: ремонт доріг — головна потреба розвитку' },
+    desc: { en: 'Roads were followed by waste management (45%) and utility modernisation (41%).', uk: 'Далі мешканці назвали управління відходами (45%) та модернізацію ЖКГ (41%).' },
+  },
+  {
+    num: '67%',
+    title: { en: 'Residents: transport and road condition blocks development', uk: 'Мешканці: транспортно-дорожній стан стримує розвиток' },
+    desc: { en: 'The second largest barrier was lack of jobs and business closures (63%).', uk: 'Друга за частотою перешкода — нестача роботи та закриття підприємств (63%).' },
+  },
+  {
+    num: '63.6%',
+    title: { en: 'Business: poor roads are the main barrier', uk: 'Бізнес: погані дороги — головна перешкода' },
+    desc: { en: 'Low purchasing power was named by 45.5% of surveyed businesses.', uk: 'Низький платоспроможний попит назвали 45,5% опитаних підприємців.' },
+  },
+  {
+    num: '54.5%',
+    title: { en: 'Business wants preferential loans and grants', uk: 'Бізнес очікує пільгові кредити та гранти' },
+    desc: { en: 'Both preferential credit and grant/voucher support were selected by 54.5% of businesses.', uk: 'Пільгові кредити та грантову/ваучерну підтримку обрали по 54,5% бізнесів.' },
+  },
 ];
 
 export default function Needs() {
@@ -207,19 +200,19 @@ export default function Needs() {
   return (
     <>
       <PageIntro
-        crumb={{ en: 'Open needs', uk: 'Відкриті потреби' }}
-        title={{ en: 'An open list of what the community needs.', uk: 'Відкритий перелік того, що потрібно громаді.' }}
+        crumb={{ en: 'Priorities', uk: 'Пріоритети' }}
+        title={{ en: 'What the Community Profile says needs attention.', uk: 'Що, за Профілем громади, потребує уваги.' }}
         lede={{
-          en: 'No dramatic appeals. Just specific needs, costed, with a clear beneficiary count and a clear partner role. If something below fits what your organisation does — let’s talk.',
-          uk: 'Без драматичних закликів. Лише конкретні потреби з кошторисами, кількістю отримувачів і чіткою роллю партнера. Якщо щось із наведеного — це ваш профіль, давайте поговоримо.',
+          en: 'This page replaces the illustrative wish-list with priorities taken from the Community Profile, 2024: infrastructure gaps, service needs, economic constraints and survey results from residents and local businesses.',
+          uk: 'Ця сторінка замінює ілюстративний список потреб на пріоритети з Профілю громади 2024 року: інфраструктурні розриви, потреби послуг, економічні обмеження та результати опитувань мешканців і бізнесу.',
         }}
       />
 
       <section className="section-tight" style={{ paddingTop: 24, paddingBottom: 0 }}>
         <div className="wrap">
           <div className="needs-summary">
-            {SUMMARY.map((s, i) => (
-              <div key={i} className="ns-item">
+            {SUMMARY.map((s) => (
+              <div key={s.num} className="ns-item">
                 <div className="ns-num">{s.num}</div>
                 <div className="ns-lbl">{tr(s)}</div>
               </div>
@@ -232,21 +225,23 @@ export default function Needs() {
         <div className="wrap">
           <div className="how-grid">
             <div className="how-side">
-              <T as="div" className="eyebrow accent-terra" en="How to read this page" uk="Як читати цю сторінку" />
-              <T as="h2" en="Each need is a self-contained brief." uk="Кожна потреба — окремий бриф." />
+              <T as="div" className="eyebrow accent-terra" en="Source-based" uk="За джерелом" />
+              <T as="h2" en="Not a donation catalogue. A structured profile." uk="Не каталог донатів, а структурований профіль." />
             </div>
             <div className="how-text">
-              <T as="p"
-                 en="A need is what the community has identified as a real, concrete shortfall — different from a project, which is a plan with funding behind it. Each need on this page has a description, the people affected, the type of support required, an estimated budget, and a status indicating how ready it is for a partner to take on."
-                 uk="Потреба — це конкретна нестача, виявлена громадою; на відміну від проєкту, який є планом із фінансуванням. Кожна потреба нижче містить опис, кількість залучених людей, тип потрібної підтримки, орієнтовний бюджет та статус готовності до партнерства." />
+              <T
+                as="p"
+                en="The document does not give a ready-made budget for every need. It gives verified context: networks, facilities, programmes, survey priorities and development constraints. The site now presents those facts honestly, without invented amounts or contact people."
+                uk="Документ не дає готовий бюджет для кожної потреби. Він дає перевірений контекст: мережі, заклади, програми, пріоритети опитувань і обмеження розвитку. Сайт тепер показує ці факти чесно — без вигаданих сум і контактних осіб."
+              />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section" id="needs-list">
+      <section className="section" id="priorities-list">
         <div className="wrap">
-          {NEEDS.map((group, idx) => (
+          {PRIORITIES.map((group, idx) => (
             <div key={group.cat}>
               <div className="cat-head" style={idx > 0 ? { marginTop: 96 } : undefined}>
                 <div className="cat-meta">
@@ -257,24 +252,24 @@ export default function Needs() {
               </div>
 
               <div className="needs-grid">
-                {group.items.map((n) => (
-                  <article key={n.id} className="need-card">
+                {group.items.map((item) => (
+                  <article key={item.id} className="need-card">
                     <div className="need-top">
-                      <span className="need-num">{n.id}</span>
-                      <span className={`badge ${n.badge}`}>{tr(n.badgeLabel)}</span>
+                      <span className="need-num">{item.id}</span>
+                      <span className={`badge ${item.badge}`}>{tr(item.badgeLabel)}</span>
                     </div>
-                    <h3>{tr(n.title)}</h3>
-                    <p className="need-desc">{tr(n.desc)}</p>
+                    <h3>{tr(item.title)}</h3>
+                    <p className="need-desc">{tr(item.desc)}</p>
                     <dl className="need-facts">
-                      {n.facts.map(([lbl, val], j) => (
-                        <div key={j}>
-                          <dt>{tr(lbl)}</dt>
-                          <dd>{tr(val)}</dd>
+                      {item.facts.map(([label, value], index) => (
+                        <div key={index}>
+                          <dt>{tr(label)}</dt>
+                          <dd>{tr(value)}</dd>
                         </div>
                       ))}
                     </dl>
                     <Link className="need-cta btn btn-primary btn-sm" to="/contacts">
-                      <T en="Take this on" uk="Підтримати" />
+                      <T en="Discuss this priority" uk="Обговорити пріоритет" />
                       <ArrowIcon />
                     </Link>
                   </article>
@@ -289,23 +284,23 @@ export default function Needs() {
         <div className="wrap">
           <div className="section-head">
             <div className="left">
-              <T as="div" className="eyebrow" en="How partners can help" uk="Як партнери можуть допомогти" />
-              <T as="h2" en="Five ways to work with us." uk="П’ять способів співпрацювати з нами." />
+              <T as="div" className="eyebrow" en="Survey signal" uk="Сигнал опитувань" />
+              <T as="h2" en="What residents and businesses said." uk="Що сказали мешканці та бізнес." />
             </div>
             <T
               as="div"
               className="right"
-              en="There is no single ‘right’ way to support the community. Some partners fund full projects, others bring in-kind contributions, others lend expertise. All are useful — and all are welcomed."
-              uk="Немає єдиного «правильного» способу підтримати громаду. Хтось фінансує проєкти повністю, хтось — допомагає речами, хтось — експертизою. Усе корисне — і всіх вітаємо."
+              en="The Community Profile includes a resident survey and a business survey. Their answers explain why the priorities above are not abstract: roads, jobs, waste and utilities show up repeatedly."
+              uk="Профіль містить опитування мешканців і бізнесу. Їхні відповіді пояснюють, чому пріоритети вище не абстрактні: дороги, робота, відходи та ЖКГ повторюються в різних відповідях."
             />
           </div>
 
           <div className="help-grid">
-            {HELP.map((h) => (
-              <div key={h.num} className="help-card">
-                <div className="hc-num">{h.num}</div>
-                <h4>{tr(h.title)}</h4>
-                <p>{tr(h.desc)}</p>
+            {SURVEY.map((item) => (
+              <div key={item.num} className="help-card">
+                <div className="hc-num">{item.num}</div>
+                <h4>{tr(item.title)}</h4>
+                <p>{tr(item.desc)}</p>
               </div>
             ))}
           </div>
@@ -315,21 +310,27 @@ export default function Needs() {
       <section className="cta-band">
         <div className="wrap">
           <div className="cta-inner">
-            <T as="div" className="eyebrow on-dark" en="Take a need on" uk="Підтримати потребу" />
-            <T as="h2" className="cta-h"
-               en="Pick a need above — we’ll send you the full brief within 48 hours."
-               uk="Оберіть потребу вище — повний бриф надішлемо протягом 48 годин." />
-            <T as="p" className="cta-sub"
-               en="Each brief includes the technical scope, supplier estimates, our budget line items, the contact person, and the reporting we commit to."
-               uk="У кожному брифі — технічний опис, кошториси постачальників, наші бюджетні статті, контактна особа та звітність, яку зобов’язуємось надавати." />
+            <T as="div" className="eyebrow on-dark" en="Work from the profile" uk="Працювати від профілю" />
+            <T
+              as="h2"
+              className="cta-h"
+              en="If a priority matches your programme, start with the profile and current project documents."
+              uk="Якщо пріоритет збігається з вашою програмою, почнімо з профілю та актуальних проєктних документів."
+            />
+            <T
+              as="p"
+              className="cta-sub"
+              en="The next useful step is not a generic appeal, but a focused conversation: scope, existing documentation, budget status, partner role and reporting."
+              uk="Наступний корисний крок — не загальний заклик, а предметна розмова: обсяг робіт, наявна документація, стан бюджету, роль партнера та звітність."
+            />
             <div className="row" style={{ gap: 12, marginTop: 24 }}>
               <Link to="/contacts" className="btn btn-primary on-dark">
-                <T en="Contact the partnership office" uk="Написати у відділ співпраці" />
+                <T en="Contact the council" uk="Зв’язатися з радою" />
                 <ArrowIcon />
               </Link>
-              <a href="#" className="btn btn-secondary on-dark">
-                <T en="Download all 14 briefs (PDF, 6.8MB)" uk="Завантажити всі 14 брифів (PDF, 6,8МБ)" />
-              </a>
+              <Link to="/partners#documents" className="btn btn-secondary on-dark">
+                <T en="See source documents" uk="Переглянути документи" />
+              </Link>
             </div>
           </div>
         </div>

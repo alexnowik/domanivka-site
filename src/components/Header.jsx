@@ -8,7 +8,7 @@ const NAV_ITEMS = [
   { to: '/', en: 'Home', uk: 'Головна', end: true },
   { to: '/about', en: 'About', uk: 'Про громаду' },
   { to: '/projects', en: 'Projects', uk: 'Проєкти' },
-  { to: '/needs', en: 'Needs', uk: 'Потреби' },
+  { to: '/needs', en: 'Priorities', uk: 'Пріоритети' },
   { to: '/partners', en: 'Partners', uk: 'Партнери' },
   { to: '/contacts', en: 'Contacts', uk: 'Контакти' },
 ];

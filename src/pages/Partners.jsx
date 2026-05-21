@@ -15,10 +15,7 @@ const WALL = [
   { name: 'GIZ', en: 'Germany · Hospital & energy efficiency', uk: 'Німеччина · Лікарня та енергоефективність' },
   { name: 'BMZ', en: 'Germany · Programme co-funder', uk: 'Німеччина · Співфінансування програми' },
   { name: 'USAID DOBRE', en: 'Decentralisation & strategy', uk: 'Децентралізація і стратегія' },
-  { name: 'Danish Embassy', en: 'Denmark · Energy independence, IDP housing', uk: 'Данія · Енергонезалежність, житло ВПО' },
-  { name: 'NEFCO', en: 'Denmark · Infrastructure & clean water', uk: 'Данія · Інфраструктура та чиста вода' },
-  { name: 'IOM', en: 'IDP support & humanitarian', uk: 'Підтримка ВПО та гуманітарна допомога' },
-  { name: 'UNOPS', en: 'Infrastructure & procurement', uk: 'Інфраструктура та закупівлі' },
+  { name: 'Ministry of Foreign Affairs of Denmark', en: 'Energy independence and energy efficiency', uk: 'Енергонезалежність та енергоефективність' },
   { name: 'FRMD', en: 'Foundation for Local Democracy Development', uk: 'Фонд розвитку місцевої демократії' },
   { name: 'Rural Women’s Business Network', en: 'Greenhouse & food-security project', uk: 'Тепличний проєкт і продбезпека' },
 ];
@@ -160,7 +157,7 @@ export default function Partners() {
         </div>
       </section>
 
-      <section className="section" style={{ background: 'var(--bg-2)' }}>
+      <section className="section" id="documents" style={{ background: 'var(--bg-2)' }}>
         <div className="wrap">
           <div className="section-head">
             <div className="left">
@@ -221,15 +218,15 @@ export default function Partners() {
 
           <div className="docs">
             {DOCS.map((d, i) => (
-              <a key={i} className="doc" href="#">
+              <Link key={i} className="doc" to="/contacts">
                 <div className="doc-icon"><DocIcon /></div>
                 <div className="doc-meta">
                   <span>{tr(d.tag)}</span>
                   <span>{d.size}</span>
                 </div>
                 <h4>{tr(d.title)}</h4>
-                <span className="doc-link"><T en="Download →" uk="Завантажити →" /></span>
-              </a>
+                <span className="doc-link"><T en="Request document →" uk="Запросити документ →" /></span>
+              </Link>
             ))}
           </div>
         </div>

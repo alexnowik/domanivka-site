@@ -21,10 +21,10 @@ export default function CtaBand() {
               <T en="Contact the partnership office" uk="Написати у відділ співпраці" />
               <ArrowIcon />
             </Link>
-            <a href="#" className="btn btn-secondary on-dark">
-              <T en="Download community profile (PDF)"
-                 uk="Завантажити профіль громади (PDF)" />
-            </a>
+            <Link to="/contacts" className="btn btn-secondary on-dark">
+              <T en="Request community profile (PDF)"
+                 uk="Запросити профіль громади (PDF)" />
+            </Link>
           </div>
         </div>
       </div>
