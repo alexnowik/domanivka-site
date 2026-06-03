@@ -113,11 +113,17 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 .media-title.compact{font-size:24px;line-height:1.04}
 .stat-stack{display:grid;grid-template-rows:1fr 1fr;gap:2px;min-height:0}
 .stat-tight{padding:18px 16px}
+.learning-grid{grid-template-columns:1.04fr .96fr;flex:0 0 calc(100vh - 188px)!important;height:calc(100vh - 188px)!important}
+.learning-media{grid-template-rows:1.06fr .94fr}
+.learning-copy{grid-template-rows:auto repeat(3,minmax(0,1fr))}
+.learning-intro{padding:22px 24px}
+.learning-headline{font-size:25px;font-weight:900;line-height:1.08;color:#fff;max-width:680px}
+.learning-lede{margin-top:10px;font-size:14px;line-height:1.5}
 .deck>.slide:nth-of-type(5) .si>div:nth-child(3){flex:0 0 calc(100vh - 144px)!important;height:calc(100vh - 144px)!important}
 .deck>.slide:nth-of-type(5) .si>div:nth-child(3)>div:first-child>.fc.am>div:first-child{opacity:1!important}
 .deck>.slide:nth-of-type(5) .si>div:nth-child(3)>div:first-child>.fc.am::after{content:'';position:absolute;inset:0;background:rgba(14,19,34,.46);z-index:0;pointer-events:none}
-.deck>.slide:nth-of-type(8) .si,.deck>.slide:nth-of-type(9) .si{flex:0 0 calc(100vh - 3px)!important;height:calc(100vh - 3px)!important}
-.deck>.slide:nth-of-type(8) .si>div:nth-child(3),.deck>.slide:nth-of-type(9) .si>div:nth-child(3){flex:0 0 calc(100vh - 187px)!important;height:calc(100vh - 187px)!important;min-height:0!important}
+.medical-slide .si{flex:0 0 calc(100vh - 3px)!important;height:calc(100vh - 3px)!important}
+.medical-slide .si>div:nth-child(3){flex:0 0 calc(100vh - 187px)!important;height:calc(100vh - 187px)!important;min-height:0!important}
 </style>
 </head>
 <body>
@@ -310,6 +316,68 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 </div>
 </div>
 </div>
+
+<!-- Slide: Oberig-Agro -->
+<div class="slide s-dark slide-frame">
+<div class="orn"></div>
+<div class="si slide-fill" style="padding-top:52px;padding-bottom:36px;">
+<div class="ey">Агробізнес · ветеранський кооператив</div>
+<div class="dsub" style="max-width:1450px;">СК «Оберіг-Агро» — тепличне овочівництво, органічний напрям і реінтеграція ветеранів.</div>
+<div class="content-grid learning-grid">
+  <div class="stack learning-media">
+    <div class="media-tile">
+      <img class="media-img" src="public/images/oberig_agro/488245036_1177999420815358_3283490448065465363_n.jpg" alt="Команда Оберіг-Агро біля тепличного комплексу" style="object-position:center 50%;"/>
+      <div class="media-shade soft"></div>
+      <div class="media-caption">
+        <div class="ey media-ey">Оберіг-Агро</div>
+        <div class="dsub media-title">Бізнес, що виріс із ветеранської спільноти</div>
+      </div>
+    </div>
+    <div class="two-cols">
+      <div class="media-tile">
+        <img class="media-img" src="public/images/oberig_agro/506531181_122130181472733716_6333615079609185319_n.jpg" alt="Теплиця Оберіг-Агро з овочевими культурами" style="object-position:center 48%;"/>
+        <div class="media-shade"></div>
+        <div class="media-caption compact">
+          <div class="ey media-ey compact">Тепличне господарство</div>
+          <div class="dsub media-title compact">Овочі, зелень, локальна продовольча безпека</div>
+        </div>
+      </div>
+      <div class="media-tile">
+        <img class="media-img" src="public/images/oberig_agro/635574414_26064653353151304_7345952855844811491_n.jpg" alt="Пакована продукція Оберіг-Агро" style="object-position:center 50%;"/>
+        <div class="media-shade"></div>
+        <div class="media-caption compact">
+          <div class="ey media-ey compact">Продукція</div>
+          <div class="dsub media-title compact">Вирощування, пакування, збут</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stack learning-copy">
+    <div class="fc az learning-intro">
+      <div class="learning-headline">«Оберіг-Агро» показує, як ветеранський бізнес може одночасно створювати робочі місця, продукт і соціальну опору для громади.</div>
+      <div class="fd learning-lede">Кооператив об'єднує людей навколо тепличного овочівництва та працює як модель економічної самозарадності після служби.</div>
+    </div>
+    <div class="fc am">
+      <div class="fl">Ветеранська основа</div>
+      <div class="fv fvs" style="color:var(--amber);">Кооператив учасників бойових дій</div>
+      <div class="fd">Захисники України та родини загиблих воїнів об'єдналися, щоб мати власну справу і підтримувати громаду.</div>
+    </div>
+    <div class="fc">
+      <div class="fl">Тепличний напрям</div>
+      <div class="fv fvs">19 теплиць</div>
+      <div class="fd">Огірки, томати та зелень. Проєкт CASE підтримав розширення кооперації й продовольчої безпеки громади.</div>
+    </div>
+    <div class="fc az">
+      <div class="fl">Стійкість бізнесу</div>
+      <div class="fv fvs" style="color:var(--azure);">Органіка · 30 кВт СЕС</div>
+      <div class="fd">Органічний сертифікат і власна сонячна генерація підсилюють економічну та енергетичну незалежність кооперативу.</div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- /Slide: Oberig-Agro -->
+
 <div class="slide s-dark" style="position:relative;overflow:hidden;background:#0E1322;">
 <div class="orn"></div>
 <div class="si" style="position:relative;z-index:2;padding-bottom:52px;">
@@ -368,7 +436,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 </div>
 
 
-<div class="slide s-dark" style="position:relative;overflow:hidden;background:#0E1322;">
+<div class="slide s-dark medical-slide" style="position:relative;overflow:hidden;background:#0E1322;">
 <div class="orn"></div>
 <div class="si" style="position:relative;z-index:2;padding-bottom:52px;">
 <div class="ey">Охорона здоров'я</div>
@@ -394,7 +462,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 </div>
 </div>
 
-<div class="slide s-dark" style="position:relative;overflow:hidden;background:#0E1322;">
+<div class="slide s-dark medical-slide" style="position:relative;overflow:hidden;background:#0E1322;">
 <div class="orn"></div>
 <div class="si" style="position:relative;z-index:2;padding-bottom:52px;">
 <div class="ey">Охорона здоров'я · доступність</div>
@@ -460,7 +528,129 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 </div>
 </div>
 
-<!-- Slide 11: Culture -->
+<!-- Slide 11: Lyceum Uspikh STEM -->
+<div class="slide s-dark slide-frame">
+<div class="orn"></div>
+<div class="si slide-fill" style="padding-top:52px;padding-bottom:36px;">
+<div class="ey">Освіта · Ліцей «Успіх»</div>
+<div class="dsub" style="max-width:1450px;">STEM-лабораторія для практичного навчання та інженерного мислення.</div>
+<div class="content-grid learning-grid">
+  <div class="stack learning-media">
+    <div class="media-tile">
+      <img class="media-img" src="public/images/osvita_stimdeck/photo_2026-06-04 00.53.28.jpeg" alt="STEM-лабораторія з 3D-ручками та комп'ютерами" style="object-position:center 50%;"/>
+      <div class="media-shade soft"></div>
+      <div class="media-caption">
+        <div class="ey media-ey">Ліцей «Успіх»</div>
+        <div class="dsub media-title">Сучасні технології в навчальному просторі</div>
+      </div>
+    </div>
+    <div class="two-cols">
+      <div class="media-tile">
+        <img class="media-img" src="public/images/osvita_stimdeck/photo_2026-06-04 00.53.24.jpeg" alt="Навчальна робототехніка та конструкторські моделі" style="object-position:center 52%;"/>
+        <div class="media-shade"></div>
+        <div class="media-caption compact">
+          <div class="ey media-ey compact">Робототехніка</div>
+          <div class="dsub media-title compact">Моделі, датчики, інженерне мислення</div>
+        </div>
+      </div>
+      <div class="media-tile">
+        <img class="media-img" src="public/images/osvita_stimdeck/photo_2026-06-04 00.53.34.jpeg" alt="3D-принтер і виріб STEM-лабораторії" style="object-position:center 52%;"/>
+        <div class="media-shade"></div>
+        <div class="media-caption compact">
+          <div class="ey media-ey compact">3D-друк</div>
+          <div class="dsub media-title compact">Від ідеї до готової моделі</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stack learning-copy">
+    <div class="fc az learning-intro">
+      <div class="learning-headline">Ліцей «Успіх» формує середовище, де діти навчаються через дослідження, моделювання і практику.</div>
+      <div class="fd learning-lede">STEM-простір допомагає учням працювати з сучасним обладнанням, перевіряти власні ідеї та бачити результат навчання у створених моделях.</div>
+    </div>
+    <div class="fc am">
+      <div class="fl">STEM-лабораторія</div>
+      <div class="fv fvs" style="color:var(--amber);">3D-друк · моделювання · робототехніка</div>
+      <div class="fd">Учні опановують інструменти, які поєднують природничі науки, технології, інженерію та математику.</div>
+    </div>
+    <div class="fc">
+      <div class="fl">Практичні навички</div>
+      <div class="fv fvs">Проєктне навчання</div>
+      <div class="fd">Робота з моделями, датчиками та друком розвиває логіку, точність і командну взаємодію.</div>
+    </div>
+    <div class="fc az">
+      <div class="fl">Можливості для дітей</div>
+      <div class="fv fvs" style="color:var(--azure);">Сучасна освіта поруч</div>
+      <div class="fd">Такий простір робить технології доступними для школярів громади та підтримує інтерес до інженерних професій.</div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- /Slide 11 -->
+
+<!-- Slide 12: Pottery Workshop -->
+<div class="slide s-dark slide-frame">
+<div class="orn"></div>
+<div class="si slide-fill" style="padding-top:52px;padding-bottom:36px;">
+<div class="ey">Позашкілля · Будинок дитячої творчості</div>
+<div class="dsub" style="max-width:1450px;">Гончарна майстерня Доманівської громади.</div>
+<div class="content-grid learning-grid">
+  <div class="stack learning-media">
+    <div class="media-tile">
+      <img class="media-img" src="public/images/honcharnya/476831497_1663759037569439_4204730707542183657_n.jpg" alt="Заняття в гончарній майстерні" style="object-position:center 45%;"/>
+      <div class="media-shade soft"></div>
+      <div class="media-caption">
+        <div class="ey media-ey">Гончарна майстерня</div>
+        <div class="dsub media-title">Творчість, ремесло і навчання через руки</div>
+      </div>
+    </div>
+    <div class="two-cols">
+      <div class="media-tile">
+        <img class="media-img" src="public/images/honcharnya/476461496_1663766387568704_4984340461378211029_n.jpg" alt="Робота з глиною на гончарному крузі" style="object-position:center 48%;"/>
+        <div class="media-shade"></div>
+        <div class="media-caption compact">
+          <div class="ey media-ey compact">Майстерність</div>
+          <div class="dsub media-title compact">Створення виробів із глини</div>
+        </div>
+      </div>
+      <div class="media-tile">
+        <img class="media-img" src="public/images/honcharnya/476344787_1663758800902796_5682440837032532398_n.jpg" alt="Учасниці гончарного майстеркласу з виробами" style="object-position:center 42%;"/>
+        <div class="media-shade"></div>
+        <div class="media-caption compact">
+          <div class="ey media-ey compact">Майстеркласи</div>
+          <div class="dsub media-title compact">Для дітей і дорослих</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stack learning-copy">
+    <div class="fc am learning-intro">
+      <div class="learning-headline">У Доманівському будинку дитячої творчості працює гончарна майстерня.</div>
+      <div class="fd learning-lede">Це місце, де мешканці громади можуть навчитися створювати вироби з глини та відкривати для себе традиційне ремесло в сучасному форматі.</div>
+    </div>
+    <div class="fc az">
+      <div class="fl">Для всіх охочих</div>
+      <div class="fv fvs" style="color:var(--azure);">Навчання роботі з глиною</div>
+      <div class="fd">Майстерня відкрита для тих, хто хоче спробувати гончарство та власноруч створити виріб.</div>
+    </div>
+    <div class="fc">
+      <div class="fl">Дорослі</div>
+      <div class="fv fvs">Майстеркласи</div>
+      <div class="fd">Для дорослих організовують майстеркласи, де можна познайомитися з техніками роботи на гончарному крузі.</div>
+    </div>
+    <div class="fc am">
+      <div class="fl">Діти</div>
+      <div class="fv fvs" style="color:var(--amber);">Постійні заняття</div>
+      <div class="fd">Діти можуть відвідувати заняття постійно, розвиваючи увагу, дрібну моторику та творче мислення.</div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- /Slide 12 -->
+
+<!-- Slide 13: Culture -->
 <div class="slide s-dark slide-frame">
 <div class="orn"></div>
 <div class="si slide-fill culture">
@@ -530,7 +720,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 </div>
 
 </div>
-<!-- /Slide 11 -->
+<!-- /Slide 12 -->
 
 <div class="slide s-dark" style="position:relative;overflow:hidden;background:#0E1322;">
 <div class="orn"></div>
