@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pptx": "node scripts/html-to-pptx.mjs",
+    "validate:presentation": "node scripts/validate-presentation.mjs"
   },
   "dependencies": {
     "pptxgenjs": "^4.0.1",

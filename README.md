@@ -16,6 +16,20 @@ npm run build       # outputs to dist/
 npm run preview     # serves the built dist locally
 ```
 
+## Presentation
+
+The partner presentation is edited in `presentation.html`, then exported to a
+final PowerPoint file:
+
+```bash
+npm run validate:presentation
+npm run pptx
+```
+
+`npm run pptx` validates the slide HTML first and regenerates slide screenshots
+before writing `dist/presentation.pptx`. For a quick smoke test that reuses
+existing screenshots, run `npm run pptx -- --reuse-images`.
+
 ## Deploy — GitHub Pages
 
 The workflow at `.github/workflows/deploy.yml` builds and deploys on every push to `main`.

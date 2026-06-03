@@ -10,15 +10,21 @@ const pptxgen = require('pptxgenjs');
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
 
-const input = resolve(root, process.argv[2] ?? 'presentation.html');
-const out = resolve(root, process.argv[3] ?? 'dist/presentation.pptx');
+const options = new Set(process.argv.slice(2).filter((arg) => arg.startsWith('--')));
+const positional = process.argv.slice(2).filter((arg) => !arg.startsWith('--'));
+
+const input = resolve(root, positional[0] ?? 'presentation.html');
+const out = resolve(root, positional[1] ?? 'dist/presentation.pptx');
 const exportDir = resolve(root, 'dist/pptx-export');
 const chrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const widthPx = 1920;
 const heightPx = 1080;
+const reuseImages = options.has('--reuse-images');
 
 mkdirSync(exportDir, { recursive: true });
 mkdirSync(dirname(out), { recursive: true });
+
+execFileSync(process.execPath, [resolve(__dirname, 'validate-presentation.mjs'), input], { stdio: 'inherit' });
 
 const source = readFileSync(input, 'utf8');
 const slideCount = (source.match(/<div class="slide\b/g) ?? []).length;
@@ -57,7 +63,7 @@ for (let i = 0; i < slideCount; i += 1) {
   const imagePath = resolve(exportDir, `slide-${String(i + 1).padStart(2, '0')}.png`);
   const url = `${htmlUrl}?slide=${i}`;
 
-  if (existsSync(imagePath) && statSync(imagePath).size > 0) {
+  if (reuseImages && existsSync(imagePath) && statSync(imagePath).size > 0) {
     images.push(imagePath);
     continue;
   }
