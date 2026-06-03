@@ -1,7 +1,27 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git ls-tree *)"
+      "Bash(git ls-tree *)",
+      "Bash(python3 -c \"from PIL import Image; print\\('ok'\\)\")",
+      "Bash(awk '{print $NF}')",
+      "Bash(python3 -c ' *)",
+      "WebFetch(domain:nikvesti.com)",
+      "Bash(python3 /tmp/gen_presentation.py)",
+      "Bash(python3 /tmp/gen_pres.py)",
+      "WebFetch(domain:www.linkedin.com)",
+      "Bash(grep -n \"бюджет\\\\|млн\\\\|USD\\\\|EUR\\\\|€\\\\|\\\\$\\\\|проєкт\\\\|грант\\\\|інвест\" /Users/alex/project/domanivka2024/presentation.html)",
+      "WebFetch(domain:uk.wikipedia.org)",
+      "WebFetch(domain:nibulon.com)",
+      "Bash(git -C /Users/alex/project/domanivka2024 status --short)",
+      "Bash(git -C /Users/alex/project/domanivka2024 stash list)",
+      "Bash(git -C /Users/alex/project/domanivka2024 log --all --oneline)",
+      "Bash(git -C /Users/alex/project/domanivka2024 show HEAD:presentation.html)",
+      "Bash(git -C /Users/alex/project/domanivka2024 show 50817cd:presentation.html)",
+      "Bash(# Check if bin9fwmby.txt has the full slide structure \\(it was from sed reading lines 100-170\\) *)",
+      "Read(//Users/alex/.vscode/extensions/**)",
+      "Read(//Users/alex/Library/Application Support/Code/User/History/**)",
+      "Bash(xargs ls -la)",
+      "Bash(sort -k5 -rn)"
     ]
   }
 }
