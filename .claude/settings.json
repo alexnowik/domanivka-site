@@ -21,7 +21,13 @@
       "Read(//Users/alex/.vscode/extensions/**)",
       "Read(//Users/alex/Library/Application Support/Code/User/History/**)",
       "Bash(xargs ls -la)",
-      "Bash(sort -k5 -rn)"
+      "Bash(sort -k5 -rn)",
+      "Bash(brew install *)",
+      "Bash(pdftotext /Users/alex/Downloads/95-АР.pdf -)",
+      "Bash(pdftoppm -r 100 -png /Users/alex/Downloads/95-АР.pdf /tmp/pdf_page)",
+      "Bash(python3 -c \"import fitz; doc = fitz.open\\('/Users/alex/Downloads/95-АР.pdf'\\); print\\(f'Pages: {len\\(doc\\)}'\\); print\\(doc[0].get_text\\(\\)[:500]\\)\")",
+      "Bash(git -C /Users/alex/project/domanivka2024 remote -v)",
+      "Bash(gh api *)"
     ]
   }
 }
