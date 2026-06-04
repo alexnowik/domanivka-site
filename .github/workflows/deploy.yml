@@ -32,8 +32,8 @@ jobs:
 
       - run: npm run build
 
-      - name: Copy presentation.html to dist
-        run: cp presentation.html dist/
+      - name: Prepare presentation.html for GitHub Pages
+        run: node scripts/prepare-presentation-for-pages.mjs
 
       - uses: actions/configure-pages@v4
 
