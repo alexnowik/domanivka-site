@@ -2,316 +2,518 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageIntro from '../components/PageIntro.jsx';
 import { T, useLang } from '../i18n.jsx';
-import { ArrowIcon, DropIcon, HouseIcon, SchoolIcon } from '../icons.jsx';
+import { asset } from '../lib/asset.js';
 
 const TOTALS = [
-  { num: '10', en: 'Project directions', uk: 'Напрямів проєктів' },
-  { num: '3', en: 'With design documents ready', uk: 'З готовою проєктною документацією' },
-  { num: '4', en: 'Active programmes', uk: 'Чинних програм' },
-  { num: '14,401', en: 'Residents directly served', uk: 'Мешканців у фокусі' },
-  { num: '729.7 km²', en: 'Community territory', uk: 'Площа громади', highlight: true },
+  { num: '18', en: 'Internationally supported projects', uk: 'Проєктів із міжнародною підтримкою' },
+  { num: '225.1M UAH', en: 'Recorded funding', uk: 'Зафіксоване фінансування' },
+  { num: '14', en: 'Completed / implemented', uk: 'Завершено або реалізовано' },
+  { num: '3', en: 'Active or finishing', uk: 'Тривають або завершуються' },
+  { num: '2023-2027', en: 'Implementation horizon', uk: 'Горизонт реалізації', highlight: true },
 ];
 
 const FILTERS = [
-  { key: 'all', en: 'All directions', uk: 'Усі напрями' },
-  { key: 'in_progress', en: 'Documents ready / in progress', uk: 'Документи готові / триває' },
-  { key: 'planned', en: 'Planned / programme active', uk: 'Заплановано / програма діє' },
-  { key: 'needs_funding', en: 'Funding needed', uk: 'Потрібне фінансування' },
+  { key: 'all', en: 'All projects', uk: 'Усі проєкти' },
+  { key: 'completed', en: 'Completed', uk: 'Завершені' },
+  { key: 'in_progress', en: 'Active / finishing', uk: 'Тривають / завершуються' },
+  { key: 'preparing', en: 'Preparation stage', uk: 'Підготовка до робіт' },
 ];
 
 const SORT_OPTIONS = [
-  { key: 'priority', en: 'By priority', uk: 'За пріоритетом' },
+  { key: 'priority', en: 'By register order', uk: 'За реєстром' },
+  { key: 'amount', en: 'By funding', uk: 'За сумою' },
   { key: 'category', en: 'By category', uk: 'За категорією' },
   { key: 'status', en: 'By status', uk: 'За статусом' },
 ];
 
-const STATUS_ORDER = ['in_progress', 'needs_funding', 'planned'];
-
-const WaterIcon = DropIcon;
-const HospitalIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <rect x="3" y="6" width="18" height="14" rx="1" />
-    <path d="M12 10v6M9 13h6" />
-  </svg>
-);
-const EnergyIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <path d="M13 2L4 14h7l-1 8 9-12h-7z" />
-  </svg>
-);
-const WasteIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 10v6M14 10v6" />
-  </svg>
-);
-const RoadIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <path d="M5 21l3-18M19 21l-3-18M12 4v2M12 10v2M12 16v2" />
-  </svg>
-);
-const InvestIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <path d="M3 17l6-6 4 4 8-8M14 7h7v7" />
-  </svg>
-);
-const GreenhouseIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <path d="M3 21V10l9-6 9 6v11M3 10h18M12 4v17M7 13v8M17 13v8" />
-  </svg>
-);
-const AccessIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <circle cx="12" cy="5" r="2" />
-    <path d="M12 7v6h5M8 11l4 2M9 14l3 8M15 22l-3-8" />
-  </svg>
-);
-const CultureIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <path d="M4 4h16v16H4z" />
-    <path d="M4 8h16M8 4v16" />
-  </svg>
-);
+const STATUS_ORDER = ['in_progress', 'preparing', 'completed'];
 
 const PROJECTS = [
   {
-    status: 'in_progress', badge: 'urgent', tint: 'tint-2', Icon: WaterIcon,
-    photoTag: { en: 'Water · network upgrade', uk: 'Вода · модернізація мережі' },
-    badgeLabel: { en: 'Very high priority', uk: 'Дуже високий пріоритет' },
-    cat: { en: 'Water / critical infrastructure', uk: 'Вода / критична інфраструктура' },
+    status: 'completed',
+    badge: 'completed',
+    category: { en: 'Agriculture / food security', uk: 'Аграрний розвиток / продовольча безпека' },
+    photo: 'images/oberig_agro/489023890_1087868690044618_4109634621948471375_n.jpg',
+    photoTag: { en: 'Oberih-Agro greenhouse', uk: 'Тепличний комплекс «Оберіг-Агро»' },
+    badgeLabel: { en: 'Implemented', uk: 'Реалізовано' },
     title: {
-      en: 'Clean drinking water and water-supply modernisation',
-      uk: 'Якісна питна вода та модернізація водопостачання громади',
+      en: 'CASE support for food and energy security in rural communities',
+      uk: 'Проєкт CASE: підтримка продовольчої та енергетичної безпеки',
     },
     desc: {
-      en: 'Documents are ready for the 6,709 m water main from Zbroshkove to smt Domanivka and for a new exploratory well in Tsaredarivka. Sewage and stormwater drains in Domanivka are also being designed.',
-      uk: 'Готова документація на реконструкцію водогону 6 709 м з с. Зброшкове до смт Доманівка та буріння розвідувальної свердловини в Царедарівці. Готується оновлення господарсько-побутової та зливової каналізації в Доманівці.',
+      en: 'Oxfam supported CASE initiatives in Domanivka, including cooperation, autonomy, safety and protection, with the construction of a greenhouse complex at the Oberih-Agro cooperative.',
+      uk: 'Oxfam підтримала ініціативи CASE у Доманівській громаді: продовольча та енергетична безпека, кооперація, автономія, безпека і захист, зокрема будівництво тепличного комплексу в кооперативі «Оберіг-Агро».',
     },
-    progressStrong: { en: 'Design ready', uk: 'Документація готова' },
-    progressRight: { en: 'Funding needed', uk: 'Потрібне фінансування' },
-    progress: 20,
+    amount: { en: 'UAH 32.0M', uk: '32,0 млн грн' },
+    amountValue: 32000,
+    progress: 100,
+    progressStrong: { en: 'Implemented', uk: 'Реалізовано' },
+    progressRight: '2023-2024',
     facts: [
-      [{ en: 'Locations', uk: 'Локації' }, 'Domanivka, Zbroshkove, Tsaredarivka, Zabary, Olexandrivka'],
-      [{ en: 'Beneficiaries', uk: 'Отримувачі' }, { en: 'Whole community, IDPs, business', uk: 'Уся громада, ВПО, бізнес' }],
-      [{ en: 'Support needed', uk: 'Потрібна допомога' }, { en: 'Funding · pipes · pumps · expertise', uk: 'Фінансування · труби · насоси · експертиза' }],
-      [{ en: 'Status', uk: 'Статус' }, { en: 'Documents ready', uk: 'Документація готова' }],
+      [{ en: 'Partner', uk: 'Партнер' }, 'Oxfam'],
+      [{ en: 'Location', uk: 'Локація' }, { en: 'Domanivka, Oberih-Agro', uk: 'с-ще Доманівка, «Оберіг-Агро»' }],
+      [{ en: 'Funding', uk: 'Фінансування' }, { en: 'International organisations', uk: 'Кошти міжнародних організацій' }],
+      [{ en: 'Period', uk: 'Період' }, '2023-2024'],
     ],
-    cta: { en: 'Take this on →', uk: 'Підтримати →' },
   },
   {
-    status: 'in_progress', badge: 'urgent', tint: 'tint-5', Icon: HospitalIcon,
-    photoTag: { en: 'Domanivka General Hospital', uk: 'Доманівська багатопрофільна лікарня' },
-    badgeLabel: { en: 'Very high priority', uk: 'Дуже високий пріоритет' },
-    cat: { en: 'Healthcare / energy', uk: 'Охорона здоров’я / енергетика' },
+    status: 'completed',
+    badge: 'completed',
+    category: { en: 'Agriculture / reforms', uk: 'Аграрний розвиток / реформи' },
+    photo: 'images/oberig_agro/635574414_26064653353151304_7345952855844811491_n.jpg',
+    photoTag: { en: 'Gardens of Victory', uk: '«Сади Перемоги»' },
+    badgeLabel: { en: 'Implemented', uk: 'Реалізовано' },
     title: {
-      en: 'Healthcare infrastructure and hospital energy resilience',
-      uk: 'Модернізація медичної інфраструктури та енергонезалежність лікарні',
+      en: 'SURGe initiative "Gardens of Victory"',
+      uk: 'SURGe: ініціатива «Сади Перемоги»',
     },
     desc: {
-      en: 'KNP "Domanivka General Hospital" is connected to eHealth and serves 15,978 people on primary care. Free hospital rooms can host physiotherapy and rehabilitation. A solar PV system for medical infrastructure is a separate priority.',
-      uk: 'КНП «Доманівська багатопрофільна лікарня» підключена до eHealth, охоплює 15 978 осіб первинної допомоги. У вільних приміщеннях можна організувати фізіотерапію та реабілітацію. Окремий напрям — сонячна станція для медичної інфраструктури.',
+      en: 'The Government of Canada, Alinea International and CDF Canada supported the SURGe reform-support initiative and the Gardens of Victory activity at Oberih-Agro.',
+      uk: 'Уряд Канади, Alinea International та CDF Canada підтримали ініціативу SURGe «Супровід урядових реформ в Україні» і напрям «Сади Перемоги» на базі СК «Оберіг-Агро».',
     },
-    progressStrong: { en: 'Partly implemented', uk: 'Частково реалізовано' },
-    progressRight: { en: 'Equipment needed', uk: 'Потрібне обладнання' },
-    progress: 35,
+    amount: { en: 'UAH 800.0K', uk: '800,0 тис. грн' },
+    amountValue: 800,
+    progress: 100,
+    progressStrong: { en: 'Implemented', uk: 'Реалізовано' },
+    progressRight: '2024',
     facts: [
-      [{ en: 'Location', uk: 'Локація' }, 'KNP Domanivka General Hospital'],
-      [{ en: 'Primary care', uk: 'Первинна допомога' }, '15,978 people'],
-      [{ en: 'Support needed', uk: 'Потрібна допомога' }, { en: 'Equipment · solar · rehab · generators', uk: 'Обладнання · СЕС · реабілітація · генератори' }],
-      [{ en: 'Status', uk: 'Статус' }, { en: 'Co-funding open', uk: 'Спільне фінансування' }],
+      [{ en: 'Partner', uk: 'Партнер' }, { en: 'Canada / Alinea / CDF Canada', uk: 'Уряд Канади / Alinea / CDF Canada' }],
+      [{ en: 'Location', uk: 'Локація' }, { en: 'Domanivka, Oberih-Agro', uk: 'с-ще Доманівка, «Оберіг-Агро»' }],
+      [{ en: 'Funding', uk: 'Фінансування' }, { en: 'International organisations', uk: 'Кошти міжнародних організацій' }],
+      [{ en: 'Year', uk: 'Рік' }, '2024'],
     ],
-    cta: { en: 'Take this on →', uk: 'Підтримати →' },
   },
   {
-    status: 'in_progress', badge: 'in-progress', tint: 'tint-4', Icon: EnergyIcon,
-    photoTag: { en: 'Pellets plant · community-owned', uk: 'Пелетна лінія · комунальна' },
-    badgeLabel: { en: 'High priority', uk: 'Високий пріоритет' },
-    cat: { en: 'Energy / climate resilience', uk: 'Енергетика / кліматична стійкість' },
+    status: 'completed',
+    badge: 'completed',
+    category: { en: 'Governance / data', uk: 'Управління / дані' },
+    photo: 'images/iom_team.jpg',
+    photoTag: { en: 'Human Dimension', uk: '«Людський вимір»' },
+    badgeLabel: { en: 'Implemented', uk: 'Реалізовано' },
     title: {
-      en: 'Energy independence and alternative fuel development',
-      uk: 'Енергонезалежність громади та розвиток альтернативного палива',
+      en: 'Human Dimension: data-driven governance and community engagement',
+      uk: '«Людський вимір»: управління за допомогою даних та залучення громад',
     },
     desc: {
-      en: 'A community-owned enterprise "Domanivka Agro-Fuel Company" has been formed to produce wood pellets. The first industrial-line equipment is being delivered. A 250 m² energy-purpose land plot is reserved near Zelenyi Yar.',
-      uk: 'Створено комерційне комунальне підприємство «Доманівська аграрно-паливна компанія» для виробництва пелетів. Розпочато поставку обладнання промислової лінії. Зарезервовано ділянку 250 м² для енергетики біля с. Зелений Яр.',
+      en: 'IOM, the Western Ukrainian Resource Centre and the Government of Canada supported Domanivka settlement council in improving data use and engagement practices.',
+      uk: 'МОМ у партнерстві із Західноукраїнським ресурсним центром за фінансування Уряду Канади підтримала Доманівську селищну раду в роботі з даними та залученням жителів.',
     },
-    progressStrong: { en: 'Concept ready', uk: 'Концепція готова' },
-    progressRight: { en: 'Scaling support needed', uk: 'Потрібне масштабування' },
-    progress: 30,
+    amount: { en: 'UAH 439.5K', uk: '439,5 тис. грн' },
+    amountValue: 439.516,
+    progress: 100,
+    progressStrong: { en: 'Implemented', uk: 'Реалізовано' },
+    progressRight: '2024',
     facts: [
-      [{ en: 'Location', uk: 'Локація' }, { en: 'Communal facilities, Zelenyi Yar', uk: 'Комунальні заклади, Зелений Яр' }],
-      [{ en: 'Beneficiaries', uk: 'Отримувачі' }, { en: 'Schools, hospital, budget', uk: 'Школи, лікарня, бюджет громади' }],
-      [{ en: 'Support needed', uk: 'Потрібна допомога' }, { en: 'Pellet line · solar · storage · audits', uk: 'Пелетна лінія · СЕС · накопичувачі · аудити' }],
-      [{ en: 'Status', uk: 'Статус' }, { en: 'KP formed', uk: 'КП створено' }],
+      [{ en: 'Partner', uk: 'Партнер' }, { en: 'IOM / WURC / Canada', uk: 'МОМ / ЗУРЦ / Уряд Канади' }],
+      [{ en: 'Location', uk: 'Локація' }, { en: 'Domanivka settlement council', uk: 'Доманівська селищна рада' }],
+      [{ en: 'Funding', uk: 'Фінансування' }, { en: 'International organisations', uk: 'Кошти міжнародних організацій' }],
+      [{ en: 'Year', uk: 'Рік' }, '2024'],
     ],
-    cta: { en: 'Learn more →', uk: 'Детальніше →' },
   },
   {
-    status: 'planned', badge: 'in-progress', tint: 'tint-1', Icon: HouseIcon,
-    photoTag: { en: 'IDP housing programme 2022–2026', uk: 'Програма житла для ВПО 2022–2026' },
-    badgeLabel: { en: 'High priority', uk: 'Високий пріоритет' },
-    cat: { en: 'Social support / housing', uk: 'Соціальна підтримка / житло' },
+    status: 'completed',
+    badge: 'completed',
+    category: { en: 'Healthcare resilience', uk: 'Стійкість медицини' },
+    photo: 'images/hospital_team.jpg',
+    photoTag: { en: 'Hospital and PHC centre', uk: 'Лікарня та Центр ПМСД' },
+    badgeLabel: { en: 'Implemented', uk: 'Реалізовано' },
     title: {
-      en: 'Housing and support for internally displaced persons',
-      uk: 'Житло та підтримка внутрішньо переміщених осіб',
+      en: 'Strengthening healthcare capacity under the EU Strong Regions programme',
+      uk: 'Посилення спроможності закладів охорони здоров’я',
     },
     desc: {
-      en: 'IDP count: 13 (2021) → 2,425 (2022) → 1,992 (2023) → 1,093 (2024). The community runs an IDP housing programme for 2022–2026 and the "Turbota" social support programme.',
-      uk: 'Кількість ВПО: 13 (2021) → 2 425 (2022) → 1 992 (2023) → 1 093 (2024). Діє програма забезпечення житлом ВПО на 2022–2026 роки та програма соціального захисту «Турбота».',
+      en: "The EU and Germany's BMZ supported Domanivka General Hospital and the Primary Healthcare Centre under the EU Strong Regions special support programme for Ukraine.",
+      uk: 'Європейський Союз та Федеральне міністерство економічного співробітництва та розвитку Німеччини (BMZ) підтримали КНП «Доманівська багатопрофільна лікарня» і КНП «Центр ПМСД» у межах програми ЄС «Міцні Регіони».',
     },
-    progressStrong: { en: 'Programme active', uk: 'Програма діє' },
-    progressRight: { en: 'Housing solutions needed', uk: 'Потрібні житлові рішення' },
-    progress: 45,
+    amount: { en: 'EUR 325.5K / UAH 15.6M', uk: '325,5 тис. євро / 15,6 млн грн' },
+    amountValue: 15624,
+    progress: 100,
+    progressStrong: { en: 'Implemented', uk: 'Реалізовано' },
+    progressRight: { en: 'EU / BMZ', uk: 'ЄС / BMZ' },
     facts: [
-      [{ en: 'IDPs (2024)', uk: 'ВПО (2024)' }, '1,093'],
-      [{ en: 'Families in difficulty', uk: 'Сім’ї у складних обставинах' }, '130'],
-      [{ en: 'Support needed', uk: 'Потрібна допомога' }, { en: 'Housing programme · repairs · furniture · services', uk: 'Житлова програма · ремонти · меблі · послуги' }],
-      [{ en: 'Status', uk: 'Статус' }, { en: 'Programme through 2026', uk: 'Програма до 2026' }],
+      [{ en: 'Partner', uk: 'Партнер' }, { en: 'EU / BMZ', uk: 'ЄС / BMZ' }],
+      [{ en: 'Location', uk: 'Локація' }, { en: 'Hospital and PHC centre', uk: 'Лікарня та Центр ПМСД' }],
+      [{ en: 'Funding', uk: 'Фінансування' }, { en: 'International organisations', uk: 'Кошти міжнародних організацій' }],
+      [{ en: 'Status', uk: 'Статус' }, { en: 'Implemented', uk: 'Реалізовано' }],
     ],
-    cta: { en: 'Take this on →', uk: 'Підтримати →' },
   },
   {
-    status: 'planned', badge: 'in-progress', tint: 'tint-3', Icon: WasteIcon,
-    photoTag: { en: 'Waste management · 31 settlements', uk: 'Поводження з відходами · 31 нп' },
-    badgeLabel: { en: 'High priority', uk: 'Високий пріоритет' },
-    cat: { en: 'Environment / municipal services', uk: 'Екологія / благоустрій' },
+    status: 'completed',
+    badge: 'completed',
+    category: { en: 'Municipal services', uk: 'Комунальні послуги' },
+    photo: 'images/entrance.jpg',
+    photoTag: { en: 'Municipal accountability', uk: 'Підзвітність ОМС' },
+    badgeLabel: { en: 'Implemented', uk: 'Реалізовано' },
     title: {
-      en: 'Modern waste management and clean settlements',
-      uk: 'Сучасне управління відходами та чисті населені пункти',
+      en: 'Improving the efficiency and accountability of local self-government',
+      uk: 'Підвищення ефективності роботи і підзвітності органів місцевого самоврядування',
     },
     desc: {
-      en: 'Waste sources: 57% private households, 32% multi-storey, 11% business. Programmes for municipal improvement (2021–2025) and waste handling are active; containers, trucks, sites and sorting are needed.',
-      uk: 'Джерела відходів: 57% приватні будинки, 32% багатоквартирні, 11% бізнес. Діють програми благоустрою (2021–2025) та поводження з ТПВ; потрібні контейнери, спецтехніка, майданчики й сортування.',
+      en: "USAID Hoverla supported municipal enterprises \"Domanivske\" and \"Marynivske\", strengthening the community's local services and accountability capacity.",
+      uk: 'Програма USAID «Говерла» підтримала КП «Доманівське» та КП «Маринівське», посилюючи комунальні послуги й підзвітність місцевого самоврядування.',
     },
-    progressStrong: { en: 'Programme active', uk: 'Програма діє' },
-    progressRight: { en: 'Equipment needed', uk: 'Потрібне обладнання' },
+    amount: { en: 'UAH 12.9M', uk: '12,9 млн грн' },
+    amountValue: 12945.554,
+    progress: 100,
+    progressStrong: { en: 'Implemented', uk: 'Реалізовано' },
+    progressRight: '2025',
+    facts: [
+      [{ en: 'Partner', uk: 'Партнер' }, 'USAID Hoverla'],
+      [{ en: 'Location', uk: 'Локація' }, { en: 'KP Domanivske, KP Marynivske', uk: 'КП «Доманівське», КП «Маринівське»' }],
+      [{ en: 'Funding', uk: 'Фінансування' }, { en: 'International organisations', uk: 'Кошти міжнародних організацій' }],
+      [{ en: 'Year', uk: 'Рік' }, '2025'],
+    ],
+  },
+  {
+    status: 'in_progress',
+    badge: 'in-progress',
+    category: { en: 'Housing / IDPs', uk: 'Житло / ВПО' },
+    photo: 'images/vpo_house.jpg',
+    photoTag: { en: '9 modular houses', uk: '9 модульних будинків' },
+    badgeLabel: { en: 'Finishing stage', uk: 'На стадії завершення' },
+    title: {
+      en: 'Construction of modular estate-type houses in Domanivka',
+      uk: 'Будівництво модульних будинків садибного типу',
+    },
+    desc: {
+      en: 'The Ukraine Recovery Fund and the Government of Denmark are supporting nine modular estate-type houses in Domanivka.',
+      uk: 'Фонд відбудови України та уряд Данії підтримують будівництво 9 модульних будинків садибного типу в селищі Доманівка.',
+    },
+    amount: { en: 'UAH 22.1M', uk: '22,1 млн грн' },
+    amountValue: 22056.975,
+    progress: 90,
+    progressStrong: { en: 'Finishing stage', uk: 'Стадія завершення' },
+    progressRight: '2026',
+    facts: [
+      [{ en: 'Partner', uk: 'Партнер' }, { en: 'Ukraine Recovery Fund / Denmark', uk: 'Фонд відбудови України / уряд Данії' }],
+      [{ en: 'Location', uk: 'Локація' }, { en: 'Domanivka', uk: 'с-ще Доманівка' }],
+      [{ en: 'Scale', uk: 'Масштаб' }, { en: '9 houses', uk: '9 будинків' }],
+      [{ en: 'Planned year', uk: 'Плановий рік' }, '2026'],
+    ],
+  },
+  {
+    status: 'in_progress',
+    badge: 'in-progress',
+    category: { en: 'Energy independence', uk: 'Енергонезалежність' },
+    photo: 'images/pellets_equipment.jpg',
+    photoTag: { en: 'Biofuel technologies', uk: 'Біопаливні технології' },
+    badgeLabel: { en: 'In progress', uk: 'Реалізується' },
+    title: {
+      en: 'Biofuel technologies for community energy independence',
+      uk: 'Енергонезалежність громади через біопаливні технології',
+    },
+    desc: {
+      en: 'The communal enterprise Domanivka Agro-Fuel Company is implementing biofuel technologies to improve energy independence and energy efficiency.',
+      uk: 'КП «Доманівська аграрно-паливна компанія» впроваджує біопаливні технології для енергонезалежності та енергоефективності громади.',
+    },
+    amount: { en: 'UAH 9.0M', uk: '9,0 млн грн' },
+    amountValue: 9000,
+    progress: 70,
+    progressStrong: { en: 'In progress', uk: 'Реалізується' },
+    progressRight: '2026',
+    facts: [
+      [{ en: 'Partner funding', uk: 'Партнерські кошти' }, { en: 'UAH 9.0M', uk: '9,0 млн грн' }],
+      [{ en: 'Location', uk: 'Локація' }, { en: 'Domanivka Agro-Fuel Company', uk: 'КП «Доманівська аграрно-паливна компанія»' }],
+      [{ en: 'Direction', uk: 'Напрям' }, { en: 'Biofuel and energy efficiency', uk: 'Біопаливо та енергоефективність' }],
+      [{ en: 'Planned year', uk: 'Плановий рік' }, '2026'],
+    ],
+  },
+  {
+    status: 'in_progress',
+    badge: 'in-progress',
+    category: { en: 'Water supply', uk: 'Водопостачання' },
+    photo: 'images/location_map_domanivka.png',
+    photoTag: { en: 'Tsaredarivka well', uk: 'Свердловина в Царедарівці' },
+    badgeLabel: { en: 'Finishing stage', uk: 'Стадія завершення' },
+    title: {
+      en: 'New exploratory production well in Tsaredarivka',
+      uk: 'Нове будівництво розвідувально-експлуатаційної свердловини в с. Царедарівка',
+    },
+    desc: {
+      en: 'NGO Desyate Kvitnya and the European Union are supporting a new exploratory production well in Tsaredarivka, Voznesensk district.',
+      uk: 'ГО «Десяте квітня» та Європейський Союз підтримують будівництво нової розвідувально-експлуатаційної свердловини в с. Царедарівка Вознесенського району.',
+    },
+    amount: { en: 'UAH 4.5M', uk: '4,5 млн грн' },
+    amountValue: 4490.85,
+    progress: 88,
+    progressStrong: { en: 'Finishing stage', uk: 'Стадія завершення' },
+    progressRight: '2025-2026',
+    facts: [
+      [{ en: 'Partner', uk: 'Партнер' }, { en: 'NGO Desyate Kvitnya / EU', uk: 'ГО «Десяте квітня» / ЄС' }],
+      [{ en: 'Location', uk: 'Локація' }, { en: 'Tsaredarivka', uk: 'с. Царедарівка' }],
+      [{ en: 'Funding', uk: 'Фінансування' }, { en: 'International organisations', uk: 'Кошти міжнародних організацій' }],
+      [{ en: 'Period', uk: 'Період' }, '2025-2026'],
+    ],
+  },
+  {
+    status: 'completed',
+    badge: 'completed',
+    category: { en: 'Healthcare / solar energy', uk: 'Медицина / сонячна енергія' },
+    photo: 'images/hospital_front.jpg',
+    photoTag: { en: 'Hospital solar station', uk: 'СЕС для лікарні' },
+    badgeLabel: { en: 'Implemented', uk: 'Реалізовано' },
+    title: {
+      en: 'Solar station for Domanivka General Hospital',
+      uk: 'Встановлення сонячної станції в КНП «Доманівська БП лікарня»',
+    },
+    desc: {
+      en: 'GIZ-supported international funding provided a 53 kW/h solar station for Domanivka General Hospital.',
+      uk: 'За міжнародної підтримки GIZ для КНП «Доманівська багатопрофільна лікарня» встановлено сонячну станцію потужністю 53 кВт/год.',
+    },
+    amount: { en: 'UAH 2.2M', uk: '2,2 млн грн' },
+    amountValue: 2158.072,
+    progress: 100,
+    progressStrong: { en: 'Implemented', uk: 'Реалізовано' },
+    progressRight: '2024',
+    facts: [
+      [{ en: 'Partner', uk: 'Партнер' }, 'GIZ'],
+      [{ en: 'Location', uk: 'Локація' }, { en: 'Domanivka General Hospital', uk: 'КНП «Доманівська БП лікарня»' }],
+      [{ en: 'Capacity', uk: 'Потужність' }, '53 kW/h'],
+      [{ en: 'Year', uk: 'Рік' }, '2024'],
+    ],
+  },
+  {
+    status: 'completed',
+    badge: 'completed',
+    category: { en: 'Primary healthcare / solar energy', uk: 'Первинка / сонячна енергія' },
+    photo: 'images/hospital_lab.jpg',
+    photoTag: { en: 'PHC solar station', uk: 'СЕС для ЦПМСД' },
+    badgeLabel: { en: 'Implemented', uk: 'Реалізовано' },
+    title: {
+      en: 'Solar station for Domanivka Primary Healthcare Centre',
+      uk: 'Встановлення сонячної станції для КНП «Доманівський ЦПМСД»',
+    },
+    desc: {
+      en: 'GIZ-supported international funding equipped Domanivka Primary Healthcare Centre with a solar station.',
+      uk: 'За міжнародної підтримки GIZ КНП «Доманівський центр ПМСД» отримав сонячну станцію.',
+    },
+    amount: { en: 'UAH 564.1K', uk: '564,1 тис. грн' },
+    amountValue: 564.073,
+    progress: 100,
+    progressStrong: { en: 'Implemented', uk: 'Реалізовано' },
+    progressRight: '2024',
+    facts: [
+      [{ en: 'Partner', uk: 'Партнер' }, 'GIZ'],
+      [{ en: 'Location', uk: 'Локація' }, { en: 'Domanivka Primary Healthcare Centre', uk: 'КНП «Доманівський ЦПМСД»' }],
+      [{ en: 'Funding', uk: 'Фінансування' }, { en: 'International organisations', uk: 'Кошти міжнародних організацій' }],
+      [{ en: 'Year', uk: 'Рік' }, '2024'],
+    ],
+  },
+  {
+    status: 'preparing',
+    badge: 'planned',
+    category: { en: 'Water supply', uk: 'Водопостачання' },
+    photo: 'images/location_map_domanivka_tinted.png',
+    photoTag: { en: 'Zbroshkove to Domanivka', uk: 'Зброшкове - Доманівка' },
+    badgeLabel: { en: 'Preparation stage', uk: 'Підготовка до робіт' },
+    title: {
+      en: 'Reconstruction of external water-supply networks from Zbroshkove to Domanivka',
+      uk: 'Реконструкція зовнішніх мереж водопостачання від с. Зброшкове до Доманівки',
+    },
+    desc: {
+      en: 'NEFCO and the Government of Denmark are supporting reconstruction of water-supply networks from the existing well in Zbroshkove to Domanivka. The project is at the work-preparation stage.',
+      uk: 'Північна екологічна фінансова корпорація НЕФКО та уряд Данії підтримують реконструкцію мереж водопостачання від існуючої свердловини в с. Зброшкове до Доманівки. Проєкт на етапі підготовки до робіт.',
+    },
+    amount: { en: 'UAH 82.5M incl. local co-funding', uk: '82,5 млн грн зі співфінансуванням громади' },
+    amountValue: 82546.5,
     progress: 25,
+    progressStrong: { en: 'Preparing works', uk: 'Підготовка до робіт' },
+    progressRight: '30.09.2027',
     facts: [
-      [{ en: 'Locations', uk: 'Локації' }, { en: '31 settlements', uk: '31 населений пункт' }],
-      [{ en: 'TBO density', uk: 'Густина ТПВ' }, '1 m³ ≈ 270 kg'],
-      [{ en: 'Support needed', uk: 'Потрібна допомога' }, { en: 'Containers · trucks · sites · sorting', uk: 'Контейнери · техніка · майданчики · сортування' }],
-      [{ en: 'Status', uk: 'Статус' }, { en: 'Programme through 2025', uk: 'Програма до 2025' }],
+      [{ en: 'Partner', uk: 'Партнер' }, { en: 'NEFCO / Denmark', uk: 'НЕФКО / уряд Данії' }],
+      [{ en: 'International funding', uk: 'Міжнародні кошти' }, { en: 'UAH 71.7M', uk: '71,7 млн грн' }],
+      [{ en: 'Local budget', uk: 'Місцевий бюджет' }, { en: 'UAH 10.8M', uk: '10,8 млн грн' }],
+      [{ en: 'Target date', uk: 'Цільова дата' }, '30.09.2027'],
     ],
-    cta: { en: 'Take this on →', uk: 'Підтримати →' },
   },
   {
-    status: 'needs_funding', badge: 'urgent', tint: 'tint-6', Icon: RoadIcon,
-    photoTag: { en: 'Municipal roads · 292.7 km', uk: 'Комунальні дороги · 292,7 км' },
-    badgeLabel: { en: 'Open for partner', uk: 'Відкритий для партнера' },
-    cat: { en: 'Roads / accessibility', uk: 'Дороги / мобільність' },
+    status: 'completed',
+    badge: 'completed',
+    category: { en: 'Healthcare infrastructure', uk: 'Медична інфраструктура' },
+    photo: 'images/hospital_callcenter.jpg',
+    photoTag: { en: 'Hospital call centre', uk: 'Кол-центр лікарні' },
+    badgeLabel: { en: 'Completed', uk: 'Завершено' },
     title: {
-      en: 'Road recovery and transport accessibility',
-      uk: 'Відновлення комунальних доріг та транспортної доступності',
+      en: 'Polyclinic first-floor overhaul, call centre and roof works',
+      uk: 'Капітальний ремонт поліклініки, кол-центр і перекриття даху',
     },
     desc: {
-      en: '292.7 km of municipal roads — assessed as 100% in emergency condition. The community also hosts 80 km of state roads, 63 km of oblast roads (P-75: 42 km, condition 2/5; T-15-06: 34 km, 1/5), and 17 bridges.',
-      uk: 'Загальна протяжність комунальних доріг — 292,7 км; 100% в аварійному стані. Також на території громади — 80 км держдоріг, 63 км обласних (Р-75: 42 км, 2/5; Т-15-06: 34 км, 1/5) та 17 мостів.',
+      en: 'The Government of Germany and GIZ supported the first-floor overhaul of the hospital polyclinic, call-centre setup and roof works at 6 Pyrohova Street.',
+      uk: 'Уряд Німеччини та GIZ підтримали капітальний ремонт 1 поверху поліклініки, облаштування кол-центру та перекриття даху поліклінічного відділення КНП «Доманівська багатопрофільна лікарня» по вул. Пірогова, 6.',
     },
-    progressStrong: { en: 'Co-funding needed', uk: 'Потрібне співфінансування' },
-    progressRight: { en: '292.7 km · 17 bridges', uk: '292,7 км · 17 мостів' },
-    progress: 5,
+    amount: { en: 'UAH 8.6M', uk: '8,6 млн грн' },
+    amountValue: 8619.669,
+    progress: 100,
+    progressStrong: { en: 'Completed', uk: 'Завершено' },
+    progressRight: '2024',
     facts: [
-      [{ en: 'Municipal roads', uk: 'Комунальні дороги' }, '292.7 km'],
-      [{ en: 'Bridges', uk: 'Мости' }, '17'],
-      [{ en: 'Support needed', uk: 'Потрібна допомога' }, { en: 'Surface · drainage · bridges · machinery', uk: 'Покриття · водовідведення · мости · техніка' }],
-      [{ en: 'Status', uk: 'Статус' }, { en: 'Funding needed', uk: 'Потрібне фінансування' }],
+      [{ en: 'Partner', uk: 'Партнер' }, { en: 'Government of Germany / GIZ', uk: 'Уряд Німеччини / GIZ' }],
+      [{ en: 'Location', uk: 'Локація' }, { en: '6 Pyrohova St', uk: 'вул. Пірогова, 6' }],
+      [{ en: 'Funding', uk: 'Фінансування' }, { en: 'International organisations', uk: 'Кошти міжнародних організацій' }],
+      [{ en: 'Year', uk: 'Рік' }, '2024'],
     ],
-    cta: { en: 'Take this on →', uk: 'Підтримати →' },
   },
   {
-    status: 'planned', badge: 'in-progress', tint: 'tint-4', Icon: InvestIcon,
-    photoTag: { en: 'Investment sites · free plots', uk: 'Інвестиційні ділянки · вільні землі' },
-    badgeLabel: { en: 'Strategic direction', uk: 'Стратегічний напрям' },
-    cat: { en: 'Economy / investment', uk: 'Економіка / інвестиції' },
+    status: 'completed',
+    badge: 'completed',
+    category: { en: 'Primary healthcare', uk: 'Первинна медицина' },
+    photo: 'images/hospital_corridor.jpg',
+    photoTag: { en: 'PHC second floor', uk: '2 поверх ЦПМСД' },
+    badgeLabel: { en: 'Completed', uk: 'Завершено' },
     title: {
-      en: 'Local economic development and investment sites',
-      uk: 'Розвиток місцевої економіки, агропереробки та інвестиційних ділянок',
+      en: 'Second-floor repair at Domanivka Primary Healthcare Centre',
+      uk: 'Ремонт приміщення 2 поверху КНП «Доманівський центр ПМСД»',
     },
     desc: {
-      en: 'Free, uncontaminated land plots are identified near Novolikarske, Zbroshkove, Viktorivka and Zelenyi Yar. Business survey: 54.5% want preferential credit, 54.5% want grants or vouchers.',
-      uk: 'Визначено вільні незабруднені земельні ділянки біля Новолікарського, Зброшкового, Вікторівки та Зеленого Яру. Опитування бізнесу: 54,5% хочуть пільгові кредити, 54,5% — гранти або ваучери.',
+      en: 'IOM supported repairs on the second floor of Domanivka Primary Healthcare Centre at 6 Pyrohova Street.',
+      uk: 'Міжнародна організація з міграції (МОМ) підтримала ремонт приміщення 2 поверху КНП «Доманівський центр ПМСД» по вул. Пірогова, 6.',
     },
-    progressStrong: { en: 'Data ready', uk: 'Дані готові' },
-    progressRight: { en: 'Investors wanted', uk: 'Шукаємо інвесторів' },
-    progress: 15,
+    amount: { en: 'UAH 6.2M', uk: '6,2 млн грн' },
+    amountValue: 6193.3,
+    progress: 100,
+    progressStrong: { en: 'Completed', uk: 'Завершено' },
+    progressRight: '2025',
     facts: [
-      [{ en: 'Free plots', uk: 'Вільні ділянки' }, '4 villages'],
-      [{ en: 'Survey', uk: 'Опитування' }, '54.5% want credit / grants'],
-      [{ en: 'Support needed', uk: 'Потрібна допомога' }, { en: 'Grants · credit · utilities · marketing', uk: 'Гранти · кредити · мережі · маркетинг' }],
-      [{ en: 'Status', uk: 'Статус' }, { en: 'Strategic', uk: 'Стратегічний' }],
+      [{ en: 'Partner', uk: 'Партнер' }, 'IOM'],
+      [{ en: 'Location', uk: 'Локація' }, { en: '6 Pyrohova St', uk: 'вул. Пірогова, 6' }],
+      [{ en: 'Funding', uk: 'Фінансування' }, { en: 'International organisations', uk: 'Кошти міжнародних організацій' }],
+      [{ en: 'Year', uk: 'Рік' }, '2025'],
     ],
-    cta: { en: 'Learn more →', uk: 'Детальніше →' },
   },
   {
-    status: 'planned', badge: 'planned', tint: 'tint-3', Icon: GreenhouseIcon,
-    photoTag: { en: '"Sady Peremohy" · gardens of victory', uk: '«Сади Перемоги»' },
-    badgeLabel: { en: 'Medium / high priority', uk: 'Середній / високий пріоритет' },
-    cat: { en: 'Agriculture / food security', uk: 'Аграрний розвиток / продовольча безпека' },
+    status: 'completed',
+    badge: 'completed',
+    category: { en: 'Heating / resilience', uk: 'Теплопостачання / стійкість' },
+    photo: 'images/pellets_worker.jpg',
+    photoTag: { en: 'Pellet boiler rooms', uk: 'Пелетні котельні' },
+    badgeLabel: { en: 'Completed', uk: 'Виконано' },
     title: {
-      en: 'Greenhouse farming and food security',
-      uk: 'Тепличне господарство, продовольча безпека та «Сади Перемоги»',
+      en: 'Four 200 kW pellet modular boiler rooms for public facilities',
+      uk: 'Чотири модульні пелетні котельні по 200 кВт для комунальних закладів',
     },
     desc: {
-      en: 'The community profile mentions a greenhouse project by AC "Oberih-Agro" and the "Sady Peremohy" food self-sufficiency programme. Potential to add greenhouses, nurseries, early vegetables and rooftop solar.',
-      uk: 'У профілі громади згадується проєкт тепличного овочівництва СВК «Оберіг-Агро» та програма самозабезпечення харчами «Сади Перемоги». Можна додавати теплиці, розсадники, ранні овочі та СЕС.',
+      en: 'With German Government and GIZ support, four modular pellet boiler rooms were installed for the hospital, the Uspikh lyceum, the Lider lyceum and Domanivka youth sports school.',
+      uk: 'За підтримки уряду Німеччини та GIZ встановлено 4 модульні котельні на пелетах по 200 кВт для лікарні, ліцею «Успіх», ліцею «Лідер» та Доманівської дитячо-юнацької спортивної школи.',
     },
-    progressStrong: { en: 'Examples exist', uk: 'Приклади існують' },
-    progressRight: { en: 'Scaling support', uk: 'Підтримка масштабування' },
-    progress: 18,
+    amount: { en: 'UAH 12.0M', uk: '12,0 млн грн' },
+    amountValue: 11983.612,
+    progress: 100,
+    progressStrong: { en: 'Completed', uk: 'Виконано' },
+    progressRight: '31.05.2025',
     facts: [
-      [{ en: 'Location', uk: 'Локація' }, { en: 'Rural settlements', uk: 'Сільські нп громади' }],
-      [{ en: 'Beneficiaries', uk: 'Отримувачі' }, { en: 'Families, IDPs, co-ops, small business', uk: 'Сім’ї, ВПО, кооперативи, МСБ' }],
-      [{ en: 'Support needed', uk: 'Потрібна допомога' }, { en: 'Greenhouses · seeds · irrigation · cold storage', uk: 'Теплиці · насіння · полив · холодильники' }],
-      [{ en: 'Status', uk: 'Статус' }, { en: 'Pilot stage', uk: 'Пілотна стадія' }],
+      [{ en: 'Partner', uk: 'Партнер' }, { en: 'Government of Germany / GIZ', uk: 'Уряд Німеччини / GIZ' }],
+      [{ en: 'Scale', uk: 'Масштаб' }, { en: '4 boiler rooms x 200 kW', uk: '4 котельні по 200 кВт' }],
+      [{ en: 'Funding', uk: 'Фінансування' }, { en: 'International organisations', uk: 'Кошти міжнародних організацій' }],
+      [{ en: 'Completed', uk: 'Виконано' }, '31.05.2025'],
     ],
-    cta: { en: 'Learn more →', uk: 'Детальніше →' },
   },
   {
-    status: 'planned', badge: 'planned', tint: 'tint-1', Icon: AccessIcon,
-    photoTag: { en: 'Barrier-free Domanivka', uk: 'Безбар’єрна Доманівщина' },
-    badgeLabel: { en: 'Medium / high priority', uk: 'Середній / високий пріоритет' },
-    cat: { en: 'Inclusion / accessibility', uk: 'Інклюзія / доступність' },
+    status: 'completed',
+    badge: 'completed',
+    category: { en: 'Rural healthcare', uk: 'Сільська медицина' },
+    photo: 'images/fap_kuznytsove.jpg',
+    photoTag: { en: 'Kuznetsove FAP', uk: 'ФАП с. Кузнецове' },
+    badgeLabel: { en: 'Completed', uk: 'Виконано' },
     title: {
-      en: 'Accessible Domanivka: barrier-free community services',
-      uk: 'Безбар’єрна Доманівщина та доступність громадських послуг',
+      en: 'Modular frame facility for the Kuznetsove FAP',
+      uk: 'Модульна збірна каркасна конструкція для ФАПу с. Кузнецове',
     },
     desc: {
-      en: 'The "Barrier-Free Domanivshchyna" programme through 2025 frames adaptation of public, medical, cultural and administrative facilities for people with disabilities, elderly people, parents with children, veterans and IDPs.',
-      uk: 'Програма «Безбар’єрна Доманівщина до 2025 року» — адаптація громадських, медичних, культурних і адміністративних об’єктів для людей з інвалідністю, літніх людей, батьків з дітьми, ветеранів і ВПО.',
+      en: 'The Ukraine Recovery Fund and the Government of Denmark supported a modular frame facility for the feldsher-midwife point in Kuznetsove.',
+      uk: 'Фонд відбудови України та уряд Данії підтримали модульну збірну каркасну конструкцію для ФАПу с. Кузнецове.',
     },
-    progressStrong: { en: 'Programme active', uk: 'Програма діє' },
-    progressRight: { en: 'Implementation needed', uk: 'Потрібне втілення' },
-    progress: 20,
+    amount: { en: 'UAH 2.9M', uk: '2,9 млн грн' },
+    amountValue: 2877.7,
+    progress: 100,
+    progressStrong: { en: 'Completed', uk: 'Виконано' },
+    progressRight: '2025',
     facts: [
-      [{ en: 'Programme', uk: 'Програма' }, { en: 'Through 2025', uk: 'До 2025 року' }],
-      [{ en: 'Beneficiaries', uk: 'Отримувачі' }, { en: 'PwD, elderly, veterans, children, IDPs', uk: 'ЛзІ, літні, ветерани, діти, ВПО' }],
-      [{ en: 'Support needed', uk: 'Потрібна допомога' }, { en: 'Ramps · entrances · WC · navigation · transport', uk: 'Пандуси · входи · санвузли · навігація · транспорт' }],
-      [{ en: 'Status', uk: 'Статус' }, { en: 'Programme active', uk: 'Програма діє' }],
+      [{ en: 'Partner', uk: 'Партнер' }, { en: 'Ukraine Recovery Fund / Denmark', uk: 'Фонд відбудови України / уряд Данії' }],
+      [{ en: 'Location', uk: 'Локація' }, { en: 'Kuznetsove', uk: 'с. Кузнецове' }],
+      [{ en: 'Funding', uk: 'Фінансування' }, { en: 'International organisations', uk: 'Кошти міжнародних організацій' }],
+      [{ en: 'Date in register', uk: 'Дата в реєстрі' }, '31.11.2025'],
     ],
-    cta: { en: 'Take this on →', uk: 'Підтримати →' },
   },
   {
-    status: 'planned', badge: 'planned', tint: 'tint-2', Icon: CultureIcon,
-    photoTag: { en: 'Culture & youth spaces', uk: 'Культурні та молодіжні простори' },
-    badgeLabel: { en: 'Medium priority', uk: 'Середній пріоритет' },
-    cat: { en: 'Education / culture / youth', uk: 'Освіта / культура / молодь' },
+    status: 'completed',
+    badge: 'completed',
+    category: { en: 'Rural healthcare', uk: 'Сільська медицина' },
+    photo: 'images/fap/image.png',
+    photoTag: { en: 'Petropavlivka FAP', uk: 'ФАП с. Петропавлівка' },
+    badgeLabel: { en: 'Completed', uk: 'Виконано' },
     title: {
-      en: 'Education, culture, youth and community spaces',
-      uk: 'Освіта, культура, молодь і простори для розвитку',
+      en: 'Modular frame facility for the Petropavlivka FAP',
+      uk: 'Модульна збірна каркасна конструкція для ФАПу с. Петропавлівка',
     },
     desc: {
-      en: '1 Culture House with 12 branches, 1 library, 1 museum with 10 branches. Children at the youth sports school dropped from 317 to 226 in 2021–2024. The disused swimming pool in Domanivka awaits reconstruction.',
-      uk: '1 Будинок культури з 12 філіями, 1 бібліотека, 1 музей із 10 філіями. Кількість дітей у ДЮСШ скоротилася з 317 до 226 у 2021–2024 рр. Окрема потреба — реконструкція недіючого басейну в Доманівці.',
+      en: 'IOM supported a modular frame facility for the feldsher-midwife point in Petropavlivka.',
+      uk: 'МОМ підтримала модульну збірну каркасну конструкцію для ФАПу с. Петропавлівка.',
     },
-    progressStrong: { en: 'Needs ready', uk: 'Потреби описані' },
-    progressRight: { en: 'Partners wanted', uk: 'Потрібні партнери' },
-    progress: 10,
+    amount: { en: 'UAH 6.0M', uk: '6,0 млн грн' },
+    amountValue: 6004,
+    progress: 100,
+    progressStrong: { en: 'Completed', uk: 'Виконано' },
+    progressRight: '2024',
     facts: [
-      [{ en: 'Culture facilities', uk: 'Культурні заклади' }, '1 + 12 branches'],
-      [{ en: 'Sport facilities', uk: 'Спортивні заклади' }, '4 football fields · 10 sport sites'],
-      [{ en: 'Support needed', uk: 'Потрібна допомога' }, { en: 'Renovation · furniture · equipment · pool', uk: 'Ремонт · меблі · обладнання · басейн' }],
-      [{ en: 'Status', uk: 'Статус' }, { en: 'Open for partner', uk: 'Відкритий для партнера' }],
+      [{ en: 'Partner', uk: 'Партнер' }, 'IOM'],
+      [{ en: 'Location', uk: 'Локація' }, { en: 'Petropavlivka', uk: 'с. Петропавлівка' }],
+      [{ en: 'Funding', uk: 'Фінансування' }, { en: 'International organisations', uk: 'Кошти міжнародних організацій' }],
+      [{ en: 'Year', uk: 'Рік' }, '2024'],
     ],
-    cta: { en: 'Take this on →', uk: 'Підтримати →' },
+  },
+  {
+    status: 'completed',
+    badge: 'completed',
+    category: { en: 'Administrative services', uk: 'Адміністративні послуги' },
+    photo: 'images/mobile_clinic.jpg',
+    photoTag: { en: 'Mobile service vehicle', uk: 'Мобільний ЦНАП' },
+    badgeLabel: { en: 'Completed', uk: 'Виконано' },
+    title: {
+      en: 'Mykolaiv Renewed project: mobile administrative service centre',
+      uk: 'Проєкт «Миколаїв відновлений»: мобільний ЦНАП',
+    },
+    desc: {
+      en: 'UNDP supported a mobile administrative service centre for the Domanivka community under the Mykolaiv Renewed project.',
+      uk: 'Програма розвитку ООН підтримала мобільний ЦНАП для Доманівської громади в межах проєкту «Миколаїв відновлений».',
+    },
+    amount: { en: 'UAH 2.9M', uk: '2,9 млн грн' },
+    amountValue: 2930.292,
+    progress: 100,
+    progressStrong: { en: 'Completed', uk: 'Виконано' },
+    progressRight: '10.11.2025',
+    facts: [
+      [{ en: 'Partner', uk: 'Партнер' }, 'UNDP'],
+      [{ en: 'Direction', uk: 'Напрям' }, { en: 'Mobile ASC', uk: 'Мобільний ЦНАП' }],
+      [{ en: 'Funding', uk: 'Фінансування' }, { en: 'International organisations', uk: 'Кошти міжнародних організацій' }],
+      [{ en: 'Completed', uk: 'Виконано' }, '10.11.2025'],
+    ],
+  },
+  {
+    status: 'completed',
+    badge: 'completed',
+    category: { en: 'Education / transport', uk: 'Освіта / транспорт' },
+    photo: 'images/school_bus.jpg',
+    photoTag: { en: 'School bus', uk: 'Шкільний автобус' },
+    badgeLabel: { en: 'Completed', uk: 'Виконано' },
+    title: {
+      en: 'ATAMAN D093-S-2 school bus from Denmark',
+      uk: 'Шкільний автобус АТАМАН D093-S-2 від Данії',
+    },
+    desc: {
+      en: 'The Ukraine Recovery Fund and the Government of Denmark supported the delivery of an ATAMAN D093-S-2 school bus.',
+      uk: 'Фонд відбудови України та уряд Данії підтримали передачу шкільного автобуса АТАМАН D093-S-2.',
+    },
+    amount: { en: 'UAH 3.8M', uk: '3,8 млн грн' },
+    amountValue: 3842.9,
+    progress: 100,
+    progressStrong: { en: 'Completed', uk: 'Виконано' },
+    progressRight: '2025',
+    facts: [
+      [{ en: 'Partner', uk: 'Партнер' }, { en: 'Ukraine Recovery Fund / Denmark', uk: 'Фонд відбудови України / уряд Данії' }],
+      [{ en: 'Asset', uk: 'Об’єкт' }, 'ATAMAN D093-S-2'],
+      [{ en: 'Funding', uk: 'Фінансування' }, { en: 'International organisations', uk: 'Кошти міжнародних організацій' }],
+      [{ en: 'Year', uk: 'Рік' }, '2025'],
+    ],
   },
 ];
 
@@ -334,8 +536,9 @@ export default function Projects() {
     .map((project, priority) => ({ ...project, priority }))
     .filter((p) => filter === 'all' || p.status === filter)
     .sort((a, b) => {
+      if (sort === 'amount') return b.amountValue - a.amountValue;
       if (sort === 'category') {
-        return String(tr(a.cat)).localeCompare(String(tr(b.cat)), lang === 'uk' ? 'uk' : 'en');
+        return String(tr(a.category)).localeCompare(String(tr(b.category)), lang === 'uk' ? 'uk' : 'en');
       }
       if (sort === 'status') {
         return STATUS_ORDER.indexOf(a.status) - STATUS_ORDER.indexOf(b.status) || a.priority - b.priority;
@@ -347,10 +550,10 @@ export default function Projects() {
     <>
       <PageIntro
         crumb={{ en: 'Projects', uk: 'Проєкти' }}
-        title={{ en: 'Ten directions, one community ledger.', uk: 'Десять напрямів — один прозорий реєстр громади.' }}
+        title={{ en: 'International project register of Domanivka community.', uk: 'Реєстр міжнародних проєктів Доманівської громади.' }}
         lede={{
-          en: 'Ten project directions drawn from the Community Profile — the addendum to our Development Strategy through 2027. Each one has documented context, a clear ask, and a beneficiary list. Funded, partly funded, or open for a partner — all visible.',
-          uk: 'Десять напрямів проєктів із Профілю громади — додатку до Стратегії розвитку до 2027 року. Кожен має контекст, чіткий запит і коло отримувачів. Профінансовані, частково фінансовані та відкриті для партнера — все видно.',
+          en: 'A consolidated list of projects financed or supported by international organisations and partner countries: agriculture, healthcare, housing, water supply, energy, municipal services, administrative services and education.',
+          uk: 'Зведений перелік проєктів, профінансованих або підтриманих міжнародними організаціями та країнами-партнерами: аграрний розвиток, медицина, житло, водопостачання, енергетика, комунальні послуги, ЦНАП та освіта.',
         }}
       />
 
@@ -398,46 +601,49 @@ export default function Projects() {
           </div>
 
           <div className="proj-grid">
-            {visible.map((p, i) => {
-              const Icon = p.Icon;
-              return (
-                <article key={i} className="proj-card">
-                  <div className={`photo ${p.tint} proj-photo`}>
-                    <div className="ph-center"><Icon /></div>
-                    <div className="photo-label"><span className="tag">{tr(p.photoTag)}</span></div>
+            {visible.map((p, i) => (
+              <article key={`${p.title.uk}-${i}`} className="proj-card">
+                <div className="photo proj-photo">
+                  {p.photo && <img className="photo-img" src={asset(p.photo)} alt={tr(p.photoTag)} loading="lazy" />}
+                  <div className="photo-label"><span className="tag">{tr(p.photoTag)}</span></div>
+                </div>
+                <div className="proj-meta-top">
+                  <span className={`badge ${p.badge}`}>{tr(p.badgeLabel)}</span>
+                  <span className="proj-cat">{tr(p.category)}</span>
+                </div>
+                <h3>{tr(p.title)}</h3>
+                <p>{tr(p.desc)}</p>
+                <div className={`progress ${p.status === 'completed' ? 'completed' : ''}`}>
+                  <span style={{ width: `${p.progress}%` }} />
+                </div>
+                <div className="progress-row">
+                  <span><strong>{tr(p.progressStrong)}</strong></span>
+                  <span>{tr(p.progressRight)}</span>
+                </div>
+                <dl className="proj-facts">
+                  <div>
+                    <dt><T en="Amount" uk="Сума" /></dt>
+                    <dd>{tr(p.amount)}</dd>
                   </div>
-                  <div className="proj-meta-top">
-                    <span className={`badge ${p.badge}`}>{tr(p.badgeLabel)}</span>
-                    <span className="proj-cat">{tr(p.cat)}</span>
-                  </div>
-                  <h3>{tr(p.title)}</h3>
-                  <p>{tr(p.desc)}</p>
-                  <div className="progress">
-                    <span style={{ width: `${p.progress}%` }} />
-                  </div>
-                  <div className="progress-row">
-                    <span><strong>{tr(p.progressStrong)}</strong></span>
-                    <span>{tr(p.progressRight)}</span>
-                  </div>
-                  <dl className="proj-facts">
-                    {p.facts.map(([lbl, val], j) => (
-                      <div key={j}>
-                        <dt>{tr(lbl)}</dt>
-                        <dd>{tr(val)}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <Link className="proj-link" to="/contacts">{tr(p.cta)}</Link>
-                </article>
-              );
-            })}
+                  {p.facts.map(([lbl, val], j) => (
+                    <div key={j}>
+                      <dt>{tr(lbl)}</dt>
+                      <dd>{tr(val)}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <Link className="proj-link" to="/contacts">
+                  <T en="Contact the community ->" uk="Зв’язатися з громадою ->" />
+                </Link>
+              </article>
+            ))}
           </div>
 
           <div className="load-more">
             <span className="muted small">
               <T
-                en={`Showing ${visible.length} of 10 directions · Source: Community Profile, Domanivka, 2024`}
-                uk={`Показано ${visible.length} з 10 напрямів · Джерело: Профіль громади, Доманівка, 2024`}
+                en={`Showing ${visible.length} of ${PROJECTS.length} projects · Source: international-funding project register provided by Domanivka community`}
+                uk={`Показано ${visible.length} з ${PROJECTS.length} проєктів · Джерело: реєстр проєктів за міжнародні кошти, наданий Доманівською громадою`}
               />
             </span>
           </div>

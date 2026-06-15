@@ -1,117 +1,118 @@
 import { Link } from 'react-router-dom';
 import { T, useLang } from '../i18n.jsx';
-import { ArrowIcon, DropIcon, HouseIcon, SchoolIcon } from '../icons.jsx';
+import { asset } from '../lib/asset.js';
+import { ArrowIcon } from '../icons.jsx';
 
 const PROJECTS = [
   {
-    tint: 'tint-2',
-    Icon: DropIcon,
-    tag: { en: 'Exploratory well · Tsaredarivka', uk: 'Розвідувальна свердловина · Царедарівка' },
-    status: 'in-progress',
-    statusLabel: { en: 'Design ready', uk: 'Проєкт готовий' },
-    meta: { en: 'Water supply', uk: 'Водопостачання' },
-    title: {
-      en: 'Exploratory production well in Tsaredarivka and village network repairs',
-      uk: 'Розвідувально-експлуатаційна свердловина у Царедарівці та ремонт сільських мереж',
-    },
-    desc: {
-      en: 'Permit documents are drawn up for drilling a new well in Tsaredarivka and overhauling water-supply networks across villages where 13 active boreholes already struggle to meet summer demand.',
-      uk: 'Підготовлено документацію на буріння нової свердловини в с. Царедарівка та капітальний ремонт мереж водопостачання в селах, де 13 діючих свердловин літом вже не витримують навантаження.',
-    },
-    progress: 15,
-    progressStrong: { en: 'Permits stage', uk: 'Стадія дозволів' },
-    progressRight: { en: '13 boreholes in use', uk: '13 діючих свердловин' },
-  },
-  {
-    tint: 'tint-4',
-    Icon: DropIcon,
-    tag: { en: 'Water main · Zbroshkove → Domanivka', uk: 'Водогін · Зброшкове → Доманівка' },
-    status: 'in-progress',
-    statusLabel: { en: 'Design ready', uk: 'Проєкт готовий' },
-    meta: { en: 'Infrastructure', uk: 'Інфраструктура' },
-    title: {
-      en: 'Reconstruction of the water main from Zbroshkove to smt Domanivka',
-      uk: 'Реконструкція водогону від свердловини в с. Зброшкове до смт Доманівка',
-    },
-    desc: {
-      en: '6,709 m of new pipe from an existing well in Zbroshkove to the settlement of Domanivka — securing quality drinking water and supporting local business growth. Project documentation complete; awaiting construction funding.',
-      uk: '6 709 м нового водогону від діючої свердловини в с. Зброшкове до смт Доманівка — якісна питна вода для жителів і бізнесу. Проєктна документація готова, чекаємо фінансування робіт.',
-    },
-    progress: 18,
-    progressStrong: { en: 'Stage 1 of 3', uk: 'Етап 1 з 3' },
-    progressRight: { en: '6,709 m · pipeline', uk: '6 709 м · водогін' },
-  },
-  {
-    tint: 'tint-5',
-    Icon: HouseIcon,
-    tag: { en: 'Sewage rebuild · Domanivka', uk: 'Реконструкція каналізації · Доманівка' },
+    photo: 'images/location_map_domanivka_tinted.png',
+    tag: { en: 'NEFCO / Denmark', uk: 'НЕФКО / Данія' },
     status: 'planned',
-    statusLabel: { en: 'Open for partner', uk: 'Відкритий для партнера' },
-    meta: { en: 'Infrastructure', uk: 'Інфраструктура' },
+    statusLabel: { en: 'Preparation stage', uk: 'Підготовка до робіт' },
+    meta: { en: 'UAH 82.5M', uk: '82,5 млн грн' },
     title: {
-      en: 'Sewage on O. Lyvadara St and stormwater on Horodnia St',
-      uk: 'Господарсько-побутова каналізація на вул. О. Ливадара та зливова на вул. Городня',
+      en: 'Reconstruction of the water-supply network from Zbroshkove to Domanivka',
+      uk: 'Реконструкція водогону від с. Зброшкове до Доманівки',
     },
     desc: {
-      en: 'Design documentation is ready for reconstruction of the household-sewage network on O. Lyvadara Street and the stormwater drains on Horodnia Street — part of cutting accident rates on the only centralised sewage system in the community (10.1 km).',
-      uk: 'Розроблено проєктну документацію на реконструкцію господарсько-побутової каналізації на вул. О. Ливадара та зливової каналізації на вул. Городня — щоб знизити рівень аварійності єдиної в громаді централізованої системи каналізації (10,1 км).',
+      en: 'NEFCO and the Government of Denmark support the water-supply reconstruction from the existing well in Zbroshkove to Domanivka, with local co-funding included.',
+      uk: 'НЕФКО та уряд Данії підтримують реконструкцію водопостачання від існуючої свердловини в с. Зброшкове до Доманівки зі співфінансуванням громади.',
     },
-    progress: 8,
-    progressStrong: { en: 'Documents ready', uk: 'Документація готова' },
-    progressRight: { en: 'Awaiting partner', uk: 'Потрібен партнер' },
+    progress: 25,
+    progressStrong: { en: 'Preparing works', uk: 'Підготовка до робіт' },
+    progressRight: '30.09.2027',
+  },
+  {
+    photo: 'images/vpo_house.jpg',
+    tag: { en: 'Ukraine Recovery Fund / Denmark', uk: 'Фонд відбудови України / Данія' },
+    status: 'in-progress',
+    statusLabel: { en: 'Finishing stage', uk: 'Стадія завершення' },
+    meta: { en: 'UAH 22.1M', uk: '22,1 млн грн' },
+    title: {
+      en: 'Nine modular estate-type houses in Domanivka',
+      uk: 'Дев’ять модульних будинків садибного типу в Доманівці',
+    },
+    desc: {
+      en: 'A housing project supported by the Ukraine Recovery Fund and the Government of Denmark is at the finishing stage and planned for 2026.',
+      uk: 'Житловий проєкт за підтримки Фонду відбудови України та уряду Данії перебуває на стадії завершення і запланований на 2026 рік.',
+    },
+    progress: 90,
+    progressStrong: { en: 'Finishing', uk: 'Завершується' },
+    progressRight: '2026',
+  },
+  {
+    photo: 'images/pellets_worker.jpg',
+    tag: { en: 'Germany / GIZ', uk: 'Німеччина / GIZ' },
+    status: 'completed',
+    statusLabel: { en: 'Completed', uk: 'Виконано' },
+    meta: { en: 'UAH 12.0M', uk: '12,0 млн грн' },
+    title: {
+      en: 'Four 200 kW pellet boiler rooms for public facilities',
+      uk: 'Чотири пелетні котельні по 200 кВт для комунальних закладів',
+    },
+    desc: {
+      en: 'Germany and GIZ supported modular pellet boiler rooms for the hospital, two lyceums and the youth sports school, completed in May 2025.',
+      uk: 'Уряд Німеччини та GIZ підтримали модульні пелетні котельні для лікарні, двох ліцеїв і ДЮСШ, виконано у травні 2025 року.',
+    },
+    progress: 100,
+    progressStrong: { en: 'Completed', uk: 'Виконано' },
+    progressRight: '31.05.2025',
   },
 ];
 
 export default function FeaturedProjects() {
   const { lang } = useLang();
-  const tr = (pair) => (lang === 'uk' ? pair.uk : pair.en);
+  const tr = (val) => {
+    if (val == null) return val;
+    if (typeof val === 'string' || typeof val === 'number') return val;
+    return lang === 'uk' ? val.uk : val.en;
+  };
 
   return (
     <section className="section">
       <div className="wrap">
         <div className="section-head">
           <div className="left">
-            <T as="div" className="eyebrow" en="Featured work" uk="Обрані проєкти" />
-            <T as="h2" en="What we are building this season." uk="Над чим працюємо просто зараз." />
+            <T as="div" className="eyebrow" en="International projects" uk="Міжнародні проєкти" />
+            <T as="h2" en="What partners are helping build now." uk="Що громада будує разом із партнерами." />
           </div>
           <T
             as="div"
             className="right"
-            en="A short look at project directions named in the Community Profile: drinking-water networks, sewage renewal and documented works that need partner coordination."
-            uk="Кілька напрямів із Профілю громади: питні водогони, оновлення каналізації та задокументовані роботи, де потрібна координація з партнерами."
+            en="A short selection from the updated international-funding register: water supply, housing for displaced people, heating resilience and public services."
+            uk="Коротка добірка з оновленого реєстру проєктів за міжнародні кошти: водопостачання, житло для ВПО, теплова стійкість і публічні послуги."
           />
         </div>
 
         <div className="grid-3">
-          {PROJECTS.map((p, i) => {
-            const Icon = p.Icon;
-            return (
-              <Link key={i} className="project-card" to="/projects">
-                <div className={`photo ${p.tint}`}>
-                  <div className="ph-center"><Icon /></div>
-                  <div className="photo-label">
-                    <span className="tag">{tr(p.tag)}</span>
-                  </div>
+          {PROJECTS.map((p, i) => (
+            <Link key={i} className="project-card" to="/projects">
+              <div className="photo">
+                <img className="photo-img" src={asset(p.photo)} alt={tr(p.tag)} loading="lazy" />
+                <div className="photo-label">
+                  <span className="tag">{tr(p.tag)}</span>
                 </div>
-                <div className="row-between">
-                  <span className={`badge ${p.status}`}>{tr(p.statusLabel)}</span>
-                  <span className="meta">{tr(p.meta)}</span>
-                </div>
-                <h3>{tr(p.title)}</h3>
-                <p className="desc">{tr(p.desc)}</p>
-                <div className="progress"><span style={{ width: `${p.progress}%` }} /></div>
-                <div className="progress-row">
-                  <span><strong>{tr(p.progressStrong)}</strong></span>
-                  <span>{tr(p.progressRight)}</span>
-                </div>
-              </Link>
-            );
-          })}
+              </div>
+              <div className="row-between">
+                <span className={`badge ${p.status}`}>{tr(p.statusLabel)}</span>
+                <span className="meta">{tr(p.meta)}</span>
+              </div>
+              <h3>{tr(p.title)}</h3>
+              <p className="desc">{tr(p.desc)}</p>
+              <div className={`progress ${p.status === 'completed' ? 'completed' : ''}`}>
+                <span style={{ width: `${p.progress}%` }} />
+              </div>
+              <div className="progress-row">
+                <span><strong>{tr(p.progressStrong)}</strong></span>
+                <span>{tr(p.progressRight)}</span>
+              </div>
+            </Link>
+          ))}
         </div>
 
         <div className="row" style={{ marginTop: 48, justifyContent: 'flex-end' }}>
           <Link to="/projects" className="btn btn-secondary">
-            <T en="See all current projects" uk="Усі поточні проєкти" />
+            <T en="See all international projects" uk="Усі міжнародні проєкти" />
             <ArrowIcon />
           </Link>
         </div>
