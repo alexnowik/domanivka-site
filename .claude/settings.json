@@ -27,7 +27,10 @@
       "Bash(pdftoppm -r 100 -png /Users/alex/Downloads/95-АР.pdf /tmp/pdf_page)",
       "Bash(python3 -c \"import fitz; doc = fitz.open\\('/Users/alex/Downloads/95-АР.pdf'\\); print\\(f'Pages: {len\\(doc\\)}'\\); print\\(doc[0].get_text\\(\\)[:500]\\)\")",
       "Bash(git -C /Users/alex/project/domanivka2024 remote -v)",
-      "Bash(gh api *)"
+      "Bash(gh api *)",
+      "Bash(ls -la ~/Desktop/ 2>/dev/null | grep -i -E \"lucky|subscription|pdf\" ; echo \"---DESKTOP PDFs---\"; ls -la ~/Desktop/*.pdf 2>/dev/null; echo \"---WORK DIR---\"; ls -la /Users/alex/project/domanivka2024/work/ 2>/dev/null)",
+      "Read(//Users/alex/Desktop/**)",
+      "Bash(find ~/Desktop ~/Downloads /Users/alex/project/domanivka2024 -iname \"*lucky*\" -o -iname \"*subscription*flow*\" 2>/dev/null | head -20)"
     ]
   }
 }
