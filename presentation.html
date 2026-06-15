@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;800&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<style>:root{--navy:#0E1322;--azure:#3A7BFF;--amber:#F2B23E;--fd:'Unbounded',sans-serif;--ft:'Onest',sans-serif}
+<style>:root{--navy:#16233d;--azure:#3A7BFF;--amber:#F2B23E;--fd:'Unbounded',sans-serif;--ft:'Onest',sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-family:var(--ft);color:#fff}
 .deck{width:100%;height:100%;position:relative}
@@ -17,7 +17,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:all .2s;border:none;padding:0}
 .dot.on{background:var(--amber);transform:scale(1.4)}
 .arr{position:fixed;top:50%;transform:translateY(-50%);width:100%;display:flex;justify-content:space-between;padding:0 16px;z-index:200;pointer-events:none}
-.ab{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(14,19,34,.6);backdrop-filter:blur(8px);color:#fff;font-size:20px;cursor:pointer;pointer-events:all;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.ab{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(22,35,61,.5);backdrop-filter:blur(8px);color:#fff;font-size:20px;cursor:pointer;pointer-events:all;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .ab:hover{background:rgba(58,123,255,.55);border-color:var(--azure)}
 .ab:disabled{opacity:.2;pointer-events:none}
 .ctr{position:fixed;top:18px;right:24px;font-size:12px;color:rgba(255,255,255,.35);z-index:200}
@@ -31,13 +31,13 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 .lede{font-size:15px;line-height:1.65;opacity:.72;max-width:560px}
 .sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:24px;flex:1}
 .sgrid3{grid-template-columns:repeat(3,1fr)}.sgrid2{grid-template-columns:repeat(2,1fr)}
-.sc{background:rgba(255,255,255,.05);padding:22px 18px;display:flex;flex-direction:column}
-.sc.az{background:rgba(58,123,255,.2)}.sc.am{background:rgba(242,178,62,.12)}
+.sc{background:rgba(255,255,255,.08);padding:22px 18px;display:flex;flex-direction:column}
+.sc.az{background:rgba(58,123,255,.24)}.sc.am{background:rgba(242,178,62,.16)}
 .sn{font-family:var(--fd);font-size:clamp(20px,3vw,42px);font-weight:800;line-height:1;margin-bottom:4px}
 .su{font-size:.4em;font-weight:400;opacity:.7}
 .sl{font-size:12px;line-height:1.4;opacity:.6;margin-top:auto;padding-top:5px}
-.fc{background:rgba(255,255,255,.05);padding:20px 18px;display:flex;flex-direction:column;gap:8px}
-.fc.az{background:rgba(58,123,255,.16)}.fc.am{background:rgba(242,178,62,.1)}
+.fc{background:rgba(255,255,255,.08);padding:20px 18px;display:flex;flex-direction:column;gap:8px}
+.fc.az{background:rgba(58,123,255,.20)}.fc.am{background:rgba(242,178,62,.14)}
 .fl{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.42}
 .fv{font-family:var(--fd);font-size:clamp(20px,2.5vw,34px);font-weight:800;line-height:1;color:var(--amber)}
 .fvs{font-size:clamp(14px,1.8vw,20px)}
@@ -86,7 +86,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 .cti{font-size:13px;margin-top:5px}.cti a{color:var(--azure);text-decoration:none}
 .pbr{height:4px;background:rgba(255,255,255,.1);border-radius:2px;margin-top:5px}
 .pbf{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--azure),var(--amber))}
-.slide-frame{position:relative;overflow:hidden;background:#0E1322}
+.slide-frame{position:relative;overflow:hidden;background:#16233d}
 .slide-fill{position:relative;z-index:1;display:flex;flex-direction:column;height:calc(100vh - 3px)}
 .slide-fill.culture{padding-top:52px;padding-bottom:36px}
 .content-grid{display:grid;gap:2px;min-height:0;margin-top:18px}
@@ -101,10 +101,10 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 .culture-card{padding:20px;display:flex;flex-direction:column}
 .culture-name{font-size:26px;line-height:1.02}
 .list-tight{margin-top:14px;font-size:14px;line-height:1.45}
-.media-tile{position:relative;overflow:hidden;background:#171b2a;min-height:0}
+.media-tile{position:relative;overflow:hidden;background:#202b46;min-height:0}
 .media-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.media-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,22,.02),rgba(8,12,22,.64))}
-.media-shade.soft{background:linear-gradient(180deg,rgba(8,12,22,0),rgba(8,12,22,.62))}
+.media-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,22,.01),rgba(8,12,22,.42))}
+.media-shade.soft{background:linear-gradient(180deg,rgba(8,12,22,0),rgba(8,12,22,.34))}
 .media-caption{position:absolute;left:24px;right:24px;bottom:22px}
 .media-caption.compact{left:20px;right:20px;bottom:18px}
 .media-ey{margin:0 0 6px}
@@ -121,7 +121,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 .learning-lede{margin-top:10px;font-size:14px;line-height:1.5}
 .deck>.slide:nth-of-type(5) .si>div:nth-child(3){flex:0 0 calc(100vh - 144px)!important;height:calc(100vh - 144px)!important}
 .deck>.slide:nth-of-type(5) .si>div:nth-child(3)>div:first-child>.fc.am>div:first-child{opacity:1!important}
-.deck>.slide:nth-of-type(5) .si>div:nth-child(3)>div:first-child>.fc.am::after{content:'';position:absolute;inset:0;background:rgba(14,19,34,.46);z-index:0;pointer-events:none}
+.deck>.slide:nth-of-type(5) .si>div:nth-child(3)>div:first-child>.fc.am::after{content:'';position:absolute;inset:0;background:rgba(14,19,34,.26);z-index:0;pointer-events:none}
 .medical-slide .si{flex:0 0 calc(100vh - 3px)!important;height:calc(100vh - 3px)!important}
 .medical-slide .si>div:nth-child(3){flex:0 0 calc(100vh - 187px)!important;height:calc(100vh - 187px)!important;min-height:0!important}
 </style>
@@ -131,7 +131,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 <div class="slide s-dark">
 <div class="orn"></div>
 <div style="background-image:url('public/images/embedded/presentation-inline-01.jpg');background-size:cover;background-position:center 30%;position:absolute;inset:0;z-index:0;"></div>
-<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,19,34,.34) 0%,rgba(14,19,34,.50) 35%,rgba(14,19,34,.80) 100%);z-index:1;"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,19,34,.20) 0%,rgba(14,19,34,.34) 35%,rgba(14,19,34,.62) 100%);z-index:1;"></div>
 <div class="orn" style="position:relative;z-index:2;"></div>
 <div style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;padding:38px 62px 34px;">
   <div style="display:flex;align-items:center;gap:16px;">
@@ -165,7 +165,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
         <div style="display:flex;align-items:center;gap:5px;background:rgba(80,130,190,.7);padding:5px 10px;border-radius:3px;"><span style="font-size:13px;">🇺🇳</span><span style="font-size:11px;font-weight:800;color:white;letter-spacing:.04em;">UNOPS</span></div>
       </div>
     </div>
-    <div style="background:rgba(14,19,34,.7);border:1px solid rgba(255,255,255,.1);padding:15px 22px;display:flex;flex-direction:column;gap:6px;">
+    <div style="background:rgba(22,35,61,.52);border:1px solid rgba(255,255,255,.12);padding:15px 22px;display:flex;flex-direction:column;gap:6px;">
       <div style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:2px;">Контакти</div>
       <div style="font-size:15px;font-weight:700;">Viktor Vlasiuk · Head of Community</div>
       <div style="font-size:13px;opacity:.6;">sr@domanivska-gromada.gov.ua</div>
@@ -297,7 +297,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 
 <div class="slide s-dark" style="position:relative;overflow:hidden;">
 <div style="position:absolute;inset:0;background-image:url('public/images/embedded/presentation-inline-03.jpg');background-size:cover;background-position:center 55%;"></div>
-<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,28,.72) 0%,rgba(10,15,28,.88) 45%,rgba(10,15,28,.98) 100%);"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,28,.46) 0%,rgba(10,15,28,.64) 45%,rgba(10,15,28,.82) 100%);"></div>
 <div class="orn" style="position:relative;z-index:2;"></div>
 <div class="si" style="position:relative;z-index:2;padding-top:28px;padding-bottom:28px;">
 <div class="ey">Сільське господарство</div>
@@ -476,10 +476,10 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 <div class="fc" style="flex:0 0 auto;padding:20px;"><div class="fl">Мережа первинної медицини</div><ul class="cl"><li>5 амбулаторій ЦПМСД</li><li>12 фельдшерських пунктів</li><li>Охоплення: всі 31 нп</li><li>Мобільна клініка для 30 сіл</li></ul></div>
 </div>
 <div style="display:grid;grid-template-rows:1.12fr .88fr;gap:2px;min-height:0;">
-<div style="background-image:url(public/images/fap/image.png);background-size:cover;background-position:center 48%;position:relative;overflow:hidden;min-height:0;"><div style="position:absolute;inset:0;background:rgba(14,19,34,.10);"></div><div style="position:absolute;left:14px;top:12px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:white;opacity:.92;text-shadow:0 2px 8px rgba(0,0,0,.55);">ФАП с. Петропавлівка</div></div>
+<div style="background-image:url(public/images/fap/image.png);background-size:cover;background-position:center 48%;position:relative;overflow:hidden;min-height:0;"><div style="position:absolute;left:0;right:0;top:0;height:56px;background:linear-gradient(180deg,rgba(14,19,34,.24),rgba(14,19,34,0));"></div><div style="position:absolute;left:14px;top:12px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:white;opacity:.92;text-shadow:0 2px 8px rgba(0,0,0,.45);">ФАП с. Петропавлівка</div></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;min-height:0;">
-<div style="background-image:url(public/images/fap/fap_kuznytsove.jpg);background-size:cover;background-position:center 46%;position:relative;overflow:hidden;min-height:0;"><div style="position:absolute;inset:0;background:rgba(14,19,34,.12);"></div><div style="position:absolute;left:14px;bottom:12px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:white;opacity:.92;text-shadow:0 2px 8px rgba(0,0,0,.55);">ФАП с. Кузнецове</div></div>
-<div style="background-image:url(public/images/fap/fap_kuznytsove_2.jpg);background-size:cover;background-position:center 42%;position:relative;overflow:hidden;min-height:0;"><div style="position:absolute;inset:0;background:rgba(14,19,34,.12);"></div><div style="position:absolute;left:14px;bottom:12px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:white;opacity:.92;text-shadow:0 2px 8px rgba(0,0,0,.55);">Відкриття ФАПу</div></div>
+<div style="background-image:url(public/images/fap/fap_kuznytsove.jpg);background-size:cover;background-position:center 46%;position:relative;overflow:hidden;min-height:0;"><div style="position:absolute;left:0;right:0;bottom:0;height:56px;background:linear-gradient(180deg,rgba(14,19,34,0),rgba(14,19,34,.24));"></div><div style="position:absolute;left:14px;bottom:12px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:white;opacity:.92;text-shadow:0 2px 8px rgba(0,0,0,.45);">ФАП с. Кузнецове</div></div>
+<div style="background-image:url(public/images/fap/fap_kuznytsove_2.jpg);background-size:cover;background-position:center 42%;position:relative;overflow:hidden;min-height:0;"><div style="position:absolute;left:0;right:0;bottom:0;height:56px;background:linear-gradient(180deg,rgba(14,19,34,0),rgba(14,19,34,.24));"></div><div style="position:absolute;left:14px;bottom:12px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:white;opacity:.92;text-shadow:0 2px 8px rgba(0,0,0,.45);">Відкриття ФАПу</div></div>
 </div>
 </div>
 </div>
@@ -1054,7 +1054,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--navy);font-f
 
 <div class="slide s-dark partner-benefits-slide" style="overflow:hidden;">
 <div style="position:absolute;inset:0;background-image:url('public/images/embedded/presentation-inline-06.jpg');background-size:cover;background-position:center;"></div>
-<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,19,34,.72) 0%,rgba(14,19,34,.88) 50%,rgba(14,19,34,.97) 100%);"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,19,34,.48) 0%,rgba(14,19,34,.66) 50%,rgba(14,19,34,.84) 100%);"></div>
 <div class="orn" style="position:relative;z-index:2;"></div>
 <div class="si" style="position:relative;z-index:2;flex:0 0 calc(100vh - 3px);height:calc(100vh - 3px);">
 <div class="ey">Що отримує партнер</div>
