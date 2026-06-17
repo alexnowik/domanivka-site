@@ -173,6 +173,10 @@ html,body{background:var(--navy)!important;color:var(--ink)!important}
 .slide [style*="background-image"] [style*="font-size:10px"],.slide [style*="background-image"] .fl,.slide [style*="background-image"] .ey{font-size:11px!important;letter-spacing:.14em!important}
 .slide [style*="background-image"] [style*="font-size:16px"],.slide [style*="background-image"] [style*="font-size:18px"],.slide [style*="background-image"] [style*="font-size:20px"],.slide [style*="background-image"] [style*="font-size:22px"]{font-size:clamp(20px,1.7vw,26px)!important;line-height:1.12!important}
 .slide:first-child [style*="background:rgba(0,47,108"] span,.slide:first-child [style*="background:rgba(198,12,48"] span,.slide:first-child [style*="background:rgba(0,130,50"] span,.slide:first-child [style*="background:rgba(0,51,153"] span,.slide:first-child [style*="background:rgba(0,141,201"] span,.slide:first-child [style*="background:rgba(0,94,151"] span,.slide:first-child [style*="background:rgba(0,100,78"] span,.slide:first-child [style*="background:rgba(80,130,190"] span{color:#fff!important}
+[data-vpo-photo]>div[style*="bottom"]{display:inline-block;background:rgba(27,35,24,.58);padding:10px 14px;right:auto!important;max-width:82%;backdrop-filter:blur(2px)}
+[data-vpo-photo]>div[style*="bottom"],[data-vpo-photo]>div[style*="bottom"] *{color:#fff!important;text-shadow:0 2px 12px rgba(0,0,0,.48)!important}
+[data-vpo-photo]>div[style*="background:rgba(255,250,240"],[data-vpo-photo]>div[style*="background:rgba(255,250,240"] *{text-shadow:none!important}
+[data-vpo-photo]>div[style*="background:rgba(255,250,240"] .metric-label{color:var(--amber)!important}
 </style>
 </head>
 <body>
@@ -519,9 +523,14 @@ html,body{background:var(--navy)!important;color:var(--ink)!important}
 <div class="ey">Нові амбулаторії · ФАП</div>
 <div class="dsub">Модульні амбулаторії — медицина в кожному куточку громади.</div>
 <div style="display:grid;grid-template-columns:.86fr 1.14fr;gap:2px;flex:1;margin-top:18px;min-height:0;">
-<div style="display:flex;flex-direction:column;gap:2px;min-height:0;">
-<div class="fc az" style="flex:1;padding:20px;"><div class="fl">ФАПи с. Кузнецове та с. Петропавлівка · 2025</div><div class="fv fvs" style="color:var(--azure);">Нові модульні<br/>амбулаторії</div><div class="fd">Сучасні модульні заклади з пандусами, генераторами та сонячними панелями. Відкриті за підтримки міжнародних партнерів.</div></div>
-<div class="fc" style="flex:0 0 auto;padding:20px;"><div class="fl">Мережа первинної медицини</div><ul class="cl"><li>5 амбулаторій ЦПМСД</li><li>12 фельдшерських пунктів</li><li>Охоплення: всі 31 нп</li><li>Мобільна клініка для 30 сіл</li></ul></div>
+<div style="display:grid;grid-template-rows:auto 1fr;gap:2px;min-height:0;">
+<div class="fc az" style="padding:24px 24px 22px;"><div class="fl">ФАПи с. Кузнецове та с. Петропавлівка · 2025</div><div class="fv fvs" style="color:var(--azure);font-size:clamp(28px,2.5vw,38px);line-height:1.02;">Нові модульні амбулаторії</div><div class="fd" style="margin-top:10px;max-width:640px;">Сучасні заклади з пандусами, генераторами та сонячними панелями. Відкриті за підтримки міжнародних партнерів.</div></div>
+<div class="fc" style="padding:22px 24px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;">
+<div style="padding:18px;background:rgba(134,171,95,.14);display:flex;flex-direction:column;justify-content:center;"><div class="fl">Амбулаторії</div><div class="fv fvs" style="color:var(--azure);">5 ЦПМСД</div></div>
+<div style="padding:18px;background:rgba(216,178,102,.16);display:flex;flex-direction:column;justify-content:center;"><div class="fl">Фельдшерські пункти</div><div class="fv fvs" style="color:var(--amber);">12</div></div>
+<div style="padding:18px;background:rgba(134,171,95,.10);display:flex;flex-direction:column;justify-content:center;"><div class="fl">Охоплення</div><div class="fv fvs" style="color:var(--azure);">31 нп</div></div>
+<div style="padding:18px;background:rgba(216,178,102,.12);display:flex;flex-direction:column;justify-content:center;"><div class="fl">Мобільна клініка</div><div class="fv fvs" style="color:var(--amber);">30 сіл</div></div>
+</div>
 </div>
 <div style="display:grid;grid-template-rows:1.12fr .88fr;gap:2px;min-height:0;">
 <div style="background-image:url(public/images/fap/image.png);background-size:cover;background-position:center 48%;position:relative;overflow:hidden;min-height:0;"><div style="position:absolute;left:0;right:0;top:0;height:56px;background:linear-gradient(180deg,rgba(14,19,34,.24),rgba(14,19,34,0));"></div><div style="position:absolute;left:14px;top:12px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:white;opacity:.92;text-shadow:0 2px 8px rgba(0,0,0,.45);">ФАП с. Петропавлівка</div></div>
@@ -772,23 +781,23 @@ html,body{background:var(--navy)!important;color:var(--ink)!important}
 <div class="dsub" style="max-width:1480px;">Модульні будинки від данських партнерів — зведено і заселено.</div>
 <div style="display:grid;grid-template-columns:1.15fr .85fr;gap:2px;flex:1 1 auto;min-height:0;margin-top:18px;">
   <div style="display:grid;grid-template-rows:1.12fr .88fr;gap:2px;min-height:0;">
-    <div style="position:relative;overflow:hidden;background:#171b2a;min-height:0;">
-      <img src="public/images/vpo_aerial1.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="Модульні будинки ВПО з висоти">
-      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,22,.04),rgba(8,12,22,.60));"></div>
+      <div style="position:relative;overflow:hidden;background:#171b2a;min-height:0;" data-vpo-photo="true">
+        <img src="public/images/vpo_aerial1.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="Модульні будинки ВПО з висоти">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,22,0),rgba(8,12,22,.18));"></div>
       <div style="position:absolute;left:24px;right:24px;bottom:22px;">
         <div class="ey" style="margin:0 0 6px;color:#f6c24d;">Зведено і заселено</div>
         <div style="font-size:34px;font-weight:900;line-height:1.02;color:#fff;">9 модульних будинків для ВПО</div>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;min-height:0;">
-      <div style="position:relative;overflow:hidden;background:#171b2a;min-height:0;">
+      <div style="position:relative;overflow:hidden;background:#171b2a;min-height:0;" data-vpo-photo="true">
         <img src="public/images/domanivka_ponorama.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="Панорама Доманівки з модульними будинками">
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,22,.02),rgba(8,12,22,.62));"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,22,0),rgba(8,12,22,.16));"></div>
         <div style="position:absolute;left:20px;right:20px;bottom:18px;font-size:22px;font-weight:900;line-height:1.05;color:#fff;">Новий житловий простір у громаді</div>
       </div>
-      <div style="position:relative;overflow:hidden;background:#171b2a;min-height:0;">
+      <div style="position:relative;overflow:hidden;background:#171b2a;min-height:0;" data-vpo-photo="true">
         <img src="public/images/vpo_house.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="Модульний будинок">
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,22,.00),rgba(8,12,22,.60));"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,22,0),rgba(8,12,22,.16));"></div>
         <div style="position:absolute;left:20px;right:20px;bottom:18px;font-size:22px;font-weight:900;line-height:1.05;color:#fff;">Будинки готові до проживання</div>
       </div>
     </div>
@@ -813,13 +822,14 @@ html,body{background:var(--navy)!important;color:var(--ink)!important}
       </div>
     </div>
     <div style="display:grid;grid-template-rows:1.55fr .82fr .82fr;gap:2px;min-height:0;">
-      <div style="position:relative;overflow:hidden;background:#171b2a;min-height:0;">
-        <img src="public/images/vpo_danish.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 18%;" alt="Данські партнери біля модульного житла">
-        <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,19,34,.84),rgba(13,19,34,.20));"></div>
-        <div style="position:absolute;left:24px;right:24px;top:22px;">
+      <div style="display:grid;grid-template-columns:.48fr .52fr;gap:2px;min-height:0;">
+        <div class="fc am" style="padding:22px 24px;display:flex;flex-direction:column;justify-content:center;">
           <div class="metric-label">партнерство</div>
-          <div style="font-size:28px;font-weight:900;line-height:1.04;color:#f7c24b;">Данські партнери</div>
-          <p style="margin:8px 0 0;font-size:16px;line-height:1.35;color:rgba(255,255,255,.78);max-width:430px;">Модульне житло створене за підтримки партнерів; співпраця продовжується.</p>
+          <div style="font-size:34px;font-weight:900;line-height:1.02;color:var(--amber);">🇩🇰 Данські партнери</div>
+          <p style="margin:12px 0 0;font-size:16px;line-height:1.38;color:rgba(41,51,36,.78);">Модульне житло створене за підтримки партнерів; співпраця продовжується.</p>
+        </div>
+        <div style="position:relative;overflow:hidden;background:#171b2a;min-height:0;" data-vpo-photo="true">
+          <img src="public/images/vpo_danish.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 18%;" alt="Данські партнери біля модульного житла">
         </div>
       </div>
       <div style="background:rgba(28,34,50,.92);padding:24px;min-height:0;">
@@ -926,39 +936,39 @@ html,body{background:var(--navy)!important;color:var(--ink)!important}
 <div class="ey">Водопостачання · NEFCO · Данія</div>
 <div class="dsub" style="font-size:34px;line-height:1.04;">Водогін Зброшкове — Доманівка: вода як інфраструктура відновлення.</div>
 <div style="display:grid;grid-template-columns:1.18fr .82fr;gap:2px;flex:1;margin-top:18px;min-height:0;">
-<div style="position:relative;overflow:hidden;background:#111827;min-height:0;">
-<img src="public/images/location_map_domanivka_tinted.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.9) contrast(1.08) brightness(.56);" alt="Карта Доманівської громади">
-<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,18,31,.22),rgba(13,18,31,.58));"></div>
+<div style="position:relative;overflow:hidden;background:#edf2e4;min-height:0;box-shadow:inset 0 0 0 1px rgba(80,92,68,.12);">
+<img src="public/images/location_map_domanivka_tinted.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.72) saturate(.82) contrast(.92) brightness(1.22);opacity:.62;mix-blend-mode:multiply;" alt="Карта Доманівської громади">
+<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,250,240,.48),rgba(237,242,228,.64));"></div>
 <svg viewBox="0 0 1000 610" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;">
-<path d="M315 148 C390 245 456 332 515 452" fill="none" stroke="#f7c24b" stroke-width="6" stroke-dasharray="15 14" stroke-linecap="round"/>
-<path d="M515 452 C590 426 660 382 760 336" fill="none" stroke="#5f8cff" stroke-width="5" stroke-dasharray="12 12" stroke-linecap="round"/>
-<circle cx="315" cy="148" r="15" fill="#0e1322" stroke="#f7c24b" stroke-width="6"/>
-<circle cx="515" cy="452" r="17" fill="#0e1322" stroke="#f7c24b" stroke-width="6"/>
-<circle cx="760" cy="336" r="10" fill="#5f8cff"/>
+<path d="M315 148 C390 245 456 332 515 452" fill="none" stroke="#c79532" stroke-width="7" stroke-dasharray="15 14" stroke-linecap="round"/>
+<path d="M515 452 C590 426 660 382 760 336" fill="none" stroke="#5278d9" stroke-width="6" stroke-dasharray="12 12" stroke-linecap="round"/>
+<circle cx="315" cy="148" r="15" fill="#fffaf0" stroke="#c79532" stroke-width="6"/>
+<circle cx="515" cy="452" r="17" fill="#fffaf0" stroke="#c79532" stroke-width="6"/>
+<circle cx="760" cy="336" r="10" fill="#5278d9" stroke="#fffaf0" stroke-width="4"/>
 </svg>
-<div style="position:absolute;left:50px;top:46px;background:rgba(28,35,54,.92);padding:12px 16px;border-left:4px solid #f7c24b;">
-<div style="font-size:15px;font-weight:900;color:#f7c24b;">Зброшкове</div>
-<div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:2px;">підземне джерело</div>
+<div style="position:absolute;left:50px;top:46px;background:rgba(255,250,240,.94);padding:12px 16px;border-left:4px solid #c79532;box-shadow:0 12px 30px rgba(41,51,36,.12);">
+<div style="font-size:15px;font-weight:900;color:#b58c42;">Зброшкове</div>
+<div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(41,51,36,.68);margin-top:2px;">підземне джерело</div>
 </div>
-<div style="position:absolute;left:420px;top:386px;background:rgba(28,35,54,.96);padding:12px 18px;border-left:4px solid #fff;">
-<div style="font-size:24px;font-weight:950;color:#fff;">Доманівка</div>
-<div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#f7c24b;margin-top:2px;">адміністративний центр</div>
+<div style="position:absolute;left:420px;top:386px;background:rgba(255,250,240,.96);padding:12px 18px;border-left:4px solid #86ab5f;box-shadow:0 12px 30px rgba(41,51,36,.12);">
+<div style="font-size:24px;font-weight:950;color:#293324;">Доманівка</div>
+<div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#b58c42;margin-top:2px;">адміністративний центр</div>
 </div>
-<div style="position:absolute;right:38px;top:48px;background:rgba(255,255,255,.88);padding:8px 12px;color:#282b33;font-size:11px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;">маршрут водогону</div>
+<div style="position:absolute;right:38px;top:48px;background:rgba(255,250,240,.94);padding:8px 12px;color:#293324;font-size:11px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 10px 24px rgba(41,51,36,.10);">маршрут водогону</div>
 <div style="position:absolute;left:46px;bottom:38px;display:grid;grid-template-columns:1.1fr .95fr .95fr;gap:2px;width:76%;">
-<div style="background:rgba(14,19,34,.9);padding:16px 18px;">
+<div style="background:rgba(255,250,240,.95);padding:16px 18px;box-shadow:inset 0 0 0 1px rgba(80,92,68,.10);">
 <div class="fl">магістраль</div>
-<div style="font-size:38px;line-height:.9;font-weight:950;color:#5f8cff;">6 709 м</div>
+<div style="font-size:38px;line-height:.9;font-weight:950;color:#6a9854;">6 709 м</div>
 <div class="fd" style="margin-top:6px;">майже 7 км від свердловини до селища</div>
 </div>
-<div style="background:rgba(247,194,75,.9);padding:16px 18px;color:#101522;">
+<div style="background:rgba(216,178,102,.92);padding:16px 18px;color:#293324;box-shadow:inset 0 0 0 1px rgba(80,92,68,.10);">
 <div style="font-size:11px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;">діаметр</div>
 <div style="font-size:34px;line-height:.95;font-weight:950;">250 мм</div>
 <div style="font-size:11px;font-weight:800;opacity:.75;margin-top:6px;">нова магістральна труба</div>
 </div>
-<div style="background:rgba(35,49,88,.9);padding:16px 18px;">
+<div style="background:rgba(255,250,240,.95);padding:16px 18px;box-shadow:inset 0 0 0 1px rgba(80,92,68,.10);">
 <div class="fl">живлення</div>
-<div style="font-size:31px;line-height:.95;font-weight:950;color:#fff;">СЕС</div>
+<div style="font-size:31px;line-height:.95;font-weight:950;color:#293324;">СЕС</div>
 <div class="fd" style="margin-top:6px;">сонячні панелі для насосної</div>
 </div>
 </div>
@@ -966,7 +976,7 @@ html,body{background:var(--navy)!important;color:var(--ink)!important}
 <div style="display:grid;grid-template-rows:1.08fr .86fr .86fr .72fr;gap:2px;min-height:0;">
 <div class="fc az" style="padding:22px 26px;display:flex;flex-direction:column;justify-content:center;">
 <div class="fl">фінансування</div>
-<div class="fv" style="font-size:42px;color:#fff;">€1.47 млн</div>
+<div class="fv" style="font-size:42px;color:var(--azure);">€1.47 млн</div>
 <div class="fd">Грант для Доманівки: кошти уряду Данії, адміністрування NEFCO та співфінансування громади.</div>
 </div>
 <div class="fc" style="padding:20px 26px;">
@@ -984,7 +994,7 @@ html,body{background:var(--navy)!important;color:var(--ink)!important}
 <div class="fd" style="margin-top:7px;">Проблема дефіциту води переходить із кризового режиму в керований інфраструктурний проєкт.</div>
 </div>
 <div class="fc" style="padding:18px 26px;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center;">
-<div><div class="fl">перша черга</div><div style="font-size:30px;font-weight:950;color:#fff;">до кінця 2026</div></div>
+<div><div class="fl">перша черга</div><div style="font-size:30px;font-weight:950;color:var(--ink);">до кінця 2026</div></div>
 <div><div class="fl">партнерський трек</div><div style="font-size:28px;font-weight:950;color:#5f8cff;">Данія · NEFCO</div></div>
 </div>
 </div>
@@ -1107,11 +1117,23 @@ html,body{background:var(--navy)!important;color:var(--ink)!important}
 <div class="si" style="position:relative;z-index:2;flex:0 0 calc(100vh - 3px);height:calc(100vh - 3px);">
 <div class="ey">Що отримує партнер</div>
 <div class="dsub">Партнерство з Доманівкою дає видимий результат, локальну команду і основу для спільних заявок.</div>
-<div class="agrid" style="margin-top:20px;flex:0 0 calc(100vh - 224px);height:calc(100vh - 224px);min-height:0;">
-<div class="adv"><div class="an">01</div><div class="at">Видимий вплив на місці</div><div class="ad">Проєкти швидко перетворюються на конкретну послугу: вода, медицина, освіта, енергія, дороги, підтримка ВПО чи ветеранські ініціативи.</div></div>
-<div class="adv"><div class="an">02</div><div class="at">Спільні заявки і фонди</div><div class="ad">Громада готова бути партнером у грантах, інвестиційних програмах, міжмуніципальній співпраці та пілотах із масштабованим результатом.</div></div>
-<div class="adv"><div class="an">03</div><div class="at">Контакти й обмін</div><div class="ad">Партнер отримує живу громаду для культурного, освітнього, молодіжного, бізнесового та експертного обміну між командами.</div></div>
-<div class="adv"><div class="an">04</div><div class="at">Прозоре впровадження</div><div class="ad">Команда на місці супроводжує документи, візити, комунікацію, співфінансування і показники результату після запуску.</div></div>
+<div style="display:grid;grid-template-columns:.78fr 1.22fr;gap:2px;margin-top:20px;flex:0 0 calc(100vh - 224px);height:calc(100vh - 224px);min-height:0;">
+<div style="display:grid;grid-template-rows:1.12fr .88fr;gap:2px;min-height:0;">
+<div style="position:relative;overflow:hidden;min-height:0;background:#e9eadf;">
+<img src="public/images/nefco_partner.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;" alt="Партнерський проєкт NEFCO у Доманівській громаді">
+</div>
+<div class="fc az" style="padding:22px 24px;display:flex;flex-direction:column;justify-content:center;">
+<div class="fl">приклад результату</div>
+<div class="fv fvs" style="color:var(--azure);">Водогін Зброшкове → Доманівка</div>
+<div class="fd" style="margin-top:8px;">Грант NEFCO та уряду Данії, співфінансування громади, технічний супровід і підготовка до робіт. Мета — стабільна питна вода для понад 6 тис. мешканців.</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;min-height:0;">
+<div class="adv" style="padding:22px 24px;"><div class="an">01</div><div class="at">Видимий вплив на місці</div><div class="ad">Проєкт швидко стає реальною послугою для людей: вода, медицина, освіта, енергія, дороги, житло для ВПО чи ветеранський бізнес. Партнер бачить не абстрактний звіт, а об'єкт, користувачів і зміну якості життя. Після запуску громада показує результат на місці: візити, фото, історії користувачів і вимірювані показники.</div></div>
+<div class="adv" style="padding:22px 24px;"><div class="an">02</div><div class="at">Спільні заявки і фонди</div><div class="ad">Громада готова заходити у гранти, інвестиційні програми та міжмуніципальні партнерства. Теми для спільних заявок: водопостачання, енергоефективність, медична доступність, агропереробка, зрошення та відновлення інфраструктури. Є портфель потреб, цифри, локації та готовність до співфінансування.</div></div>
+<div class="adv" style="padding:22px 24px;"><div class="an">03</div><div class="at">Локальна команда і дані</div><div class="ad">На місці є команда, що готує інформацію, листи підтримки, кошториси, земельні рішення, комунікацію з мешканцями та зустрічі з бізнесом. Партнер отримує швидкий вхід у громаду без довгого пошуку контактів: один відповідальний маршрут від ідеї до технічного завдання.</div></div>
+<div class="adv" style="padding:22px 24px;"><div class="an">04</div><div class="at">Прозоре впровадження</div><div class="ad">Після старту громада супроводжує документи, візити, співфінансування, фотофіксацію, календар робіт і показники результату. Це знижує ризики для донора та дає зрозумілу історію впливу для звітності. Комунікація з мешканцями й партнерами ведеться регулярно, без втрати темпу.</div></div>
+</div>
 </div>
 </div>
 </div>
