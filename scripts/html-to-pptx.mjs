@@ -20,6 +20,9 @@ const chrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const widthPx = 1920;
 const heightPx = 1080;
 const reuseImages = options.has('--reuse-images');
+const lang = process.argv
+  .find((arg) => arg.startsWith('--lang='))
+  ?.slice('--lang='.length);
 
 mkdirSync(exportDir, { recursive: true });
 mkdirSync(dirname(out), { recursive: true });
@@ -41,8 +44,8 @@ const injected = source.replace(
 ).replace(
   '</head>',
   `<style>
-    .dots,.arr,.ctr{display:none!important}
-    @media print{.dots,.arr,.ctr{display:none!important}}
+    .dots,.arr,.ctr,.lang-switch{display:none!important}
+    @media print{.dots,.arr,.ctr,.lang-switch{display:none!important}}
   </style>
   </head>`,
 ).replace(
@@ -66,7 +69,9 @@ const htmlUrl = pathToFileURL(exportHtml).href;
 
 for (let i = 0; i < slideCount; i += 1) {
   const imagePath = resolve(exportDir, `slide-${String(i + 1).padStart(2, '0')}.png`);
-  const url = `${htmlUrl}?slide=${i}`;
+  const params = new URLSearchParams({ slide: String(i) });
+  if (lang) params.set('lang', lang);
+  const url = `${htmlUrl}?${params}`;
 
   if (reuseImages && existsSync(imagePath) && statSync(imagePath).size > 0) {
     images.push(imagePath);
