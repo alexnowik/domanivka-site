@@ -190,27 +190,33 @@ html,body{background:var(--navy)!important;color:var(--ink)!important}
 [data-registry] .money{font-family:var(--fd);font-size:clamp(23px,2vw,32px)!important;font-weight:950!important;line-height:.96!important;color:var(--amber)!important}
 [data-registry] .money small{display:block;margin-top:5px;font-family:var(--ft);font-size:12px!important;font-weight:850!important;letter-spacing:.02em;color:var(--muted)!important}
 .money-hero{font-family:var(--fd);font-weight:950;line-height:.92;color:var(--amber)}
+.deck .slide.hero-slide>div.hero-veil{background:linear-gradient(90deg,rgba(22,30,18,.74) 0%,rgba(22,30,18,.58) 42%,rgba(22,30,18,.18) 100%),linear-gradient(180deg,rgba(22,30,18,.28) 0%,rgba(22,30,18,.12) 42%,rgba(22,30,18,.60) 100%)!important}
+.deck .slide.hero-slide .hero-copy,.deck .slide.hero-slide .hero-copy *{color:#fff!important;text-shadow:0 3px 18px rgba(0,0,0,.62)!important}
+.deck .slide.hero-slide .hero-title .accent{color:#dcefb6!important}
+.deck .slide.hero-slide .hero-chip,.deck .slide.hero-slide .hero-panel{background:rgba(20,29,17,.58)!important;border:1px solid rgba(255,255,255,.20)!important;backdrop-filter:blur(9px)}
+.deck .slide.hero-slide .hero-panel .hero-kicker{color:#f0c35a!important}
+.deck .slide.hero-slide .hero-contact{color:rgba(255,255,255,.78)!important}
 </style>
 </head>
 <body>
 <div class="deck" id="deck">
-<div class="slide s-dark">
+<div class="slide s-dark hero-slide">
 <div class="orn"></div>
-<div style="background-image:url('public/images/embedded/presentation-inline-01.jpg');background-size:cover;background-position:center 30%;position:absolute;inset:0;z-index:0;"></div>
-<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(33,40,24,.10) 0%,rgba(33,40,24,.18) 35%,rgba(33,40,24,.36) 100%);z-index:1;"></div>
+<div style="background-image:url('public/images/domanivka_hero.jpg');background-size:cover;background-position:center 42%;position:absolute;inset:0;z-index:0;"></div>
+<div class="hero-veil" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(33,40,24,.10) 0%,rgba(33,40,24,.18) 35%,rgba(33,40,24,.36) 100%);z-index:1;"></div>
 <div class="orn" style="position:relative;z-index:2;"></div>
-<div style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;padding:38px 62px 34px;">
+<div class="hero-copy" style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;padding:38px 62px 34px;">
   <div style="display:flex;align-items:center;gap:16px;">
     <img src="public/images/embedded/presentation-inline-02.png" style="height:105px;width:auto;filter:drop-shadow(0 3px 16px rgba(0,0,0,.7));" alt="Герб"/>
     <div>
       <div style="font-family:var(--fd);font-size:12.5px;font-weight:800;letter-spacing:.05em;line-height:1.15;">Доманівська селищна рада</div>
       <div style="font-size:10px;opacity:.45;letter-spacing:.1em;text-transform:uppercase;margin-top:2px;">Вознесенський р-н · Миколаївська область</div>
     </div>
-    <div style="margin-left:auto;display:inline-flex;padding:4px 12px;background:rgba(134,171,95,.22);border:1px solid rgba(134,171,95,.36);border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--azure);">UKRAINE · PARTNERSHIP</div>
+    <div class="hero-chip" style="margin-left:auto;display:inline-flex;padding:4px 12px;background:rgba(134,171,95,.22);border:1px solid rgba(134,171,95,.36);border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--azure);">UKRAINE · PARTNERSHIP</div>
   </div>
   <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:16px 0;">
-    <div style="font-family:var(--fd);font-size:clamp(52px,7vw,96px);font-weight:800;line-height:1.0;margin-bottom:20px;">
-      Доманівська<br/><span style="color:var(--azure);">громада</span>
+    <div class="hero-title" style="font-family:var(--fd);font-size:clamp(52px,7vw,96px);font-weight:800;line-height:1.0;margin-bottom:20px;">
+      Доманівська<br/><span class="accent" style="color:var(--azure);">громада</span>
     </div>
     <div style="font-size:19px;opacity:.72;max-width:620px;line-height:1.6;">
       Domanivka Community: your entry point to Ukraine<br/>
@@ -218,7 +224,7 @@ html,body{background:var(--navy)!important;color:var(--ink)!important}
     </div>
   </div>
   <div style="display:grid;grid-template-columns:1.6fr 2fr;gap:2px;margin-top:auto;">
-    <div style="background:rgba(255,255,255,.08);padding:16px 20px;">
+    <div class="hero-panel" style="background:rgba(255,255,255,.08);padding:16px 20px;">
       <div style="font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;opacity:.45;margin-bottom:11px;">Міжнародні партнери</div>
       <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
         <div style="display:flex;align-items:center;gap:5px;background:rgba(0,47,108,.85);padding:5px 10px;border-radius:3px;"><span style="font-size:13px;">🇺🇸</span><span style="font-size:11px;font-weight:800;color:white;letter-spacing:.04em;">USAID</span></div>
@@ -231,12 +237,12 @@ html,body{background:var(--navy)!important;color:var(--ink)!important}
         <div style="display:flex;align-items:center;gap:5px;background:rgba(80,130,190,.7);padding:5px 10px;border-radius:3px;"><span style="font-size:13px;">🇺🇳</span><span style="font-size:11px;font-weight:800;color:white;letter-spacing:.04em;">UNOPS</span></div>
       </div>
     </div>
-    <div style="background:rgba(95,115,80,.30);border:1px solid rgba(255,255,255,.18);padding:15px 22px;display:flex;flex-direction:column;gap:6px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:2px;">Контакти</div>
+    <div class="hero-panel" style="background:rgba(95,115,80,.30);border:1px solid rgba(255,255,255,.18);padding:15px 22px;display:flex;flex-direction:column;gap:6px;">
+      <div class="hero-kicker" style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:2px;">Контакти</div>
       <div style="font-size:15px;font-weight:700;">Viktor Vlasiuk · Head of Community</div>
-      <div style="font-size:13px;opacity:.6;">sr@domanivska-gromada.gov.ua</div>
-      <div style="font-size:13px;opacity:.6;">domanivska-gromada.gov.ua</div>
-      <div style="font-size:13px;opacity:.6;">fb.com/otgdomanivka</div>
+      <div class="hero-contact" style="font-size:13px;opacity:.6;">sr@domanivska-gromada.gov.ua</div>
+      <div class="hero-contact" style="font-size:13px;opacity:.6;">domanivska-gromada.gov.ua</div>
+      <div class="hero-contact" style="font-size:13px;opacity:.6;">fb.com/otgdomanivka</div>
     </div>
   </div>
 </div>
@@ -592,6 +598,61 @@ html,body{background:var(--navy)!important;color:var(--ink)!important}
 </div>
 </div>
 </div>
+
+<!-- Slide 11: Sport Teams -->
+<div class="slide s-dark slide-frame">
+<div class="orn"></div>
+<div class="si slide-fill" style="padding-top:52px;padding-bottom:36px;">
+<div class="ey">Спорт · Доманівка</div>
+<div class="dsub" style="max-width:1450px;">Доманівка: гандбол, волейбол і футбол.</div>
+<div style="display:grid;grid-template-columns:1.2fr .8fr;gap:2px;flex:0 0 calc(100vh - 188px)!important;height:calc(100vh - 188px)!important;margin-top:18px;min-height:0;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;min-height:0;">
+    <div class="media-tile">
+      <img class="media-img" src="public/images/sport/hanball.jpg" alt="Гандбольна команда Доманівської громади" style="object-position:center 56%;"/>
+      <div class="media-shade"></div>
+      <div class="media-caption compact">
+        <div class="ey media-ey compact">Гандбол</div>
+        <div class="dsub media-title compact">Покоління спортсменів</div>
+      </div>
+    </div>
+    <div class="media-tile">
+      <img class="media-img" src="public/images/sport/handball.jpg" alt="Юнацька гандбольна команда Доманівської громади" style="object-position:center 50%;"/>
+      <div class="media-shade"></div>
+      <div class="media-caption compact">
+        <div class="ey media-ey compact">Гандбол</div>
+        <div class="dsub media-title compact">Командний розвиток</div>
+      </div>
+    </div>
+    <div class="media-tile">
+      <img class="media-img" src="public/images/sport/voleyball.jpeg" alt="Волейбольна команда Доманівської громади" style="object-position:center 54%;"/>
+      <div class="media-shade"></div>
+      <div class="media-caption compact">
+        <div class="ey media-ey compact">Волейбол</div>
+        <div class="dsub media-title compact">Командна гра</div>
+      </div>
+    </div>
+    <div class="media-tile">
+      <img class="media-img" src="public/images/sport/football.jpg" alt="Футбольна команда Доманівської громади" style="object-position:center 50%;"/>
+      <div class="media-shade"></div>
+      <div class="media-caption compact">
+        <div class="ey media-ey compact">Футбол</div>
+        <div class="dsub media-title compact">Дитяча команда</div>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-rows:1.18fr repeat(3,.82fr);gap:2px;min-height:0;">
+    <div class="fc az learning-intro" style="justify-content:center;">
+      <div class="learning-headline">Спорт у Доманівці розвивається і об'єднує громаду.</div>
+      <div class="fd learning-lede">Тренування, турніри і командний дух — важлива частина активного життя дітей та молоді.</div>
+    </div>
+    <div class="fc am" style="justify-content:center;"><div class="fl">Гандбол</div><div class="fv fvs" style="color:var(--amber);">Сильна традиція</div></div>
+    <div class="fc" style="justify-content:center;"><div class="fl">Волейбол</div><div class="fv fvs">Командна гра</div></div>
+    <div class="fc az" style="justify-content:center;"><div class="fl">Футбол</div><div class="fv fvs" style="color:var(--azure);">Активна молодь</div></div>
+  </div>
+</div>
+</div>
+</div>
+<!-- /Slide 11 -->
 
 <!-- Slide 11: Lyceum Uspikh STEM -->
 <div class="slide s-dark slide-frame">
