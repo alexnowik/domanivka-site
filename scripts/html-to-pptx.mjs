@@ -28,12 +28,17 @@ execFileSync(process.execPath, [resolve(__dirname, 'validate-presentation.mjs'),
 
 const source = readFileSync(input, 'utf8');
 const slideCount = (source.match(/<div class="slide\b/g) ?? []).length;
+const rootUrl = pathToFileURL(`${root}/`).href;
 
 if (slideCount === 0) {
   throw new Error(`No slides found in ${basename(input)}`);
 }
 
 const injected = source.replace(
+  '<head>',
+  `<head>
+  <base href="${rootUrl}">`,
+).replace(
   '</head>',
   `<style>
     .dots,.arr,.ctr{display:none!important}
